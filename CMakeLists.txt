@@ -14,7 +14,7 @@ include_directories(.)
 set(LIB_SRC
 	zbinbin/log/log.cpp
 	zbinbin/thread/Thread.cpp
-	
+	zbinbin/thread/Condition.cpp
 	)
 
 # 添加一个lib的share库，生成so文件
