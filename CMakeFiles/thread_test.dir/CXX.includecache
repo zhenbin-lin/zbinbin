@@ -6,36 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/home/sam/share/zbinbin/tests/test.cpp
-iostream
--
-time.h
--
-zbinbin/log/log.h
-/home/sam/share/zbinbin/tests/zbinbin/log/log.h
+/home/sam/share/zbinbin/tests/thread.cpp
 zbinbin/thread/Thread.h
 /home/sam/share/zbinbin/tests/zbinbin/thread/Thread.h
-
-zbinbin/log/log.h
-list
--
-functional
--
-stdint.h
--
-sstream
--
-string
--
-fstream
--
-map
--
-vector
--
-assert.h
--
-memory
+iostream
 -
 
 zbinbin/thread/Thread.h

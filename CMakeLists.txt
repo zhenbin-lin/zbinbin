@@ -24,13 +24,13 @@ add_library(zbinbin SHARED ${LIB_SRC})
 
 # 生成一个测试文件
 add_executable(test tests/test.cpp)
-add_executable(thread tests/thread.cpp)
+add_executable(thread_test tests/thread.cpp)
 # 测试文件依赖于zbinbin
 add_dependencies(test zbinbin)
 target_link_libraries(test zbinbin)
 
-add_dependencies(thread zbinbin)
-target_link_libraries(thread zbinbin)
+add_dependencies(thread_test zbinbin)
+target_link_libraries(thread_test zbinbin)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

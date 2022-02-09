@@ -114,17 +114,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named thread
+# Target rules for targets named thread_test
 
 # Build rule for target.
-thread: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 thread
-.PHONY : thread
+thread_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 thread_test
+.PHONY : thread_test
 
 # fast build rule for target.
-thread/fast:
-	$(MAKE) -f CMakeFiles/thread.dir/build.make CMakeFiles/thread.dir/build
-.PHONY : thread/fast
+thread_test/fast:
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/build
+.PHONY : thread_test/fast
 
 #=============================================================================
 # Target rules for targets named zbinbin
@@ -185,7 +185,7 @@ tests/thread.o: tests/thread.cpp.o
 
 # target to build an object file
 tests/thread.cpp.o:
-	$(MAKE) -f CMakeFiles/thread.dir/build.make CMakeFiles/thread.dir/tests/thread.cpp.o
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread.cpp.o
 .PHONY : tests/thread.cpp.o
 
 tests/thread.i: tests/thread.cpp.i
@@ -194,7 +194,7 @@ tests/thread.i: tests/thread.cpp.i
 
 # target to preprocess a source file
 tests/thread.cpp.i:
-	$(MAKE) -f CMakeFiles/thread.dir/build.make CMakeFiles/thread.dir/tests/thread.cpp.i
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread.cpp.i
 .PHONY : tests/thread.cpp.i
 
 tests/thread.s: tests/thread.cpp.s
@@ -203,7 +203,7 @@ tests/thread.s: tests/thread.cpp.s
 
 # target to generate assembly for a file
 tests/thread.cpp.s:
-	$(MAKE) -f CMakeFiles/thread.dir/build.make CMakeFiles/thread.dir/tests/thread.cpp.s
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread.cpp.s
 .PHONY : tests/thread.cpp.s
 
 zbinbin/log/log.o: zbinbin/log/log.cpp.o
@@ -232,6 +232,33 @@ zbinbin/log/log.s: zbinbin/log/log.cpp.s
 zbinbin/log/log.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/log.cpp.s
 .PHONY : zbinbin/log/log.cpp.s
+
+zbinbin/thread/Condition.o: zbinbin/thread/Condition.cpp.o
+
+.PHONY : zbinbin/thread/Condition.o
+
+# target to build an object file
+zbinbin/thread/Condition.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o
+.PHONY : zbinbin/thread/Condition.cpp.o
+
+zbinbin/thread/Condition.i: zbinbin/thread/Condition.cpp.i
+
+.PHONY : zbinbin/thread/Condition.i
+
+# target to preprocess a source file
+zbinbin/thread/Condition.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.i
+.PHONY : zbinbin/thread/Condition.cpp.i
+
+zbinbin/thread/Condition.s: zbinbin/thread/Condition.cpp.s
+
+.PHONY : zbinbin/thread/Condition.s
+
+# target to generate assembly for a file
+zbinbin/thread/Condition.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.s
+.PHONY : zbinbin/thread/Condition.cpp.s
 
 zbinbin/thread/Thread.o: zbinbin/thread/Thread.cpp.o
 
@@ -268,7 +295,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... thread"
+	@echo "... thread_test"
 	@echo "... zbinbin"
 	@echo "... test"
 	@echo "... tests/test.o"
@@ -280,6 +307,9 @@ help:
 	@echo "... zbinbin/log/log.o"
 	@echo "... zbinbin/log/log.i"
 	@echo "... zbinbin/log/log.s"
+	@echo "... zbinbin/thread/Condition.o"
+	@echo "... zbinbin/thread/Condition.i"
+	@echo "... zbinbin/thread/Condition.s"
 	@echo "... zbinbin/thread/Thread.o"
 	@echo "... zbinbin/thread/Thread.i"
 	@echo "... zbinbin/thread/Thread.s"

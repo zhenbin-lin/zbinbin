@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <linux/unistd.h>
 #include <sys/prctl.h>
+#include <type_traits>
+
 
 namespace zbinbin {
 
@@ -41,33 +43,54 @@ namespace {
 struct ThreadData;
 
 struct ThreadData {
-    using ThreadFunc = sylar::Thread::ThreadFunc;
-    ThreadData(const ThreadFunc& func, 
-                const std::shared_ptr<pid_t> &tid,
+    ThreadData(const zbinbin::Thread::ThreadFunc& func, 
+                pid_t* tid,
                 const std::string& name) 
                 : func_(func), 
-                  wptid_(tid),
+                  tid_(tid),
                   name_(name)
     {
     }
 
-    ThreadFunc func_;
-    std::weak_ptr<pid_t> wptid_;
+    void runInNewThread()
+    {
+        // 用于填回主线程中的Thread::tid_
+        *tid_ = zbinbin::CurrentThread::tid();
+        assert(!name_.empty());
+        zbinbin::CurrentThread::t_threadName = name_.c_str();
+        ::prctl(PR_SET_NAME, zbinbin::CurrentThread::t_threadName);
+        // TODO 输出到日志中
+        try
+        {
+            func_();
+            zbinbin::CurrentThread::t_threadName = "finished";
+        }
+        catch (const std::exception& ex)
+        {
+            zbinbin::CurrentThread::t_threadName = "crashed";
+            fprintf(stderr, "exception caught in Thread %s\n", name_.c_str());
+            fprintf(stderr, "reason: %s\n", ex.what());
+            abort();
+        }
+        catch (...)
+        {
+            zbinbin::CurrentThread::t_threadName = "crashed";
+            fprintf(stderr, "unknown exception caught in Thread %s\n", name_.c_str());
+            throw; // rethrow
+        }
+    }
+
+    /// data
+    const zbinbin::Thread::ThreadFunc& func_;
+    pid_t* tid_;
     std::string name_;
+
 };
 
 // 新线程会执行该函数
 void* newthreadstart(void *obj) {
-    using ThreadFunc = sylar::Thread::ThreadFunc;
     ThreadData* data = static_cast<ThreadData*>(obj);
-    
-    const ThreadFunc& func = data->func_;
-    sylar::CurrentThread::t_cachedTid = static_cast<pid_t>(::syscall(SYS_gettid));
-    assert(!data->name_.empty());
-    sylar::CurrentThread::t_threadName = data->name_.c_str();
-    ::prctl(PR_SET_NAME, sylar::CurrentThread::t_threadName);
-    func(); // FIXME: surround with try-catch, see muduo
-    // CurrentThread::t_threadName = "finished";
+    data->runInNewThread();
     delete data;
     return NULL;
 }
@@ -82,32 +105,34 @@ Thread::Thread(const ThreadFunc& func, const std::string& name)
     , name_(name)
     , started_(false)
     , joined_(false)
-     {
+{
     
 }
-Thread::~Thread() {
+Thread::~Thread() 
+{
     if (started_ && !joined_) {
         pthread_detach(pthreadId_);
     }
 }
 
-void Thread::start() {
+void Thread::start() 
+{
     assert(!started_);
     started_ = true;
-    ThreadData* data = new ThreadData(func_, ptid_, name_);
+    ThreadData* data = new ThreadData(func_, &tid_, name_);
     if (pthread_create(&pthreadId_, NULL, newthreadstart, reinterpret_cast<void*>(data))) {
         started_ = false;
         delete data;
         // TODO: add log
         ::abort();
     }
-
 }
-void Thread::join() {
+
+int Thread::join() {
     assert(started_);
     assert(!joined_);
     joined_ = true;
-    pthread_join(pthreadId_, NULL);
+    return pthread_join(pthreadId_, NULL);
 }
 
 }   // namespace zbinzbin

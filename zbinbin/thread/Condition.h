@@ -2,6 +2,7 @@
 #define __ZBINBIN_CONDITION_H_
 
 #include "zbinbin/thread/Mutex.h"
+#include "zbinbin/thread/Thread.h"
 #include <pthread.h>
 
 
