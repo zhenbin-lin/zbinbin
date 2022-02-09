@@ -9,5 +9,6 @@ int main()
 {
     LogStream lout(new LogStream::Buffer());
     lout << "HHH LLL SSS " << 3424 << "sdfsdf";
-    std::cout << lout.release()->toString();
+    lout << 434.223 << " " << "sdfhsjdhf";
+    std::cout << lout.getBufferPtr().release()->toString();
 }

@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <sstream>
+#include <utility>
 #include <vector>
 
 namespace zbinbin 
@@ -56,18 +57,16 @@ public:
     ///
     /// 返回buffer指针，并释放LogStream对其的管理权
     ///
-    Buffer* release() { 
-        return buffer_.release(); 
+    BufferPtr getBufferPtr() { 
+        return std::forward<BufferPtr>(buffer_); 
     } 
 
     ///
     /// 重置LogStream的Buffer
     ///
-    void reset(Buffer* buf) { 
-        return buffer_.reset(buf); 
+    void resetBuffer(BufferPtr buf) { 
+        return buffer_.swap(buf); 
     } 
-
-    void resetBuffer() { buffer_->reset(); }
 
 private:
 
