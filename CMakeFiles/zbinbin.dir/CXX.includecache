@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/sam/share/zbinbin/zbinbin/log/LogStream.cpp
+zbinbin/log/LogStream.h
+/home/sam/share/zbinbin/zbinbin/log/zbinbin/log/LogStream.h
+algorithm
+-
+
 /home/sam/share/zbinbin/zbinbin/log/log.cpp
 log.h
 /home/sam/share/zbinbin/zbinbin/log/log.h
@@ -64,6 +70,20 @@ sys/prctl.h
 type_traits
 -
 
+zbinbin/log/LogStream.h
+zbinbin/utility/noncopyable.h
+zbinbin/log/zbinbin/utility/noncopyable.h
+zbinbin/utility/FixedBuffer.h
+zbinbin/log/zbinbin/utility/FixedBuffer.h
+string
+-
+memory
+-
+sstream
+-
+vector
+-
+
 zbinbin/thread/Condition.h
 zbinbin/thread/Mutex.h
 zbinbin/thread/zbinbin/thread/Mutex.h
@@ -96,6 +116,14 @@ functional
 string
 -
 assert.h
+-
+
+zbinbin/utility/FixedBuffer.h
+zbinbin/utility/noncopyable.h
+zbinbin/utility/zbinbin/utility/noncopyable.h
+sstream
+-
+cstring
 -
 
 zbinbin/utility/noncopyable.h

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/zbinbin.dir/zbinbin/log/log.cpp.o"
+  "CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o"
   "lib/libzbinbin.pdb"
