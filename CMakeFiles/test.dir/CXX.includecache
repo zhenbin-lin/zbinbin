@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sam/share/zbinbin/tests/test.cpp
+iostream
+-
+time.h
+-
+zbinbin/log.h
+/home/sam/share/zbinbin/tests/zbinbin/log.h
+zbinbin/base/Thread.h
+/home/sam/share/zbinbin/tests/zbinbin/base/Thread.h
+

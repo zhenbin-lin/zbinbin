@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sam/share/zbinbin/tests/thread.cpp
+thread/Thread.h
+/home/sam/share/zbinbin/tests/thread/Thread.h
+iostream
+-
+
+zbinbin/thread/Thread.h
+pthread.h
+-
+noncopyable.h
+zbinbin/thread/noncopyable.h
+string
+-
+functional
+-
+memory
+-
+
+zbinbin/thread/noncopyable.h
+

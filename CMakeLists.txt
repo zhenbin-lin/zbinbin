@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 2.8)
+project(zbinbin)
+
+# 详细显示make的信息
+set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# 设置编译参数
+set(CMAKE_CXX_FLAGS 
+	"$ENV{CXXFLAGS} -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread")
+
+include_directories(.)
+
+# 设置编译的源码
+set(LIB_SRC
+	zbinbin/log/log.cpp
+	zbinbin/thread/Thread.cpp
+	)
+
+# 添加一个lib的share库，生成so文件
+add_library(zbinbin SHARED ${LIB_SRC})
+# add_library(zbinbin_static STATIC ${LIB_SRC})
+# SET_TARGET_PROPERTIES (zbinbin_static PROERTIES OUTPUT_NAME "zbinbin")
+
+# 生成一个测试文件
+add_executable(test tests/test.cpp)
+add_executable(thread tests/thread.cpp)
+# 测试文件依赖于zbinbin
+add_dependencies(test zbinbin)
+target_link_libraries(test zbinbin)
+
+add_dependencies(thread zbinbin)
+target_link_libraries(thread zbinbin)
+
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/sam/share/zbinbin",
+  "command": "/usr/bin/c++   -I/home/sam/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread   -o CMakeFiles/thread.dir/tests/thread.cpp.o -c /home/sam/share/zbinbin/tests/thread.cpp",
+  "file": "/home/sam/share/zbinbin/tests/thread.cpp"
+},
+{
+  "directory": "/home/sam/share/zbinbin",
+  "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/sam/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/log/log.cpp.o -c /home/sam/share/zbinbin/zbinbin/log/log.cpp",
+  "file": "/home/sam/share/zbinbin/zbinbin/log/log.cpp"
+},
+{
+  "directory": "/home/sam/share/zbinbin",
+  "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/sam/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o -c /home/sam/share/zbinbin/zbinbin/thread/Thread.cpp",
+  "file": "/home/sam/share/zbinbin/zbinbin/thread/Thread.cpp"
+},
+{
+  "directory": "/home/sam/share/zbinbin",
+  "command": "/usr/bin/c++   -I/home/sam/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread   -o CMakeFiles/test.dir/tests/test.cpp.o -c /home/sam/share/zbinbin/tests/test.cpp",
+  "file": "/home/sam/share/zbinbin/tests/test.cpp"
+}
+]

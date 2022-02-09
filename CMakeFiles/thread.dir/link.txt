@@ -1,0 +1,1 @@
+/usr/bin/c++   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread  -rdynamic CMakeFiles/thread.dir/tests/thread.cpp.o  -o bin/thread -Wl,-rpath,/home/sam/share/zbinbin/lib lib/libzbinbin.so 

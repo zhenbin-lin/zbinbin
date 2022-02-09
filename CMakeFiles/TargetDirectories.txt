@@ -1,0 +1,5 @@
+/home/sam/share/zbinbin/CMakeFiles/rebuild_cache.dir
+/home/sam/share/zbinbin/CMakeFiles/edit_cache.dir
+/home/sam/share/zbinbin/CMakeFiles/thread.dir
+/home/sam/share/zbinbin/CMakeFiles/zbinbin.dir
+/home/sam/share/zbinbin/CMakeFiles/test.dir
