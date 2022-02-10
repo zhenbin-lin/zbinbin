@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/sam/share/zbinbin/tests/thread.cpp
+/home/binwatson/share/zbinbin/tests/thread.cpp
 zbinbin/thread/Thread.h
-/home/sam/share/zbinbin/tests/zbinbin/thread/Thread.h
+/home/binwatson/share/zbinbin/tests/zbinbin/thread/Thread.h
 iostream
 -
 

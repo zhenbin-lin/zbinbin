@@ -11,8 +11,7 @@
 namespace zbinbin 
 {
 
-const int kSmallBuffer = 4000;
-const int kLargeBuffer = 4000 * 1000;
+
 
 
 class LogStream : noncopyable

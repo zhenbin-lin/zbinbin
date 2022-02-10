@@ -1,4 +1,4 @@
-# Install script for directory: /home/sam/share/zbinbin
+# Install script for directory: /home/binwatson/share/zbinbin
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sam/share/zbinbin/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/binwatson/share/zbinbin/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

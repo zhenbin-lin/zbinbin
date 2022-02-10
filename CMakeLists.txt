@@ -12,8 +12,9 @@ include_directories(.)
 
 # 设置编译的源码
 set(LIB_SRC
-	zbinbin/log/log.cpp
     zbinbin/log/LogStream.cpp
+    zbinbin/log/Logging.cpp
+    zbinbin/log/LogFormatter.cpp
 	zbinbin/thread/Thread.cpp
 	zbinbin/thread/Condition.cpp
 	)

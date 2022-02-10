@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/sam/share/zbinbin/tests/logStream_test.cpp
+/home/binwatson/share/zbinbin/tests/logStream_test.cpp
 zbinbin/thread/Thread.h
-/home/sam/share/zbinbin/tests/zbinbin/thread/Thread.h
+/home/binwatson/share/zbinbin/tests/zbinbin/thread/Thread.h
 zbinbin/log/LogStream.h
-/home/sam/share/zbinbin/tests/zbinbin/log/LogStream.h
+/home/binwatson/share/zbinbin/tests/zbinbin/log/LogStream.h
 iostream
 -
 

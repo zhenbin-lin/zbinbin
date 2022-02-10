@@ -51,10 +51,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sam/share/zbinbin
+CMAKE_SOURCE_DIR = /home/binwatson/share/zbinbin
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sam/share/zbinbin
+CMAKE_BINARY_DIR = /home/binwatson/share/zbinbin
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -83,9 +83,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/share/zbinbin/CMakeFiles /home/sam/share/zbinbin/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/binwatson/share/zbinbin/CMakeFiles /home/binwatson/share/zbinbin/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/share/zbinbin/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/binwatson/share/zbinbin/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -246,6 +246,33 @@ tests/thread.cpp.s:
 	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread.cpp.s
 .PHONY : tests/thread.cpp.s
 
+zbinbin/log/LogFormatter.o: zbinbin/log/LogFormatter.cpp.o
+
+.PHONY : zbinbin/log/LogFormatter.o
+
+# target to build an object file
+zbinbin/log/LogFormatter.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o
+.PHONY : zbinbin/log/LogFormatter.cpp.o
+
+zbinbin/log/LogFormatter.i: zbinbin/log/LogFormatter.cpp.i
+
+.PHONY : zbinbin/log/LogFormatter.i
+
+# target to preprocess a source file
+zbinbin/log/LogFormatter.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.i
+.PHONY : zbinbin/log/LogFormatter.cpp.i
+
+zbinbin/log/LogFormatter.s: zbinbin/log/LogFormatter.cpp.s
+
+.PHONY : zbinbin/log/LogFormatter.s
+
+# target to generate assembly for a file
+zbinbin/log/LogFormatter.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.s
+.PHONY : zbinbin/log/LogFormatter.cpp.s
+
 zbinbin/log/LogStream.o: zbinbin/log/LogStream.cpp.o
 
 .PHONY : zbinbin/log/LogStream.o
@@ -273,32 +300,32 @@ zbinbin/log/LogStream.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.s
 .PHONY : zbinbin/log/LogStream.cpp.s
 
-zbinbin/log/log.o: zbinbin/log/log.cpp.o
+zbinbin/log/Logging.o: zbinbin/log/Logging.cpp.o
 
-.PHONY : zbinbin/log/log.o
+.PHONY : zbinbin/log/Logging.o
 
 # target to build an object file
-zbinbin/log/log.cpp.o:
-	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/log.cpp.o
-.PHONY : zbinbin/log/log.cpp.o
+zbinbin/log/Logging.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o
+.PHONY : zbinbin/log/Logging.cpp.o
 
-zbinbin/log/log.i: zbinbin/log/log.cpp.i
+zbinbin/log/Logging.i: zbinbin/log/Logging.cpp.i
 
-.PHONY : zbinbin/log/log.i
+.PHONY : zbinbin/log/Logging.i
 
 # target to preprocess a source file
-zbinbin/log/log.cpp.i:
-	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/log.cpp.i
-.PHONY : zbinbin/log/log.cpp.i
+zbinbin/log/Logging.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.i
+.PHONY : zbinbin/log/Logging.cpp.i
 
-zbinbin/log/log.s: zbinbin/log/log.cpp.s
+zbinbin/log/Logging.s: zbinbin/log/Logging.cpp.s
 
-.PHONY : zbinbin/log/log.s
+.PHONY : zbinbin/log/Logging.s
 
 # target to generate assembly for a file
-zbinbin/log/log.cpp.s:
-	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/log.cpp.s
-.PHONY : zbinbin/log/log.cpp.s
+zbinbin/log/Logging.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.s
+.PHONY : zbinbin/log/Logging.cpp.s
 
 zbinbin/thread/Condition.o: zbinbin/thread/Condition.cpp.o
 
@@ -375,12 +402,15 @@ help:
 	@echo "... tests/thread.o"
 	@echo "... tests/thread.i"
 	@echo "... tests/thread.s"
+	@echo "... zbinbin/log/LogFormatter.o"
+	@echo "... zbinbin/log/LogFormatter.i"
+	@echo "... zbinbin/log/LogFormatter.s"
 	@echo "... zbinbin/log/LogStream.o"
 	@echo "... zbinbin/log/LogStream.i"
 	@echo "... zbinbin/log/LogStream.s"
-	@echo "... zbinbin/log/log.o"
-	@echo "... zbinbin/log/log.i"
-	@echo "... zbinbin/log/log.s"
+	@echo "... zbinbin/log/Logging.o"
+	@echo "... zbinbin/log/Logging.i"
+	@echo "... zbinbin/log/Logging.s"
 	@echo "... zbinbin/thread/Condition.o"
 	@echo "... zbinbin/thread/Condition.i"
 	@echo "... zbinbin/thread/Condition.s"

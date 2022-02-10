@@ -6,5 +6,5 @@ CXX_FLAGS =  -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unus
 
 CXX_DEFINES = -Dzbinbin_EXPORTS
 
-CXX_INCLUDES = -I/home/sam/share/zbinbin/. 
+CXX_INCLUDES = -I/home/binwatson/share/zbinbin/. 
 
