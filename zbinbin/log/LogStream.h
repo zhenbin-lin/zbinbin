@@ -1,7 +1,7 @@
 #ifndef __ZBINBIN_LOGSTREAM_H_
 #define __ZBINBIN_LOGSTREAM_H_
 #include "zbinbin/utility/noncopyable.h"
-#include "zbinbin/utility/FixedBuffer.h"
+#include "zbinbin/log/FixedBuffer.h"
 #include <string>
 #include <memory>
 #include <sstream>
@@ -15,26 +15,20 @@ namespace zbinbin
 
 
 class LogStream : noncopyable
-                  , std::enable_shared_from_this<LogStream>
-
 {
-private:
-
-
-    template<typename T>
-    void formatInteger(T v);
-
 public:
     using Buffer = FixedBuffer<kSmallBuffer>;
-    using BufferPtr = std::unique_ptr<Buffer>;
 
-    LogStream(Buffer* buffer);
-    LogStream(BufferPtr buffer);
-    ~LogStream();
-
-
-    LogStream& operator<<(bool v);
-    LogStream& operator<<(char v);
+    LogStream& operator<<(bool v)
+    {
+        buffer_.append(v ? "1" : "0", 1);
+        return *this;
+    }
+    LogStream& operator<<(char v)
+    {
+        buffer_.append(&v, 1);
+        return *this;
+    }
     LogStream& operator<<(short);
     LogStream& operator<<(unsigned short);
     LogStream& operator<<(int);
@@ -43,37 +37,52 @@ public:
     LogStream& operator<<(unsigned long);
     LogStream& operator<<(long long);
     LogStream& operator<<(unsigned long long);
-    LogStream& operator<<(float v);
+    LogStream& operator<<(float);
     LogStream& operator<<(double);
 
     LogStream& operator<<(const void*);
-    LogStream& operator<<(const char* str);
-    LogStream& operator<<(const unsigned char* str);
-    LogStream& operator<<(const std::string& v);
+    LogStream& operator<<(const char*);
+    LogStream& operator<<(const unsigned char*);
+    LogStream& operator<<(const std::string&);
     // LogStream& operator<<(const StringPiece& v);
     // LogStream& operator<<(const Buffer& v);
 
-    ///
-    /// 返回buffer指针，并释放LogStream对其的管理权
-    ///
-    BufferPtr getBufferPtr() { 
-        return std::forward<BufferPtr>(buffer_); 
-    } 
+    void append(const char* data, int len) { buffer_.append(data, len); }
+    Buffer& buffer() { return buffer_; }
+    void resetBuffer() { buffer_.reset(); }
 
-    ///
-    /// 重置LogStream的Buffer
-    ///
-    void resetBuffer(BufferPtr buf) { 
-        return buffer_.swap(buf); 
-    } 
 
 private:
 
-    BufferPtr buffer_;
+    template<typename T>
+    void formatInteger(T v);
 
+
+    Buffer buffer_;
 
     static const int kMaxNumericSize = 48;
 };
+
+class Fmt // : noncopyable
+{
+public:
+    template<typename T>
+    Fmt(const char* fmt, T val);
+
+    const char* data() const { return buf_; }
+    int length() const { return length_; }
+
+private:
+    char buf_[32];
+    int length_;
+};
+
+inline LogStream& operator<<(LogStream& s, const Fmt& fmt)
+{
+    s.append(fmt.data(), fmt.length());
+    return s;
+}
+
 
 }   // namespace zbinbin
 

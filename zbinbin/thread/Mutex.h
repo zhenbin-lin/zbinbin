@@ -1,9 +1,11 @@
 #ifndef __ZBINBIN_MUTEX_H_
 #define __ZBINBIN_MUTEX_H_
-#include <assert.h>
 #include "zbinbin/utility/noncopyable.h"
 #include "zbinbin/thread/Thread.h"
+#include "zbinbin/thread/CurrentThread.h"
 #include <pthread.h>
+#include <assert.h>
+
 
 namespace zbinbin
 {

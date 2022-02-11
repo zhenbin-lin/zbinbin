@@ -1,8 +1,10 @@
 
 #include "zbinbin/log/LogFormatter.h"
+#include "zbinbin/thread/Thread.h"
 #include <map>
 #include <tuple>
 #include <functional>
+#include <time.h>
 
 namespace zbinbin{
 
@@ -12,6 +14,7 @@ const char*	LogLevel::ToString(LogLevel::Level level) {
 		case LogLevel::name: \
 			return #name; \
 			break;
+		XX(TRACE);
 		XX(DEBUG);
 		XX(INFO);
 		XX(WARN);
@@ -36,7 +39,19 @@ LogEvent::LogEvent( const char *file, const char *func, int32_t line,
 		, m_fiberId(fiber_id)
 		, m_time(time) 
 {
+}
 
+LogEvent::LogEvent( const char *file, const char *func, int32_t line, 
+				LogLevel::Level leve)
+		: m_file(file)
+        , m_func(func)
+		, m_line(line)
+		, m_level(leve)
+		, m_elapse(0)
+		, m_threadId(CurrentThread::tid())
+		, m_fiberId(0)
+		, m_time(time(0)) 
+{
 }
 
 LogFormatter::LogFormatter(const std::string& pattern) 

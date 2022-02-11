@@ -18,14 +18,16 @@ struct LogLevel
 public:
 	enum Level {
 		UNKNOW = 0,
-		DEBUG = 1,
-		INFO = 2,
-		WARN = 3,
-		ERROR = 4,
-		FATAL = 5
+		TRACE = 1,
+		DEBUG = 2,
+		INFO = 3,
+		WARN = 4,
+		ERROR = 5,
+		FATAL = 6
 	};
 	static const char* ToString(LogLevel::Level level);
 };
+
 
 // 日志事件
 class LogEvent {
@@ -33,6 +35,7 @@ public:
 	using ptr = std::shared_ptr<LogEvent>;
 	LogEvent(const char *file, const char* func, int32_t m_line, LogLevel::Level level, uint32_t elapse, 
             uint32_t thread_id, uint32_t fiber_id, uint64_t time);
+    LogEvent(const char *file, const char* func, int32_t m_line, LogLevel::Level level);
 
 	const char* getFile() const { return m_file; }
 	const char* getFunc() const { return m_func; }
@@ -55,6 +58,7 @@ private:
 	time_t m_time = 0;					// 时间戳
 	std::stringstream m_ss;
 };
+
 
 // 日志格式器
 class LogFormatter

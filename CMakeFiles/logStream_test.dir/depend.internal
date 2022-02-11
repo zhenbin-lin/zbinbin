@@ -3,7 +3,6 @@
 
 CMakeFiles/logStream_test.dir/tests/logStream_test.cpp.o
  /home/binwatson/share/zbinbin/tests/logStream_test.cpp
+ zbinbin/log/FixedBuffer.h
  zbinbin/log/LogStream.h
- zbinbin/thread/Thread.h
- zbinbin/utility/FixedBuffer.h
  zbinbin/utility/noncopyable.h

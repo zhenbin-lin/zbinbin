@@ -60,9 +60,33 @@ include CMakeFiles/zbinbin.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/zbinbin.dir/flags.make
 
+CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o: CMakeFiles/zbinbin.dir/flags.make
+CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o: zbinbin/utility/Timestamp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/utility/Timestamp.cpp
+
+CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/binwatson/share/zbinbin/zbinbin/utility/Timestamp.cpp > CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.i
+
+CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/binwatson/share/zbinbin/zbinbin/utility/Timestamp.cpp -o CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.s
+
+CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.requires:
+
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.requires
+
+CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.provides: CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.requires
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.provides.build
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.provides
+
+CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o
+
+
 CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o: zbinbin/log/LogStream.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/log/LogStream.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.i: cmake_force
@@ -86,7 +110,7 @@ CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o.provides.build: CMakeFiles/zb
 
 CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o: zbinbin/log/Logging.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/log/Logging.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.i: cmake_force
@@ -106,30 +130,6 @@ CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o.provides: CMakeFiles/zbinbin.di
 .PHONY : CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o.provides
 
 CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o
-
-
-CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o: CMakeFiles/zbinbin.dir/flags.make
-CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o: zbinbin/log/LogFormatter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/log/LogFormatter.cpp
-
-CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/binwatson/share/zbinbin/zbinbin/log/LogFormatter.cpp > CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.i
-
-CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/binwatson/share/zbinbin/zbinbin/log/LogFormatter.cpp -o CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.s
-
-CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.requires:
-
-.PHONY : CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.requires
-
-CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.provides: CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.requires
-	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.provides.build
-.PHONY : CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.provides
-
-CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o
 
 
 CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o: CMakeFiles/zbinbin.dir/flags.make
@@ -180,25 +180,51 @@ CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o.provides: CMakeFiles/zbinb
 CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o
 
 
+CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o: CMakeFiles/zbinbin.dir/flags.make
+CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o: zbinbin/thread/CurrentThread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp > CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.i
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp -o CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.s
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.requires:
+
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.requires
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.provides: CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.requires
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.provides.build
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.provides
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o
+
+
 # Object files for target zbinbin
 zbinbin_OBJECTS = \
+"CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o" \
-"CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o" \
-"CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o"
+"CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o" \
+"CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o"
 
 # External object files for target zbinbin
 zbinbin_EXTERNAL_OBJECTS =
 
+lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o
-lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o
+lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/build.make
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library lib/libzbinbin.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library lib/libzbinbin.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zbinbin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -206,11 +232,12 @@ CMakeFiles/zbinbin.dir/build: lib/libzbinbin.so
 
 .PHONY : CMakeFiles/zbinbin.dir/build
 
+CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o.requires
-CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o.requires
+CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.requires
 
 .PHONY : CMakeFiles/zbinbin.dir/requires
 

@@ -12,25 +12,6 @@
 namespace zbinbin
 {
 
-namespace CurrentThread {
-
-// 当前线程的thread id
-extern __thread pid_t t_cachedTid; 
-// 当前线程的名字
-extern __thread const char* t_threadName;
-
-/// 
-/// 获取线程的内核线程号
-/// 
-pid_t tid();
-
-/// 
-/// 获取线程名字
-/// 
-const std::string name();
-
-}   // CurrentThread
-
 class Thread : noncopyable
 {
 public:

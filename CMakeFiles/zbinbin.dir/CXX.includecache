@@ -6,28 +6,30 @@
 
 #IncludeRegexTransform: 
 
-/home/binwatson/share/zbinbin/zbinbin/log/LogFormatter.cpp
-zbinbin/log/LogFormatter.h
-/home/binwatson/share/zbinbin/zbinbin/log/zbinbin/log/LogFormatter.h
-map
--
-tuple
--
-functional
--
-
 /home/binwatson/share/zbinbin/zbinbin/log/LogStream.cpp
 zbinbin/log/LogStream.h
 /home/binwatson/share/zbinbin/zbinbin/log/zbinbin/log/LogStream.h
+zbinbin/utility/Timestamp.h
+/home/binwatson/share/zbinbin/zbinbin/log/zbinbin/utility/Timestamp.h
 algorithm
+-
+assert.h
 -
 
 /home/binwatson/share/zbinbin/zbinbin/log/Logging.cpp
 zbinbin/log/Logging.h
 /home/binwatson/share/zbinbin/zbinbin/log/zbinbin/log/Logging.h
-zbinbin/log/LogFormatter.h
-/home/binwatson/share/zbinbin/zbinbin/log/zbinbin/log/LogFormatter.h
-iostream
+zbinbin/thread/CurrentThread.h
+/home/binwatson/share/zbinbin/zbinbin/log/zbinbin/thread/CurrentThread.h
+zbinbin/utility/Timestamp.h
+/home/binwatson/share/zbinbin/zbinbin/log/zbinbin/utility/Timestamp.h
+assert.h
+-
+errno.h
+-
+stdio.h
+-
+string.h
 -
 
 /home/binwatson/share/zbinbin/zbinbin/thread/Condition.cpp
@@ -36,9 +38,15 @@ zbinbin/thread/Condition.h
 errno.h
 -
 
+/home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp
+zbinbin/thread/CurrentThread.h
+/home/binwatson/share/zbinbin/zbinbin/thread/zbinbin/thread/CurrentThread.h
+
 /home/binwatson/share/zbinbin/zbinbin/thread/Thread.cpp
 zbinbin/thread/Thread.h
 /home/binwatson/share/zbinbin/zbinbin/thread/zbinbin/thread/Thread.h
+zbinbin/thread/CurrentThread.h
+/home/binwatson/share/zbinbin/zbinbin/thread/zbinbin/thread/CurrentThread.h
 assert.h
 -
 sys/syscall.h
@@ -54,23 +62,29 @@ sys/prctl.h
 type_traits
 -
 
-zbinbin/log/LogFormatter.h
-vector
+/home/binwatson/share/zbinbin/zbinbin/utility/Timestamp.cpp
+zbinbin/utility/Timestamp.h
+/home/binwatson/share/zbinbin/zbinbin/utility/zbinbin/utility/Timestamp.h
+sys/time.h
 -
-memory
+stdio.h
 -
-string
+inttypes.h
 -
+
+zbinbin/log/FixedBuffer.h
+zbinbin/utility/noncopyable.h
+zbinbin/log/zbinbin/utility/noncopyable.h
 sstream
 -
-time.h
+cstring
 -
 
 zbinbin/log/LogStream.h
 zbinbin/utility/noncopyable.h
 zbinbin/log/zbinbin/utility/noncopyable.h
-zbinbin/utility/FixedBuffer.h
-zbinbin/log/zbinbin/utility/FixedBuffer.h
+zbinbin/log/FixedBuffer.h
+zbinbin/log/zbinbin/log/FixedBuffer.h
 string
 -
 memory
@@ -83,16 +97,10 @@ vector
 -
 
 zbinbin/log/Logging.h
-zbinbin/log/LogFormatter.h
-zbinbin/log/zbinbin/log/LogFormatter.h
-functional
--
-sstream
--
-string
--
-memory
--
+zbinbin/log/LogStream.h
+zbinbin/log/zbinbin/log/LogStream.h
+zbinbin/utility/Timestamp.h
+zbinbin/log/zbinbin/utility/Timestamp.h
 
 zbinbin/thread/Condition.h
 zbinbin/thread/Mutex.h
@@ -102,14 +110,22 @@ zbinbin/thread/zbinbin/thread/Thread.h
 pthread.h
 -
 
-zbinbin/thread/Mutex.h
-assert.h
+zbinbin/thread/CurrentThread.h
+pthread.h
 -
+string
+-
+
+zbinbin/thread/Mutex.h
 zbinbin/utility/noncopyable.h
 zbinbin/thread/zbinbin/utility/noncopyable.h
 zbinbin/thread/Thread.h
 zbinbin/thread/zbinbin/thread/Thread.h
+zbinbin/thread/CurrentThread.h
+zbinbin/thread/zbinbin/thread/CurrentThread.h
 pthread.h
+-
+assert.h
 -
 
 zbinbin/thread/Thread.h
@@ -128,13 +144,15 @@ string
 assert.h
 -
 
-zbinbin/utility/FixedBuffer.h
-zbinbin/utility/noncopyable.h
-zbinbin/utility/zbinbin/utility/noncopyable.h
-sstream
+zbinbin/utility/Timestamp.h
+zbinbin/utility/copyable.h
+zbinbin/utility/zbinbin/utility/copyable.h
+stdint.h
 -
-cstring
+string
 -
+
+zbinbin/utility/copyable.h
 
 zbinbin/utility/noncopyable.h
 

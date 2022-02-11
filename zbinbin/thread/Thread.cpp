@@ -1,4 +1,5 @@
 #include "zbinbin/thread/Thread.h"
+#include "zbinbin/thread/CurrentThread.h"
 #include <assert.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
@@ -8,33 +9,8 @@
 #include <type_traits>
 
 
-namespace zbinbin {
-
-namespace CurrentThread {
-
-// 当前线程的thread id
-__thread pid_t t_cachedTid = 0; 
-// 当前线程的名字
-__thread const char* t_threadName = nullptr;
-
-pid_t tid() {
-    if (t_cachedTid == 0) {
-        // main thread
-        t_cachedTid = static_cast<pid_t>(::syscall(SYS_gettid));
-    }
-    return t_cachedTid;
-}
-
-const std::string name() {
-    if (t_threadName == nullptr) {
-        // main thread
-        t_threadName = "main";
-    } 
-    return std::string(t_threadName);
-}
-
-}   // CurrentThread
-
+namespace zbinbin 
+{
 
 
 // 隐藏名称空间
@@ -134,5 +110,29 @@ int Thread::join() {
     joined_ = true;
     return pthread_join(pthreadId_, NULL);
 }
+
+
+///
+/// CurrentThread
+///
+namespace CurrentThread 
+{
+void cacheTid()
+{
+    if (t_cachedTid == 0)
+    {
+        t_cachedTid = static_cast<pid_t>(::syscall(SYS_gettid));
+        t_tidStringLength = snprintf(t_tidString, sizeof t_tidString, "%5d ", t_cachedTid);
+    }
+}
+
+bool isMainThread()
+{
+    return tid() == ::getpid();
+}
+
+}   // CurrentThread
+
+
 
 }   // namespace zbinzbin

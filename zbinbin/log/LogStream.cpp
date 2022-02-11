@@ -1,11 +1,12 @@
 #include "zbinbin/log/LogStream.h"
+#include "zbinbin/utility/Timestamp.h"
 #include <algorithm>
-
+#include <assert.h>
 
 namespace zbinbin 
 {
 
-namespace
+namespace detail
 {
 
 static const char digits[] = "9876543210123456789";
@@ -50,35 +51,12 @@ size_t convertHex(char buf[], uintptr_t value)
     std::reverse(buf, p);
 
     return p - buf;
-}
+} 
 
+}   // namespace detail
 
-}
+// 必须将类定义和成员函数的定义都放在同一个头文件中(或者写在同一个源文件中)，否则编译时无法进行置换
 
-LogStream::LogStream(Buffer* buffer)
-{
-    buffer_.reset(buffer);
-}
-LogStream::LogStream(BufferPtr buffer)
-{
-    buffer_.swap(buffer);
-}
-LogStream::~LogStream()
-{
-}
-
-
-LogStream& LogStream::operator<<(bool v)
-{
-    buffer_->append(v ? "1" : "0", 1);
-    return *this;
-}
-
-LogStream& LogStream::operator<<(char v)
-{
-    buffer_->append(&v, 1);
-    return *this;
-}
 
 LogStream& LogStream::operator<<(short v)
 {
@@ -136,10 +114,10 @@ LogStream& LogStream::operator<<(float v)
 
 LogStream& LogStream::operator<<(double v)
 {
-  if (buffer_->avail() >= kMaxNumericSize)
+  if (buffer_.avail() >= kMaxNumericSize)
   {
-    int len = snprintf(buffer_->tell(), kMaxNumericSize, "%.12g", v);
-    buffer_->add(len);
+    int len = snprintf(buffer_.tell(), kMaxNumericSize, "%.12g", v);
+    buffer_.add(len);
   }
   return *this;
 }
@@ -147,13 +125,13 @@ LogStream& LogStream::operator<<(double v)
 LogStream& LogStream::operator<<(const void* p)
 {
     uintptr_t v = reinterpret_cast<uintptr_t>(p);
-    if (buffer_->avail() >= kMaxNumericSize)
+    if (buffer_.avail() >= kMaxNumericSize)
     {
-        char* buf = buffer_->tell();
+        char* buf = buffer_.tell();
         buf[0] = '0';
         buf[1] = 'x';
-        size_t len = convertHex(buf+2, v);
-        buffer_->add(len+2);
+        size_t len = detail::convertHex(buf+2, v);
+        buffer_.add(len+2);
     }
     return *this;
 }
@@ -161,10 +139,10 @@ LogStream& LogStream::operator<<(const void* p)
 LogStream& LogStream::operator<<(const char* str)
 {
     if (str) {
-        buffer_->append(str, strlen(str));
+        buffer_.append(str, strlen(str));
     }
     else {
-        buffer_->append("(null)", 6);
+        buffer_.append("(null)", 6);
     }
     return *this;
 }
@@ -176,33 +154,44 @@ LogStream& LogStream::operator<<(const unsigned char* str)
 
 LogStream& LogStream::operator<<(const std::string& v)
 {
-    buffer_->append(v.c_str(), v.size());
+    buffer_.append(v.c_str(), v.size());
     return *this;
 }
-
-// LogStream& LogStream::operator<<(const StringPiece& v)
-// {
-//     buffer_->append(v.data(), v.size());
-//     return *this;
-// }
-
-// LogStream& LogStream::operator<<(const Buffer& v)
-// {
-//     *this << v.toStringPiece();
-//     return *this;
-// }
 
 template<typename T>
 void LogStream::formatInteger(T v)
 {
-    if (buffer_->avail() >= kMaxNumericSize)
+    if (buffer_.avail() >= kMaxNumericSize)
     {
-        size_t len = convert(buffer_->tell(), v);
-        buffer_->add(len);
+        size_t len = detail::convert(buffer_.tell(), v);
+        buffer_.add(len);
     }
 }
 
+template<typename T>
+Fmt::Fmt(const char* fmt, T val)
+{
+  static_assert(std::is_arithmetic<T>::value == true, "Must be arithmetic type");
 
+  length_ = snprintf(buf_, sizeof buf_, fmt, val);
+  assert(static_cast<size_t>(length_) < sizeof buf_);
+}
+
+// Explicit instantiations
+
+template Fmt::Fmt(const char* fmt, char);
+
+template Fmt::Fmt(const char* fmt, short);
+template Fmt::Fmt(const char* fmt, unsigned short);
+template Fmt::Fmt(const char* fmt, int);
+template Fmt::Fmt(const char* fmt, unsigned int);
+template Fmt::Fmt(const char* fmt, long);
+template Fmt::Fmt(const char* fmt, unsigned long);
+template Fmt::Fmt(const char* fmt, long long);
+template Fmt::Fmt(const char* fmt, unsigned long long);
+
+template Fmt::Fmt(const char* fmt, float);
+template Fmt::Fmt(const char* fmt, double);
 
 }   // namespace zbinbin
 

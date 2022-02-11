@@ -1,6 +1,4 @@
 /home/binwatson/share/zbinbin/CMakeFiles/rebuild_cache.dir
 /home/binwatson/share/zbinbin/CMakeFiles/edit_cache.dir
-/home/binwatson/share/zbinbin/CMakeFiles/logStream_test.dir
-/home/binwatson/share/zbinbin/CMakeFiles/thread_test.dir
 /home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir
-/home/binwatson/share/zbinbin/CMakeFiles/test.dir
+/home/binwatson/share/zbinbin/CMakeFiles/log_test.dir

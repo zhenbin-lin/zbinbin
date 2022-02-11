@@ -114,32 +114,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named logStream_test
-
-# Build rule for target.
-logStream_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 logStream_test
-.PHONY : logStream_test
-
-# fast build rule for target.
-logStream_test/fast:
-	$(MAKE) -f CMakeFiles/logStream_test.dir/build.make CMakeFiles/logStream_test.dir/build
-.PHONY : logStream_test/fast
-
-#=============================================================================
-# Target rules for targets named thread_test
-
-# Build rule for target.
-thread_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 thread_test
-.PHONY : thread_test
-
-# fast build rule for target.
-thread_test/fast:
-	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/build
-.PHONY : thread_test/fast
-
-#=============================================================================
 # Target rules for targets named zbinbin
 
 # Build rule for target.
@@ -153,125 +127,44 @@ zbinbin/fast:
 .PHONY : zbinbin/fast
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named log_test
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test
-.PHONY : test
+log_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 log_test
+.PHONY : log_test
 
 # fast build rule for target.
-test/fast:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
+log_test/fast:
+	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/build
+.PHONY : log_test/fast
 
-tests/logStream_test.o: tests/logStream_test.cpp.o
+tests/log_test.o: tests/log_test.cpp.o
 
-.PHONY : tests/logStream_test.o
-
-# target to build an object file
-tests/logStream_test.cpp.o:
-	$(MAKE) -f CMakeFiles/logStream_test.dir/build.make CMakeFiles/logStream_test.dir/tests/logStream_test.cpp.o
-.PHONY : tests/logStream_test.cpp.o
-
-tests/logStream_test.i: tests/logStream_test.cpp.i
-
-.PHONY : tests/logStream_test.i
-
-# target to preprocess a source file
-tests/logStream_test.cpp.i:
-	$(MAKE) -f CMakeFiles/logStream_test.dir/build.make CMakeFiles/logStream_test.dir/tests/logStream_test.cpp.i
-.PHONY : tests/logStream_test.cpp.i
-
-tests/logStream_test.s: tests/logStream_test.cpp.s
-
-.PHONY : tests/logStream_test.s
-
-# target to generate assembly for a file
-tests/logStream_test.cpp.s:
-	$(MAKE) -f CMakeFiles/logStream_test.dir/build.make CMakeFiles/logStream_test.dir/tests/logStream_test.cpp.s
-.PHONY : tests/logStream_test.cpp.s
-
-tests/test.o: tests/test.cpp.o
-
-.PHONY : tests/test.o
+.PHONY : tests/log_test.o
 
 # target to build an object file
-tests/test.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/test.cpp.o
-.PHONY : tests/test.cpp.o
+tests/log_test.cpp.o:
+	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/tests/log_test.cpp.o
+.PHONY : tests/log_test.cpp.o
 
-tests/test.i: tests/test.cpp.i
+tests/log_test.i: tests/log_test.cpp.i
 
-.PHONY : tests/test.i
-
-# target to preprocess a source file
-tests/test.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/test.cpp.i
-.PHONY : tests/test.cpp.i
-
-tests/test.s: tests/test.cpp.s
-
-.PHONY : tests/test.s
-
-# target to generate assembly for a file
-tests/test.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/test.cpp.s
-.PHONY : tests/test.cpp.s
-
-tests/thread.o: tests/thread.cpp.o
-
-.PHONY : tests/thread.o
-
-# target to build an object file
-tests/thread.cpp.o:
-	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread.cpp.o
-.PHONY : tests/thread.cpp.o
-
-tests/thread.i: tests/thread.cpp.i
-
-.PHONY : tests/thread.i
+.PHONY : tests/log_test.i
 
 # target to preprocess a source file
-tests/thread.cpp.i:
-	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread.cpp.i
-.PHONY : tests/thread.cpp.i
+tests/log_test.cpp.i:
+	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/tests/log_test.cpp.i
+.PHONY : tests/log_test.cpp.i
 
-tests/thread.s: tests/thread.cpp.s
+tests/log_test.s: tests/log_test.cpp.s
 
-.PHONY : tests/thread.s
-
-# target to generate assembly for a file
-tests/thread.cpp.s:
-	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread.cpp.s
-.PHONY : tests/thread.cpp.s
-
-zbinbin/log/LogFormatter.o: zbinbin/log/LogFormatter.cpp.o
-
-.PHONY : zbinbin/log/LogFormatter.o
-
-# target to build an object file
-zbinbin/log/LogFormatter.cpp.o:
-	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o
-.PHONY : zbinbin/log/LogFormatter.cpp.o
-
-zbinbin/log/LogFormatter.i: zbinbin/log/LogFormatter.cpp.i
-
-.PHONY : zbinbin/log/LogFormatter.i
-
-# target to preprocess a source file
-zbinbin/log/LogFormatter.cpp.i:
-	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.i
-.PHONY : zbinbin/log/LogFormatter.cpp.i
-
-zbinbin/log/LogFormatter.s: zbinbin/log/LogFormatter.cpp.s
-
-.PHONY : zbinbin/log/LogFormatter.s
+.PHONY : tests/log_test.s
 
 # target to generate assembly for a file
-zbinbin/log/LogFormatter.cpp.s:
-	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.s
-.PHONY : zbinbin/log/LogFormatter.cpp.s
+tests/log_test.cpp.s:
+	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/tests/log_test.cpp.s
+.PHONY : tests/log_test.cpp.s
 
 zbinbin/log/LogStream.o: zbinbin/log/LogStream.cpp.o
 
@@ -354,6 +247,33 @@ zbinbin/thread/Condition.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.s
 .PHONY : zbinbin/thread/Condition.cpp.s
 
+zbinbin/thread/CurrentThread.o: zbinbin/thread/CurrentThread.cpp.o
+
+.PHONY : zbinbin/thread/CurrentThread.o
+
+# target to build an object file
+zbinbin/thread/CurrentThread.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o
+.PHONY : zbinbin/thread/CurrentThread.cpp.o
+
+zbinbin/thread/CurrentThread.i: zbinbin/thread/CurrentThread.cpp.i
+
+.PHONY : zbinbin/thread/CurrentThread.i
+
+# target to preprocess a source file
+zbinbin/thread/CurrentThread.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.i
+.PHONY : zbinbin/thread/CurrentThread.cpp.i
+
+zbinbin/thread/CurrentThread.s: zbinbin/thread/CurrentThread.cpp.s
+
+.PHONY : zbinbin/thread/CurrentThread.s
+
+# target to generate assembly for a file
+zbinbin/thread/CurrentThread.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.s
+.PHONY : zbinbin/thread/CurrentThread.cpp.s
+
 zbinbin/thread/Thread.o: zbinbin/thread/Thread.cpp.o
 
 .PHONY : zbinbin/thread/Thread.o
@@ -381,6 +301,33 @@ zbinbin/thread/Thread.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.s
 .PHONY : zbinbin/thread/Thread.cpp.s
 
+zbinbin/utility/Timestamp.o: zbinbin/utility/Timestamp.cpp.o
+
+.PHONY : zbinbin/utility/Timestamp.o
+
+# target to build an object file
+zbinbin/utility/Timestamp.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o
+.PHONY : zbinbin/utility/Timestamp.cpp.o
+
+zbinbin/utility/Timestamp.i: zbinbin/utility/Timestamp.cpp.i
+
+.PHONY : zbinbin/utility/Timestamp.i
+
+# target to preprocess a source file
+zbinbin/utility/Timestamp.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.i
+.PHONY : zbinbin/utility/Timestamp.cpp.i
+
+zbinbin/utility/Timestamp.s: zbinbin/utility/Timestamp.cpp.s
+
+.PHONY : zbinbin/utility/Timestamp.s
+
+# target to generate assembly for a file
+zbinbin/utility/Timestamp.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.s
+.PHONY : zbinbin/utility/Timestamp.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -389,22 +336,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... logStream_test"
-	@echo "... thread_test"
 	@echo "... zbinbin"
-	@echo "... test"
-	@echo "... tests/logStream_test.o"
-	@echo "... tests/logStream_test.i"
-	@echo "... tests/logStream_test.s"
-	@echo "... tests/test.o"
-	@echo "... tests/test.i"
-	@echo "... tests/test.s"
-	@echo "... tests/thread.o"
-	@echo "... tests/thread.i"
-	@echo "... tests/thread.s"
-	@echo "... zbinbin/log/LogFormatter.o"
-	@echo "... zbinbin/log/LogFormatter.i"
-	@echo "... zbinbin/log/LogFormatter.s"
+	@echo "... log_test"
+	@echo "... tests/log_test.o"
+	@echo "... tests/log_test.i"
+	@echo "... tests/log_test.s"
 	@echo "... zbinbin/log/LogStream.o"
 	@echo "... zbinbin/log/LogStream.i"
 	@echo "... zbinbin/log/LogStream.s"
@@ -414,9 +350,15 @@ help:
 	@echo "... zbinbin/thread/Condition.o"
 	@echo "... zbinbin/thread/Condition.i"
 	@echo "... zbinbin/thread/Condition.s"
+	@echo "... zbinbin/thread/CurrentThread.o"
+	@echo "... zbinbin/thread/CurrentThread.i"
+	@echo "... zbinbin/thread/CurrentThread.s"
 	@echo "... zbinbin/thread/Thread.o"
 	@echo "... zbinbin/thread/Thread.i"
 	@echo "... zbinbin/thread/Thread.s"
+	@echo "... zbinbin/utility/Timestamp.o"
+	@echo "... zbinbin/utility/Timestamp.i"
+	@echo "... zbinbin/utility/Timestamp.s"
 .PHONY : help
 
 

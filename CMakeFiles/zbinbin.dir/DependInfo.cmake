@@ -4,11 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/binwatson/share/zbinbin/zbinbin/log/LogFormatter.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/log/LogFormatter.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/log/LogStream.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/log/Logging.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/thread/Condition.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o"
+  "/home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/thread/Thread.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o"
+  "/home/binwatson/share/zbinbin/zbinbin/utility/Timestamp.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

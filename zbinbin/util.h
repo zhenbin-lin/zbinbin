@@ -21,3 +21,8 @@ pid_t gettid() {
 }
 
 #endif  // __SYLAR_UTIL_H_
+
+
+#ifndef __ZBINBIN_EVENTLOOP_H_
+#define __ZBINBIN_EVENTLOOP_H_
+#endif  //__ZBINBIN_EVENTLOOP_H_
