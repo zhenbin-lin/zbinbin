@@ -114,17 +114,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named AsyncLogging_test
+# Target rules for targets named log_test
 
 # Build rule for target.
-AsyncLogging_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 AsyncLogging_test
-.PHONY : AsyncLogging_test
+log_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 log_test
+.PHONY : log_test
 
 # fast build rule for target.
-AsyncLogging_test/fast:
-	$(MAKE) -f CMakeFiles/AsyncLogging_test.dir/build.make CMakeFiles/AsyncLogging_test.dir/build
-.PHONY : AsyncLogging_test/fast
+log_test/fast:
+	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/build
+.PHONY : log_test/fast
 
 #=============================================================================
 # Target rules for targets named zbinbin
@@ -140,17 +140,43 @@ zbinbin/fast:
 .PHONY : zbinbin/fast
 
 #=============================================================================
-# Target rules for targets named log_test
+# Target rules for targets named AsyncLogging_test
 
 # Build rule for target.
-log_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 log_test
-.PHONY : log_test
+AsyncLogging_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 AsyncLogging_test
+.PHONY : AsyncLogging_test
 
 # fast build rule for target.
-log_test/fast:
-	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/build
-.PHONY : log_test/fast
+AsyncLogging_test/fast:
+	$(MAKE) -f CMakeFiles/AsyncLogging_test.dir/build.make CMakeFiles/AsyncLogging_test.dir/build
+.PHONY : AsyncLogging_test/fast
+
+#=============================================================================
+# Target rules for targets named Buffer_test
+
+# Build rule for target.
+Buffer_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Buffer_test
+.PHONY : Buffer_test
+
+# fast build rule for target.
+Buffer_test/fast:
+	$(MAKE) -f CMakeFiles/Buffer_test.dir/build.make CMakeFiles/Buffer_test.dir/build
+.PHONY : Buffer_test/fast
+
+#=============================================================================
+# Target rules for targets named EventLoop_test
+
+# Build rule for target.
+EventLoop_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 EventLoop_test
+.PHONY : EventLoop_test
+
+# fast build rule for target.
+EventLoop_test/fast:
+	$(MAKE) -f CMakeFiles/EventLoop_test.dir/build.make CMakeFiles/EventLoop_test.dir/build
+.PHONY : EventLoop_test/fast
 
 tests/AsyncLogging_test.o: tests/AsyncLogging_test.cpp.o
 
@@ -178,6 +204,60 @@ tests/AsyncLogging_test.s: tests/AsyncLogging_test.cpp.s
 tests/AsyncLogging_test.cpp.s:
 	$(MAKE) -f CMakeFiles/AsyncLogging_test.dir/build.make CMakeFiles/AsyncLogging_test.dir/tests/AsyncLogging_test.cpp.s
 .PHONY : tests/AsyncLogging_test.cpp.s
+
+tests/Buffer_test.o: tests/Buffer_test.cpp.o
+
+.PHONY : tests/Buffer_test.o
+
+# target to build an object file
+tests/Buffer_test.cpp.o:
+	$(MAKE) -f CMakeFiles/Buffer_test.dir/build.make CMakeFiles/Buffer_test.dir/tests/Buffer_test.cpp.o
+.PHONY : tests/Buffer_test.cpp.o
+
+tests/Buffer_test.i: tests/Buffer_test.cpp.i
+
+.PHONY : tests/Buffer_test.i
+
+# target to preprocess a source file
+tests/Buffer_test.cpp.i:
+	$(MAKE) -f CMakeFiles/Buffer_test.dir/build.make CMakeFiles/Buffer_test.dir/tests/Buffer_test.cpp.i
+.PHONY : tests/Buffer_test.cpp.i
+
+tests/Buffer_test.s: tests/Buffer_test.cpp.s
+
+.PHONY : tests/Buffer_test.s
+
+# target to generate assembly for a file
+tests/Buffer_test.cpp.s:
+	$(MAKE) -f CMakeFiles/Buffer_test.dir/build.make CMakeFiles/Buffer_test.dir/tests/Buffer_test.cpp.s
+.PHONY : tests/Buffer_test.cpp.s
+
+tests/EventLoop_test.o: tests/EventLoop_test.cpp.o
+
+.PHONY : tests/EventLoop_test.o
+
+# target to build an object file
+tests/EventLoop_test.cpp.o:
+	$(MAKE) -f CMakeFiles/EventLoop_test.dir/build.make CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o
+.PHONY : tests/EventLoop_test.cpp.o
+
+tests/EventLoop_test.i: tests/EventLoop_test.cpp.i
+
+.PHONY : tests/EventLoop_test.i
+
+# target to preprocess a source file
+tests/EventLoop_test.cpp.i:
+	$(MAKE) -f CMakeFiles/EventLoop_test.dir/build.make CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.i
+.PHONY : tests/EventLoop_test.cpp.i
+
+tests/EventLoop_test.s: tests/EventLoop_test.cpp.s
+
+.PHONY : tests/EventLoop_test.s
+
+# target to generate assembly for a file
+tests/EventLoop_test.cpp.s:
+	$(MAKE) -f CMakeFiles/EventLoop_test.dir/build.make CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.s
+.PHONY : tests/EventLoop_test.cpp.s
 
 tests/log_test.o: tests/log_test.cpp.o
 
@@ -286,6 +366,141 @@ zbinbin/log/Logging.s: zbinbin/log/Logging.cpp.s
 zbinbin/log/Logging.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.s
 .PHONY : zbinbin/log/Logging.cpp.s
+
+zbinbin/net/Buffer.o: zbinbin/net/Buffer.cpp.o
+
+.PHONY : zbinbin/net/Buffer.o
+
+# target to build an object file
+zbinbin/net/Buffer.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o
+.PHONY : zbinbin/net/Buffer.cpp.o
+
+zbinbin/net/Buffer.i: zbinbin/net/Buffer.cpp.i
+
+.PHONY : zbinbin/net/Buffer.i
+
+# target to preprocess a source file
+zbinbin/net/Buffer.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.i
+.PHONY : zbinbin/net/Buffer.cpp.i
+
+zbinbin/net/Buffer.s: zbinbin/net/Buffer.cpp.s
+
+.PHONY : zbinbin/net/Buffer.s
+
+# target to generate assembly for a file
+zbinbin/net/Buffer.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.s
+.PHONY : zbinbin/net/Buffer.cpp.s
+
+zbinbin/net/Channel.o: zbinbin/net/Channel.cpp.o
+
+.PHONY : zbinbin/net/Channel.o
+
+# target to build an object file
+zbinbin/net/Channel.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.o
+.PHONY : zbinbin/net/Channel.cpp.o
+
+zbinbin/net/Channel.i: zbinbin/net/Channel.cpp.i
+
+.PHONY : zbinbin/net/Channel.i
+
+# target to preprocess a source file
+zbinbin/net/Channel.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.i
+.PHONY : zbinbin/net/Channel.cpp.i
+
+zbinbin/net/Channel.s: zbinbin/net/Channel.cpp.s
+
+.PHONY : zbinbin/net/Channel.s
+
+# target to generate assembly for a file
+zbinbin/net/Channel.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.s
+.PHONY : zbinbin/net/Channel.cpp.s
+
+zbinbin/net/EventLoop.o: zbinbin/net/EventLoop.cpp.o
+
+.PHONY : zbinbin/net/EventLoop.o
+
+# target to build an object file
+zbinbin/net/EventLoop.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o
+.PHONY : zbinbin/net/EventLoop.cpp.o
+
+zbinbin/net/EventLoop.i: zbinbin/net/EventLoop.cpp.i
+
+.PHONY : zbinbin/net/EventLoop.i
+
+# target to preprocess a source file
+zbinbin/net/EventLoop.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.i
+.PHONY : zbinbin/net/EventLoop.cpp.i
+
+zbinbin/net/EventLoop.s: zbinbin/net/EventLoop.cpp.s
+
+.PHONY : zbinbin/net/EventLoop.s
+
+# target to generate assembly for a file
+zbinbin/net/EventLoop.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.s
+.PHONY : zbinbin/net/EventLoop.cpp.s
+
+zbinbin/net/Poller.o: zbinbin/net/Poller.cpp.o
+
+.PHONY : zbinbin/net/Poller.o
+
+# target to build an object file
+zbinbin/net/Poller.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o
+.PHONY : zbinbin/net/Poller.cpp.o
+
+zbinbin/net/Poller.i: zbinbin/net/Poller.cpp.i
+
+.PHONY : zbinbin/net/Poller.i
+
+# target to preprocess a source file
+zbinbin/net/Poller.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.i
+.PHONY : zbinbin/net/Poller.cpp.i
+
+zbinbin/net/Poller.s: zbinbin/net/Poller.cpp.s
+
+.PHONY : zbinbin/net/Poller.s
+
+# target to generate assembly for a file
+zbinbin/net/Poller.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.s
+.PHONY : zbinbin/net/Poller.cpp.s
+
+zbinbin/net/SocketOps.o: zbinbin/net/SocketOps.cpp.o
+
+.PHONY : zbinbin/net/SocketOps.o
+
+# target to build an object file
+zbinbin/net/SocketOps.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o
+.PHONY : zbinbin/net/SocketOps.cpp.o
+
+zbinbin/net/SocketOps.i: zbinbin/net/SocketOps.cpp.i
+
+.PHONY : zbinbin/net/SocketOps.i
+
+# target to preprocess a source file
+zbinbin/net/SocketOps.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.i
+.PHONY : zbinbin/net/SocketOps.cpp.i
+
+zbinbin/net/SocketOps.s: zbinbin/net/SocketOps.cpp.s
+
+.PHONY : zbinbin/net/SocketOps.s
+
+# target to generate assembly for a file
+zbinbin/net/SocketOps.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.s
+.PHONY : zbinbin/net/SocketOps.cpp.s
 
 zbinbin/thread/Condition.o: zbinbin/thread/Condition.cpp.o
 
@@ -429,13 +644,21 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... AsyncLogging_test"
-	@echo "... zbinbin"
 	@echo "... log_test"
+	@echo "... zbinbin"
+	@echo "... AsyncLogging_test"
+	@echo "... Buffer_test"
+	@echo "... EventLoop_test"
+	@echo "... edit_cache"
 	@echo "... tests/AsyncLogging_test.o"
 	@echo "... tests/AsyncLogging_test.i"
 	@echo "... tests/AsyncLogging_test.s"
+	@echo "... tests/Buffer_test.o"
+	@echo "... tests/Buffer_test.i"
+	@echo "... tests/Buffer_test.s"
+	@echo "... tests/EventLoop_test.o"
+	@echo "... tests/EventLoop_test.i"
+	@echo "... tests/EventLoop_test.s"
 	@echo "... tests/log_test.o"
 	@echo "... tests/log_test.i"
 	@echo "... tests/log_test.s"
@@ -448,6 +671,21 @@ help:
 	@echo "... zbinbin/log/Logging.o"
 	@echo "... zbinbin/log/Logging.i"
 	@echo "... zbinbin/log/Logging.s"
+	@echo "... zbinbin/net/Buffer.o"
+	@echo "... zbinbin/net/Buffer.i"
+	@echo "... zbinbin/net/Buffer.s"
+	@echo "... zbinbin/net/Channel.o"
+	@echo "... zbinbin/net/Channel.i"
+	@echo "... zbinbin/net/Channel.s"
+	@echo "... zbinbin/net/EventLoop.o"
+	@echo "... zbinbin/net/EventLoop.i"
+	@echo "... zbinbin/net/EventLoop.s"
+	@echo "... zbinbin/net/Poller.o"
+	@echo "... zbinbin/net/Poller.i"
+	@echo "... zbinbin/net/Poller.s"
+	@echo "... zbinbin/net/SocketOps.o"
+	@echo "... zbinbin/net/SocketOps.i"
+	@echo "... zbinbin/net/SocketOps.s"
 	@echo "... zbinbin/thread/Condition.o"
 	@echo "... zbinbin/thread/Condition.i"
 	@echo "... zbinbin/thread/Condition.s"
