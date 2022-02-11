@@ -1,5 +1,7 @@
 #include "zbinbin/thread/Thread.h"
 #include "zbinbin/thread/CurrentThread.h"
+
+
 #include <assert.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
@@ -22,9 +24,9 @@ struct ThreadData {
     ThreadData(const zbinbin::Thread::ThreadFunc& func, 
                 pid_t* tid,
                 const std::string& name) 
-                : func_(func), 
-                  tid_(tid),
-                  name_(name)
+                : tid_(tid)
+                , func_(func)
+                , name_(name)
     {
     }
 
@@ -57,8 +59,9 @@ struct ThreadData {
     }
 
     /// data
-    const zbinbin::Thread::ThreadFunc& func_;
+    
     pid_t* tid_;
+    const zbinbin::Thread::ThreadFunc& func_;
     std::string name_;
 
 };
@@ -77,10 +80,10 @@ void* newthreadstart(void *obj) {
 
 
 Thread::Thread(const ThreadFunc& func, const std::string& name) 
-    : func_(func)
-    , name_(name)
-    , started_(false)
+    : started_(false)
     , joined_(false)
+    , func_(func)
+    , name_(name)
 {
     
 }

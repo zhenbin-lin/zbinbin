@@ -64,9 +64,8 @@ public:
     ///
     /// 将缓冲区清空
     ///
-    void clear() {
-        bzero(static_cast<void*>(data_), sizeof(data_));
-    }
+    void clear() { memset(data_, 0, sizeof data_); }
+    void bzero() { clear(); }
 
     /// 
     /// 重置cur

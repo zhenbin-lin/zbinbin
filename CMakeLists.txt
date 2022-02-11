@@ -16,9 +16,11 @@ set(LIB_SRC
     zbinbin/utility/Timestamp.cpp
     zbinbin/log/LogStream.cpp
     zbinbin/log/Logging.cpp
+    zbinbin/log/AsyncLogging.cpp
 	zbinbin/thread/Thread.cpp
 	zbinbin/thread/Condition.cpp
 	zbinbin/thread/CurrentThread.cpp
+    zbinbin/thread/CountDownLatch.cpp
 	)
 
 # 添加一个lib的share库，生成so文件
@@ -30,14 +32,17 @@ add_library(zbinbin SHARED ${LIB_SRC})
 # add_executable(test tests/test.cpp)
 # add_executable(thread_test tests/thread.cpp)
 add_executable(log_test tests/log_test.cpp)
+add_executable(AsyncLogging_test tests/AsyncLogging_test.cpp)
 # 测试文件依赖于zbinbin
 # add_dependencies(test zbinbin)
 # add_dependencies(thread_test zbinbin)
 add_dependencies(log_test zbinbin)
+add_dependencies(AsyncLogging_test zbinbin)
 
 # target_link_libraries(test zbinbin)
 # target_link_libraries(thread_test zbinbin)
 target_link_libraries(log_test zbinbin)
+target_link_libraries(AsyncLogging_test zbinbin)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

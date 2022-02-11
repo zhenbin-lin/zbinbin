@@ -114,6 +114,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named AsyncLogging_test
+
+# Build rule for target.
+AsyncLogging_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 AsyncLogging_test
+.PHONY : AsyncLogging_test
+
+# fast build rule for target.
+AsyncLogging_test/fast:
+	$(MAKE) -f CMakeFiles/AsyncLogging_test.dir/build.make CMakeFiles/AsyncLogging_test.dir/build
+.PHONY : AsyncLogging_test/fast
+
+#=============================================================================
 # Target rules for targets named zbinbin
 
 # Build rule for target.
@@ -138,6 +151,33 @@ log_test: cmake_check_build_system
 log_test/fast:
 	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/build
 .PHONY : log_test/fast
+
+tests/AsyncLogging_test.o: tests/AsyncLogging_test.cpp.o
+
+.PHONY : tests/AsyncLogging_test.o
+
+# target to build an object file
+tests/AsyncLogging_test.cpp.o:
+	$(MAKE) -f CMakeFiles/AsyncLogging_test.dir/build.make CMakeFiles/AsyncLogging_test.dir/tests/AsyncLogging_test.cpp.o
+.PHONY : tests/AsyncLogging_test.cpp.o
+
+tests/AsyncLogging_test.i: tests/AsyncLogging_test.cpp.i
+
+.PHONY : tests/AsyncLogging_test.i
+
+# target to preprocess a source file
+tests/AsyncLogging_test.cpp.i:
+	$(MAKE) -f CMakeFiles/AsyncLogging_test.dir/build.make CMakeFiles/AsyncLogging_test.dir/tests/AsyncLogging_test.cpp.i
+.PHONY : tests/AsyncLogging_test.cpp.i
+
+tests/AsyncLogging_test.s: tests/AsyncLogging_test.cpp.s
+
+.PHONY : tests/AsyncLogging_test.s
+
+# target to generate assembly for a file
+tests/AsyncLogging_test.cpp.s:
+	$(MAKE) -f CMakeFiles/AsyncLogging_test.dir/build.make CMakeFiles/AsyncLogging_test.dir/tests/AsyncLogging_test.cpp.s
+.PHONY : tests/AsyncLogging_test.cpp.s
 
 tests/log_test.o: tests/log_test.cpp.o
 
@@ -165,6 +205,33 @@ tests/log_test.s: tests/log_test.cpp.s
 tests/log_test.cpp.s:
 	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/tests/log_test.cpp.s
 .PHONY : tests/log_test.cpp.s
+
+zbinbin/log/AsyncLogging.o: zbinbin/log/AsyncLogging.cpp.o
+
+.PHONY : zbinbin/log/AsyncLogging.o
+
+# target to build an object file
+zbinbin/log/AsyncLogging.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.o
+.PHONY : zbinbin/log/AsyncLogging.cpp.o
+
+zbinbin/log/AsyncLogging.i: zbinbin/log/AsyncLogging.cpp.i
+
+.PHONY : zbinbin/log/AsyncLogging.i
+
+# target to preprocess a source file
+zbinbin/log/AsyncLogging.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.i
+.PHONY : zbinbin/log/AsyncLogging.cpp.i
+
+zbinbin/log/AsyncLogging.s: zbinbin/log/AsyncLogging.cpp.s
+
+.PHONY : zbinbin/log/AsyncLogging.s
+
+# target to generate assembly for a file
+zbinbin/log/AsyncLogging.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.s
+.PHONY : zbinbin/log/AsyncLogging.cpp.s
 
 zbinbin/log/LogStream.o: zbinbin/log/LogStream.cpp.o
 
@@ -246,6 +313,33 @@ zbinbin/thread/Condition.s: zbinbin/thread/Condition.cpp.s
 zbinbin/thread/Condition.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.s
 .PHONY : zbinbin/thread/Condition.cpp.s
+
+zbinbin/thread/CountDownLatch.o: zbinbin/thread/CountDownLatch.cpp.o
+
+.PHONY : zbinbin/thread/CountDownLatch.o
+
+# target to build an object file
+zbinbin/thread/CountDownLatch.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o
+.PHONY : zbinbin/thread/CountDownLatch.cpp.o
+
+zbinbin/thread/CountDownLatch.i: zbinbin/thread/CountDownLatch.cpp.i
+
+.PHONY : zbinbin/thread/CountDownLatch.i
+
+# target to preprocess a source file
+zbinbin/thread/CountDownLatch.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.i
+.PHONY : zbinbin/thread/CountDownLatch.cpp.i
+
+zbinbin/thread/CountDownLatch.s: zbinbin/thread/CountDownLatch.cpp.s
+
+.PHONY : zbinbin/thread/CountDownLatch.s
+
+# target to generate assembly for a file
+zbinbin/thread/CountDownLatch.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.s
+.PHONY : zbinbin/thread/CountDownLatch.cpp.s
 
 zbinbin/thread/CurrentThread.o: zbinbin/thread/CurrentThread.cpp.o
 
@@ -336,11 +430,18 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... AsyncLogging_test"
 	@echo "... zbinbin"
 	@echo "... log_test"
+	@echo "... tests/AsyncLogging_test.o"
+	@echo "... tests/AsyncLogging_test.i"
+	@echo "... tests/AsyncLogging_test.s"
 	@echo "... tests/log_test.o"
 	@echo "... tests/log_test.i"
 	@echo "... tests/log_test.s"
+	@echo "... zbinbin/log/AsyncLogging.o"
+	@echo "... zbinbin/log/AsyncLogging.i"
+	@echo "... zbinbin/log/AsyncLogging.s"
 	@echo "... zbinbin/log/LogStream.o"
 	@echo "... zbinbin/log/LogStream.i"
 	@echo "... zbinbin/log/LogStream.s"
@@ -350,6 +451,9 @@ help:
 	@echo "... zbinbin/thread/Condition.o"
 	@echo "... zbinbin/thread/Condition.i"
 	@echo "... zbinbin/thread/Condition.s"
+	@echo "... zbinbin/thread/CountDownLatch.o"
+	@echo "... zbinbin/thread/CountDownLatch.i"
+	@echo "... zbinbin/thread/CountDownLatch.s"
 	@echo "... zbinbin/thread/CurrentThread.o"
 	@echo "... zbinbin/thread/CurrentThread.i"
 	@echo "... zbinbin/thread/CurrentThread.s"

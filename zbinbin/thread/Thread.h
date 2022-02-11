@@ -2,42 +2,43 @@
 #define __ZBINBIN_THREAD_H_
 
 #include "zbinbin/utility/noncopyable.h"
+
 #include <functional>
-#include <memory>
 #include <pthread.h>
-#include <functional>
 #include <string>
-#include <assert.h>
+
 
 namespace zbinbin
 {
 
+/// 默认情况下Thread的析构函数会自动回收线程资源
+/// 可以调用join()，将资源交由main Thread回收
 class Thread : noncopyable
 {
 public:
     typedef std::function<void()> ThreadFunc;
 
-    explicit Thread(const ThreadFunc& func, const std::string &name = "unkown thread");
+    explicit Thread(const ThreadFunc& func, const std::string &name = std::string());
     // FIXME: make it movable in C++11
     ~Thread();
 
     void start();
-    int join(); // return pthread_join()
+
+    // 设置子线程为join，main thread会等待子线程终止
+    int join();
 
     bool started() const { return started_; }
-    // pthread_t pthreadId() const { return pthreadId_; }
     pid_t tid() const { return tid_; }
     const std::string &name() const { return name_; }
 
 private:
 
-    ThreadFunc func_;
-    std::string name_;
     bool started_;
     bool joined_;
     pthread_t pthreadId_;
     pid_t tid_;
-
+    ThreadFunc func_;
+    std::string name_;
 };
 
 } // namespace zbinbin

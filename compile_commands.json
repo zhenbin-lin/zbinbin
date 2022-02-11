@@ -1,6 +1,11 @@
 [
 {
   "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++   -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread   -o CMakeFiles/AsyncLogging_test.dir/tests/AsyncLogging_test.cpp.o -c /home/binwatson/share/zbinbin/tests/AsyncLogging_test.cpp",
+  "file": "/home/binwatson/share/zbinbin/tests/AsyncLogging_test.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/utility/Timestamp.cpp",
   "file": "/home/binwatson/share/zbinbin/zbinbin/utility/Timestamp.cpp"
 },
@@ -16,6 +21,11 @@
 },
 {
   "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/log/AsyncLogging.cpp",
+  "file": "/home/binwatson/share/zbinbin/zbinbin/log/AsyncLogging.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/thread/Thread.cpp",
   "file": "/home/binwatson/share/zbinbin/zbinbin/thread/Thread.cpp"
 },
@@ -28,6 +38,11 @@
   "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp",
   "file": "/home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/thread/CountDownLatch.cpp",
+  "file": "/home/binwatson/share/zbinbin/zbinbin/thread/CountDownLatch.cpp"
 },
 {
   "directory": "/home/binwatson/share/zbinbin",

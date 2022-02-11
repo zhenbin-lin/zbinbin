@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/home/binwatson/share/zbinbin/zbinbin/log/AsyncLogging.cpp
+zbinbin/log/AsyncLogging.h
+/home/binwatson/share/zbinbin/zbinbin/log/zbinbin/log/AsyncLogging.h
+zbinbin/utility/Timestamp.h
+/home/binwatson/share/zbinbin/zbinbin/log/zbinbin/utility/Timestamp.h
+functional
+-
+fstream
+-
+iostream
+-
+
 /home/binwatson/share/zbinbin/zbinbin/log/LogStream.cpp
 zbinbin/log/LogStream.h
 /home/binwatson/share/zbinbin/zbinbin/log/zbinbin/log/LogStream.h
@@ -29,6 +41,8 @@ errno.h
 -
 stdio.h
 -
+iostream
+-
 string.h
 -
 
@@ -37,6 +51,10 @@ zbinbin/thread/Condition.h
 /home/binwatson/share/zbinbin/zbinbin/thread/zbinbin/thread/Condition.h
 errno.h
 -
+
+/home/binwatson/share/zbinbin/zbinbin/thread/CountDownLatch.cpp
+zbinbin/thread/CountDownLatch.h
+/home/binwatson/share/zbinbin/zbinbin/thread/zbinbin/thread/CountDownLatch.h
 
 /home/binwatson/share/zbinbin/zbinbin/thread/CurrentThread.cpp
 zbinbin/thread/CurrentThread.h
@@ -70,6 +88,26 @@ sys/time.h
 stdio.h
 -
 inttypes.h
+-
+
+zbinbin/log/AsyncLogging.h
+zbinbin/log/FixedBuffer.h
+zbinbin/log/zbinbin/log/FixedBuffer.h
+zbinbin/log/LogStream.h
+zbinbin/log/zbinbin/log/LogStream.h
+zbinbin/thread/Thread.h
+zbinbin/log/zbinbin/thread/Thread.h
+zbinbin/thread/Mutex.h
+zbinbin/log/zbinbin/thread/Mutex.h
+zbinbin/thread/Condition.h
+zbinbin/log/zbinbin/thread/Condition.h
+zbinbin/thread/CountDownLatch.h
+zbinbin/log/zbinbin/thread/CountDownLatch.h
+vector
+-
+string
+-
+atomic
 -
 
 zbinbin/log/FixedBuffer.h
@@ -110,6 +148,14 @@ zbinbin/thread/zbinbin/thread/Thread.h
 pthread.h
 -
 
+zbinbin/thread/CountDownLatch.h
+zbinbin/thread/Condition.h
+zbinbin/thread/zbinbin/thread/Condition.h
+zbinbin/thread/Mutex.h
+zbinbin/thread/zbinbin/thread/Mutex.h
+zbinbin/utility/noncopyable.h
+zbinbin/thread/zbinbin/utility/noncopyable.h
+
 zbinbin/thread/CurrentThread.h
 pthread.h
 -
@@ -133,15 +179,9 @@ zbinbin/utility/noncopyable.h
 zbinbin/thread/zbinbin/utility/noncopyable.h
 functional
 -
-memory
--
 pthread.h
 -
-functional
--
 string
--
-assert.h
 -
 
 zbinbin/utility/Timestamp.h

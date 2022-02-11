@@ -1,0 +1,1 @@
+/usr/bin/c++   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread  -rdynamic CMakeFiles/AsyncLogging_test.dir/tests/AsyncLogging_test.cpp.o  -o bin/AsyncLogging_test -Wl,-rpath,/home/binwatson/share/zbinbin/lib lib/libzbinbin.so 

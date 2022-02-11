@@ -1,139 +1,75 @@
-#ifndef __ZBINBIN_LOGGING_H_
-#define __ZBINBIN_LOGGING_H_
+#ifndef __ZBINBIN_ASYNCLOGGING_H_
+#define __ZBINBIN_ASYNCLOGGING_H_
 
+#include "zbinbin/log/FixedBuffer.h"
+#include "zbinbin/log/LogStream.h"
+#include "zbinbin/thread/Thread.h"
+#include "zbinbin/thread/Mutex.h"
+#include "zbinbin/thread/Condition.h"
+#include "zbinbin/thread/CountDownLatch.h"
 
-#include "zbinbin/utility/Singleton.h"
-#include <list>
-#include <functional>
-#include <stdint.h>
-#include <sstream>
-#include <string>
-#include <fstream>
-#include <map>
 #include <vector>
-#include <assert.h>
-#include <memory>
+#include <string>
+#include <atomic>
 
+namespace zbinbin 
+{
 
-namespace zbinbin {
-
-class LogEvent;
-struct LogLevel;
-class LogFormatter;
-class LogAppender;
-class AsyncLogger;
-
-using LogEventPtr = std::shared_ptr<LogEvent>;
-using LogFormatterPtr = std::shared_ptr<LogFormatter>;
-using LogAppenderPtr = std::shared_ptr<LogAppender>;
-using LoggerPtr = std::shared_ptr<AsyncLogger>;
-
-
-// 日志输出地
-class LogAppender
+class AsyncLogging
 {
 public:
-	using ptr = std::shared_ptr<LogAppender>;
-	LogAppender(LogLevel::Level level) : m_level(level) {}
-	virtual ~LogAppender() {}
+    AsyncLogging(const std::string& basename, off_t rollSize, int flushInterval = 3);
+    ~AsyncLogging()
+    {
+        if (running_)
+        {
+            stop();
+        }
+    }
 
-	virtual void log(LoggerPtr logger, LogEventPtr event) = 0;
-	
-	void setFormatter(LogFormatterPtr formatter) { m_formatter = formatter; }
-	LogFormatterPtr getFormatter() const { return m_formatter; }
+    void append(const char* logline, size_t len);
 
-protected:
-	LogLevel::Level m_level;
-	LogFormatterPtr m_formatter;
-};
+    void start()
+    {
+        running_ = true;
+        thread_.start();
+        latch_.wait();
+    }
 
+    void stop()
+    {
+        running_ = false;
+        cond_.notify();
+        thread_.join();
+    }
 
-// 输出到控制台的Appender
-class StdoutLogAppender : public LogAppender 
-{
-public:
-	using ptr = std::shared_ptr<StdoutLogAppender>;
-
-	StdoutLogAppender(LogLevel::Level level) : LogAppender(level) {}
-	void log(LoggerPtr logger, LogEventPtr event) override;
-};
-
-// 输出到文件的Appender
-class FileLogAppender : public LogAppender 
-{
-public:
-	using ptr = std::shared_ptr<FileLogAppender>;
-	
-	FileLogAppender(const std::string& filename, LogLevel::Level level = LogLevel::Level::DEBUG);
-	~FileLogAppender();
-
-	void log(LoggerPtr logger, LogEventPtr event) override;
-
-	/// 重新打开文件，文件打开成功返回true
-	bool reopen();
-private:
-	std::string m_filename;
-	std::ofstream m_filestream;
-};
-
-// 日志器
-class AsyncLogger : public std::enable_shared_from_this<AsyncLogger> 
-{
-public:
-	using ptr = std::shared_ptr<AsyncLogger>;
-
-	AsyncLogger(const std::string& name = "root", LogLevel::Level level = LogLevel::Level::DEBUG);
-
-	void log(LogEvent::ptr event);
-
-	void addAppender(LogAppenderPtr appender);
-	void delAppender(LogAppenderPtr appender);
-	LogAppenderPtr getAppender() { return appender; }
-
-    LogLevel::Level getLevel() const { return m_level; }
-	void setLevel(LogLevel::Level level) { m_level = level; }
-
-	const std::string& getName() const { return m_name; }
 
 private:
-	std::string m_name;						// 日志名称
-	LogLevel::Level m_level;				// 日志级别
-	std::list<LogAppenderPtr> m_appenders;	// 输出到目的地集合
+
+    void threadFunc();
+
+    typedef zbinbin::FixedBuffer<kLargeBuffer> Buffer;
+    typedef std::vector<std::unique_ptr<Buffer>> BufferVector;
+    typedef BufferVector::value_type BufferPtr;
+
+    const int flushInterval_;
+    std::atomic<bool> running_;
+    const std::string basename_;    // 写入的文件名
+    const off_t rollSize_;
+
+    zbinbin::Thread thread_;
+    zbinbin::CountDownLatch latch_; // 确保之前的任务已经完成
+    zbinbin::MutexLock mutex_;
+    zbinbin::Condition cond_;
+    BufferPtr currentBuffer_;       // 当前正在操作的缓冲区
+    BufferPtr nextBuffer_;          
+    BufferVector fullBuffers_;      // 已经写满的缓冲区
 };
 
 
 
-
-
-
-
-class LoggerManager {
-public:
-	LoggerManager();
-	LoggerPtr getLogger(const std::string& name = "");
-
-	void init();
-
-private:
-	std::map<std::string, LoggerPtr> m_loggers;
-	LoggerPtr m_root;
-};
-
-extern zbinbin::AsyncLogger G_logger;
-
-#define ZBINBIN_LOG_LEVEL(logger, level)	    \
-	if (logger->getLevel() <= level) 		    \
-		LogEventGurad(logger                    \
-        , LogEventPtr(new LogEvent(__FILE__, __FUNCTION__, __LINE__, level, 0, CurrentThread::tid(), 0, time(0)))).stream()
-
-
-#define LOG_DEBUG ZBINBIN_LOG_LEVEL(G_logger, LogLevel::Level::DEBUG)
-#define LOG_INFO ZBINBIN_LOG_LEVEL(G_logger, LogLevel::Level::INFO)
-#define LOG_WARN ZBINBIN_LOG_LEVEL(G_logger, LogLevel::Level::WARN)
-#define LOG_ERROR ZBINBIN_LOG_LEVEL(G_logger, LogLevel::Level::ERROR)
-#define LOG_FATAL ZBINBIN_LOG_LEVEL(G_logger, LogLevel::Level::FATAL)
 
 }
 
 
-#endif	// __ZBINBIN_LOGGING_H_
+#endif	// __ZBINBIN_ASYNCLOGGING_H_

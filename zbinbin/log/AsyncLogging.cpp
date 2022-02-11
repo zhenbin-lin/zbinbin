@@ -1,156 +1,124 @@
 #include "zbinbin/log/AsyncLogging.h"
-#include "zbinbin/thread/Mutex.h"
-#include <map>
-#include <tuple>
-#include <iostream>
-#include <string>
+#include "zbinbin/utility/Timestamp.h"
+#include <functional>
+#include <fstream>
+#include <iostream> // for DEBUG
 
-
-namespace zbinbin{
-
-///
-/// LogLevel
-///
-const char*	LogLevel::ToString(LogLevel::Level level) {
-	switch(level) {
-#define XX(name) \
-		case LogLevel::name: \
-			return #name; \
-			break;
-		XX(DEBUG);
-		XX(INFO);
-		XX(WARN);
-		XX(ERROR);
-		XX(FATAL);
-#undef XX
-		default:
-			return "UNKNOW";
-	}
-	return "UNKNOW";
-}
-
-///
-/// LogEvent
-/// 
-LogEvent::LogEvent(const char *file, 
-				   const char *func, 
-				   int32_t line, 
-				   LogLevel::Level leve, 
-				   uint32_t elapse, 
-				   uint32_t thread_id, 
-				   uint32_t fiber_id, 
-				   uint64_t time)
-		: m_file(file)
-        , m_func(func)
-		, m_line(line)
-		, m_level(leve)
-		, m_elapse(elapse)
-		, m_threadId(thread_id)
-		, m_fiberId(fiber_id)
-		, m_time(time) {
-
-}
-
-///
-/// LogEventGurad
-///
-LogEventGurad::LogEventGurad(LoggerPtr logger, LogEventPtr event) 
-	: m_logger(logger)
-	, m_event(event) 
+namespace zbinbin
 {
-}
-
-LogEventGurad::~LogEventGurad() 
+AsyncLogging::AsyncLogging(const std::string& basename, off_t rollSize, int flushInterval)
+    : flushInterval_(flushInterval)
+    , running_(false)
+    , basename_(basename)
+    , rollSize_(rollSize)
+    , thread_(std::bind(&AsyncLogging::threadFunc, this), "Logging")
+    , latch_(1)
+    , mutex_()
+    , cond_(mutex_)
+    , currentBuffer_(new Buffer)
+    , nextBuffer_(new Buffer)
+    , fullBuffers_()
 {
-	m_logger->log(m_event);
+    currentBuffer_->bzero();
+    nextBuffer_->bzero();
+    fullBuffers_.reserve(16);
 }
 
-
-
-AsyncLogger::AsyncLogger(const std::string& name, LogLevel::Level level)
-	: m_name(name)
-	, m_level(level) 
+void AsyncLogging::append(const char* logline, size_t len)
 {
-}
+    zbinbin::MutexLockGuard lock(mutex_);
+    if (currentBuffer_->avail() > len)
+    {
+        currentBuffer_->append(logline, len);
+    } 
+    else
+    {
+        fullBuffers_.push_back(std::move(currentBuffer_));
 
-
-void AsyncLogger::addAppender(LogAppenderPtr appender) {
-	if (!appender->getFormatter()) {
-		appender->setFormatter(m_formatter);
-	}
-	m_appenders.push_back(appender);
-}
-
-void AsyncLogger::delAppender(LogAppenderPtr appender) {
-	for (auto it = m_appenders.begin();
-			it != m_appenders.end(); ++it) {
-		if (*it == appender) {
-			m_appenders.erase(it);
-			break;
-		}
-	}
-}
-
-void AsyncLogger::resetFormat(const std::string& fmt) {
-    m_formatter.reset(new LogFormatter(fmt));
-}
-
-
-void AsyncLogger::log(LogEventPtr event) {
-	if (m_level <= event->getLevel()) {
-		auto self = shared_from_this();
-		for (auto& i : m_appenders) {
-    		i->log(self, event);
-		}
-	}
-}
-
-
-///
-/// LogFormatter
-///
-
-
-
-
-
-
-/// 
-/// StdoutLogAppender
-///
-void StdoutLogAppender::append(const std::string& message) {
-    std::cout << message;
-}
-
-///
-/// FileLogAppender
-///
-FileLogAppender::FileLogAppender(const std::string& filename, LogLevel::Level level)
-    : LogAppender(level)
-	, m_filename(filename)
-{
-    m_filestream.open(filename);
-    if (!m_filestream) {
-        // TODO 完善try catch
-        ::abort();
+        if (nextBuffer_)
+        {
+            currentBuffer_ = std::move(nextBuffer_);
+        } 
+        else 
+        {
+            currentBuffer_.reset(new Buffer); // Rarely happens
+        }
+        currentBuffer_->append(logline, len);
+        cond_.notify(); // 通知后台线程可以读数据
     }
 }
 
-FileLogAppender::~FileLogAppender() {
-	m_filestream.close();
-}
+void AsyncLogging::threadFunc()
+{
+    assert(running_ == true);
+    latch_.countDown();     // 前后端进行同步，前端start()时会block在latch_上，等待后端线程开始后才能解锁。 有必要？？
+    std::ofstream output;
+    output.open(basename_);
 
-void FileLogAppender::append(const std::string& message) {
-    m_filestream << message;
-}
+    BufferPtr newBuffer1(new Buffer);
+    BufferPtr newBuffer2(new Buffer);
 
-bool FileLogAppender::reopen() {
-	if (m_filestream) {
-		m_filestream.close();
-	}
-	m_filestream.open(m_filename);
-	return !!m_filestream;
-}
+    newBuffer1->bzero();
+    newBuffer2->bzero();
 
+    BufferVector buffersToWrite;
+    buffersToWrite.reserve(16);
+
+    while (running_)
+    {
+        assert(newBuffer1 && newBuffer1->length() == 0);
+        assert(newBuffer2 && newBuffer2->length() == 0);    
+        assert(buffersToWrite.empty());
+        {
+            zbinbin::MutexLockGuard lock(mutex_);
+            if (fullBuffers_.empty())
+            {
+                cond_.waitForSeconds(flushInterval_);   // 每flushInterval_秒就刷新一次缓冲区
+            }
+            fullBuffers_.push_back(std::move(currentBuffer_));
+            currentBuffer_ = std::move(newBuffer1);
+            buffersToWrite.swap(fullBuffers_);
+            if (!nextBuffer_)
+            {
+                nextBuffer_ = std::move(newBuffer2);
+            }
+        }    
+        assert(!buffersToWrite.empty());
+
+        // 日志过载设计
+        if (buffersToWrite.size() > 25)
+        {
+            char buf[256];
+            snprintf(buf, sizeof buf, "Dropped log messages at %s, %zd larger buffers\n",
+                    Timestamp::now().toFormattedString().c_str(),
+                    buffersToWrite.size() - 2);
+            fputs(buf, stderr);
+            output << buf;  // file stream
+            buffersToWrite.erase(buffersToWrite.begin() + 2, buffersToWrite.end());
+        }
+        for (const auto& buffer : buffersToWrite)
+        {
+            output << buffer->data() << ':' << "sss";
+        }
+        if (!newBuffer1)
+        {
+            assert(!buffersToWrite.empty());
+            newBuffer1 = std::move(buffersToWrite.back());
+            buffersToWrite.pop_back();
+            newBuffer1->reset();
+        }
+
+        if (!newBuffer2)
+        {
+            assert(!buffersToWrite.empty());
+            newBuffer2 = std::move(buffersToWrite.back());
+            buffersToWrite.pop_back();
+            newBuffer2->reset();            
+        }
+        buffersToWrite.clear();
+        output.flush();
+    }
+    output.flush();
+}
 
 }   // namespace zbinbin
