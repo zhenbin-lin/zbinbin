@@ -1,5 +1,8 @@
 #include "zbinbin/net/Channel.h"
+#include "zbinbin/net/EventLoop.h"
 #include "zbinbin/log/Logging.h"
+
+
 
 #include <sstream>
 
@@ -24,6 +27,11 @@ Channel::Channel(EventLoop* loop, int fd)
     , revents_(0)
     , index_(-1)
 {
+}
+
+Channel::~Channel()
+{
+
 }
 
 void Channel::handleEvent()
@@ -61,9 +69,11 @@ void Channel::remove()
     loop_->removeChannel(this);
 }
 
-Channel::~Channel()
+void Channel::update()
 {
-
+    loop_->updateChannel(this);
 }
+
+
 
 }   // namespace zbinbin

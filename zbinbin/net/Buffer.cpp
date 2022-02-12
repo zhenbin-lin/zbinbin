@@ -7,8 +7,7 @@
 
 namespace zbinbin
 {
-namespace net
-{
+
 ssize_t Buffer::readFd(int fd, int* savedErrno)
 {
     char extraBuf[65536];
@@ -36,6 +35,5 @@ ssize_t Buffer::readFd(int fd, int* savedErrno)
     return n;
 }
 
-}   // namespace net
 }   // namespace zbinbin
 

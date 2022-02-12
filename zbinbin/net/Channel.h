@@ -1,13 +1,13 @@
 #ifndef __ZBINBIN_CHANNEL_H_
 #define __ZBINBIN_CHANNEL_H_
-#include "zbinbin/net/EventLoop.h"
+
 #include <memory>
 #include <functional>
 
 namespace zbinbin
 {
 
-class EventLoop;
+class EventLoop; 
 
 class Channel
 {
@@ -47,6 +47,8 @@ public:
 
 private:
 
+    void update();
+
     static const int kNoneEvent;
     static const int kReadEvent;
     static const int kWriteEvent;
@@ -72,32 +74,33 @@ inline void Channel::enableReading()
 { 
     events_ |= kReadEvent; 
     addedToLoop_ = true;
-    loop_->updateChannel(this);
+    update();
+    
 }
 
 inline void Channel::enableWriting() 
 { 
     events_ |= kWriteEvent; 
     addedToLoop_ = true;
-    loop_->updateChannel(this);
+    update();
 }
 
 inline void Channel::disableReading() 
 { 
     events_ ^= kReadEvent; 
-    loop_->updateChannel(this);
+    update();
 }
 
 inline void Channel::disableWriting() 
 { 
     events_ ^= kWriteEvent; 
-    loop_->updateChannel(this);
+    update();
 }
 
 inline void Channel::disableAll() 
 { 
     events_ = kNoneEvent; 
-    loop_->updateChannel(this);
+    update();
 }
 
 

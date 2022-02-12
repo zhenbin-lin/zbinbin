@@ -3,13 +3,15 @@
 
 #include "zbinbin/utility/noncopyable.h"
 #include "zbinbin/thread/CurrentThread.h"
-
+#include "zbinbin/thread/Mutex.h"
 
 #include <memory>
 #include <vector>
+#include <functional>
 
 namespace zbinbin
 {
+class Acceptor;
 class Poller;
 class Channel;
 
@@ -17,9 +19,10 @@ class EventLoop : std::enable_shared_from_this<Poller>
                 , noncopyable
 {
 public:
+    using Functor = std::function<void()>;
     using ptr = std::shared_ptr<EventLoop>;
 
-    EventLoop(/* args */);
+    EventLoop();
     ~EventLoop();
 
     void updateChannel(Channel* channel);
@@ -28,28 +31,34 @@ public:
     void loop();
     void quit();
 
+    void assertInLoopThread();
 
     bool isInLoopThread() { return threadId_ == CurrentThread::tid(); }
 
-    void assertInLoopThread();
+    void runInLoop(Functor cb);
 
     static EventLoop* getEventLoopOfCurrentThread();
 private:
     typedef std::vector<Channel*> ChannelList;
 
     void abortNotInLoopThread();
+    void queueInLoop(Functor cb);
+    void doPendingFunctors();
     void wakeup();
     void handleRead();
 
     bool looping_;
     bool quit_;
     bool eventHandling_;
+    bool callingPendingFunctors_;
     const pid_t threadId_;
     const int wakeupFd_;
     std::unique_ptr<Poller> poller_;
     std::unique_ptr<Channel> wakeupChannel_;    // don't expose Channel to client
     ChannelList activeChannels_;
     
+    mutable MutexLock mutex_;   // 在const对象或者const方法中仍然可变
+    std::vector<Functor> pendingFunctors_;
 };
 
 

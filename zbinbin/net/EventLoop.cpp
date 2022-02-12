@@ -41,6 +41,7 @@ EventLoop::EventLoop()
     : looping_(false)
     , quit_(false)
     , eventHandling_(false)
+    , callingPendingFunctors_(false)
     , threadId_(CurrentThread::tid())
     , wakeupFd_(detail::createEventfd())
     , poller_(new Poller(this))
@@ -78,12 +79,14 @@ void EventLoop::updateChannel(Channel* channel)
     poller_->updateChannel(channel);    // 将channel注册到poller中
 }
 
+
 void EventLoop::removeChannel(Channel* channel)
 {
     assert(channel->getOwerLoop() == this);
     assertInLoopThread();
     poller_->removeChannel(channel);
 }
+
 
 void EventLoop::loop()
 {
@@ -100,6 +103,7 @@ void EventLoop::loop()
         {
             chptr->handleEvent();
         }
+        doPendingFunctors();
         eventHandling_ = false;
     }
     LOG_TRACE << "EventLoop " << this << " stop looping";
@@ -118,6 +122,20 @@ void EventLoop::quit()
     }
 }
 
+
+void EventLoop::runInLoop(Functor cb)
+{
+    if (isInLoopThread()) 
+    {
+        cb();
+    }
+    else
+    {
+        queueInLoop(std::move(cb));
+    }
+}
+
+
 EventLoop* getEventLoopOfCurrentThread()
 {
     return t_loopInThisThread;
@@ -132,26 +150,57 @@ void EventLoop::abortNotInLoopThread()
 }
 
 
+void EventLoop::queueInLoop(Functor cb)
+{
+    {
+    MutexLockGuard lock(mutex_);
+    pendingFunctors_.push_back(std::move(cb));
+    }
+
+    if (!isInLoopThread() || callingPendingFunctors_)
+    {
+        wakeup();
+    }
+}
+
+
+void EventLoop::doPendingFunctors()
+{
+    std::vector<Functor> functors;
+    callingPendingFunctors_ = true;
+    {
+    MutexLockGuard lock(mutex_);
+    functors.swap(pendingFunctors_);
+    }
+
+    for (const Functor& functor : functors)
+    {
+        functor();
+    }
+    callingPendingFunctors_ = false;
+}
+
+
 void EventLoop::wakeup()
 {
     uint64_t one = 1;
-    ssize_t n = net::sockets::write(wakeupFd_, &one, sizeof one);
+    ssize_t n = sockets::write(wakeupFd_, &one, sizeof one);
     if (n != sizeof one)
     {
         LOG_ERROR << "EventLoop::wakeup() writes " << n << " bytes instead of 8";
     }
 }
 
+
 void EventLoop::handleRead()
 {  
     uint64_t one = 1;
-    ssize_t n = net::sockets::read(wakeupFd_, &one, sizeof one);
+    ssize_t n = sockets::read(wakeupFd_, &one, sizeof one);
     if (n != sizeof one)
     {
         LOG_ERROR << "EventLoop::handleRead() reads " << n << " bytes instead of 8";
     }
 }
-
 
 
 }   // namespace zbinbn

@@ -10,9 +10,6 @@
 namespace zbinbin
 {
 
-namespace net
-{
-
 class Buffer
 {
 public:
@@ -142,7 +139,7 @@ private:
     size_t writerIndex_;
 };
 
-}   // namespace net
+
 }   // namespace zbinbin
 
 #endif  // __ZBINBIN_BUFFER_H_

@@ -49,6 +49,22 @@ string.h
 /home/binwatson/share/zbinbin/zbinbin/net/Acceptor.cpp
 zbinbin/net/Acceptor.h
 /home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/Acceptor.h
+zbinbin/net/SocketOps.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/SocketOps.h
+zbinbin/net/InetAddress.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/InetAddress.h
+zbinbin/net/EventLoop.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/EventLoop.h
+zbinbin/log/Logging.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/log/Logging.h
+errno.h
+-
+fcntl.h
+-
+unistd.h
+-
+assert.h
+-
 
 /home/binwatson/share/zbinbin/zbinbin/net/Buffer.cpp
 zbinbin/net/Buffer.h
@@ -63,6 +79,8 @@ sys/uio.h
 /home/binwatson/share/zbinbin/zbinbin/net/Channel.cpp
 zbinbin/net/Channel.h
 /home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/Channel.h
+zbinbin/net/EventLoop.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/EventLoop.h
 zbinbin/log/Logging.h
 /home/binwatson/share/zbinbin/zbinbin/net/zbinbin/log/Logging.h
 sstream
@@ -114,9 +132,31 @@ assert.h
 algorithm
 -
 
+/home/binwatson/share/zbinbin/zbinbin/net/Socket.cpp
+zbinbin/net/Socket.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/Socket.h
+zbinbin/net/SocketOps.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/SocketOps.h
+zbinbin/log/Logging.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/log/Logging.h
+zbinbin/net/InetAddress.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/InetAddress.h
+sys/socket.h
+-
+netinet/in.h
+-
+netinet/tcp.h
+-
+stdio.h
+-
+cstring
+-
+
 /home/binwatson/share/zbinbin/zbinbin/net/SocketOps.cpp
 zbinbin/net/SocketOps.h
 /home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/SocketOps.h
+zbinbin/log/Logging.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/log/Logging.h
 fcntl.h
 -
 stdio.h
@@ -131,6 +171,22 @@ assert.h
 -
 cstring
 -
+errno.h
+-
+
+/home/binwatson/share/zbinbin/zbinbin/net/TcpServer.cpp
+zbinbin/net/TcpServer.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/TcpServer.h
+zbinbin/log/Logging.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/log/Logging.h
+zbinbin/net/InetAddress.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/InetAddress.h
+zbinbin/net/EventLoop.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/EventLoop.h
+zbinbin/net/Acceptor.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/net/Acceptor.h
+zbinbin/thread/CurrentThread.h
+/home/binwatson/share/zbinbin/zbinbin/net/zbinbin/thread/CurrentThread.h
 
 /home/binwatson/share/zbinbin/zbinbin/thread/Condition.cpp
 zbinbin/thread/Condition.h
@@ -227,11 +283,15 @@ zbinbin/utility/Timestamp.h
 zbinbin/log/zbinbin/utility/Timestamp.h
 
 zbinbin/net/Acceptor.h
-zbinbin/utility/copyable.h
-zbinbin/net/zbinbin/utility/copyable.h
+zbinbin/utility/noncopyable.h
+zbinbin/net/zbinbin/utility/noncopyable.h
+zbinbin/net/Channel.h
+zbinbin/net/zbinbin/net/Channel.h
+zbinbin/net/Socket.h
+zbinbin/net/zbinbin/net/Socket.h
 string
 -
-netinet/in.h
+functional
 -
 
 zbinbin/net/Buffer.h
@@ -244,9 +304,13 @@ string
 assert.h
 -
 
+zbinbin/net/Callbacks.h
+functional
+-
+memory
+-
+
 zbinbin/net/Channel.h
-zbinbin/net/EventLoop.h
-zbinbin/net/zbinbin/net/EventLoop.h
 memory
 -
 functional
@@ -257,9 +321,13 @@ zbinbin/utility/noncopyable.h
 zbinbin/net/zbinbin/utility/noncopyable.h
 zbinbin/thread/CurrentThread.h
 zbinbin/net/zbinbin/thread/CurrentThread.h
+zbinbin/thread/Mutex.h
+zbinbin/net/zbinbin/thread/Mutex.h
 memory
 -
 vector
+-
+functional
 -
 
 zbinbin/net/InetAddress.h
@@ -286,12 +354,28 @@ unordered_map
 poll.h
 -
 
+zbinbin/net/Socket.h
+
 zbinbin/net/SocketOps.h
 arpa/inet.h
 -
 stdint.h
 -
 endian.h
+-
+
+zbinbin/net/TcpServer.h
+zbinbin/net/Callbacks.h
+zbinbin/net/zbinbin/net/Callbacks.h
+zbinbin/net/InetAddress.h
+zbinbin/net/zbinbin/net/InetAddress.h
+zbinbin/utility/noncopyable.h
+zbinbin/net/zbinbin/utility/noncopyable.h
+string
+-
+functional
+-
+atomic
 -
 
 zbinbin/thread/Condition.h

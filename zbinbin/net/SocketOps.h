@@ -7,18 +7,27 @@
 
 namespace zbinbin
 {
-namespace net
-{
 namespace sockets
 {
 
-ssize_t read(int sockfd, void *buf, size_t count);
+///
+/// Creates a non-blocking socket file descriptor,
+/// abort if any error.
+int createNonblockingOrDie(sa_family_t family);
 
+int listen(int sockfd);
+int accept(int sockfd, struct sockaddr_in* addr);
+int connect(int sockfd, const struct sockaddr_in* addr);
+void bind(int sockfd, const struct sockaddr_in* addr);
+
+ssize_t read(int sockfd, void *buf, size_t count);
 ssize_t readv(int sockfd, const struct iovec *iov, int iovcnt);
 
 ssize_t write(int sockfd, const void *buf, size_t count);
 
+void close(int sockfd);
 
+void shutdownWrite(int sockfd);
 
 inline uint64_t hostToNetwork64(uint64_t host64) { return htobe64(host64); }
 inline uint32_t hostToNetwork32(uint32_t host32) { return htobe32(host32); }
@@ -34,7 +43,6 @@ void toIp(char* buf, size_t size, const struct sockaddr_in* addr);
 
 
 }  // namespace sockets
-}  // namespace net
 }  // namespace zbinbin
 
 #endif  // __ZBINBIN_SOCKETOPS_H_

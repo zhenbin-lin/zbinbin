@@ -529,6 +529,33 @@ zbinbin/net/Poller.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.s
 .PHONY : zbinbin/net/Poller.cpp.s
 
+zbinbin/net/Socket.o: zbinbin/net/Socket.cpp.o
+
+.PHONY : zbinbin/net/Socket.o
+
+# target to build an object file
+zbinbin/net/Socket.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o
+.PHONY : zbinbin/net/Socket.cpp.o
+
+zbinbin/net/Socket.i: zbinbin/net/Socket.cpp.i
+
+.PHONY : zbinbin/net/Socket.i
+
+# target to preprocess a source file
+zbinbin/net/Socket.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.i
+.PHONY : zbinbin/net/Socket.cpp.i
+
+zbinbin/net/Socket.s: zbinbin/net/Socket.cpp.s
+
+.PHONY : zbinbin/net/Socket.s
+
+# target to generate assembly for a file
+zbinbin/net/Socket.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.s
+.PHONY : zbinbin/net/Socket.cpp.s
+
 zbinbin/net/SocketOps.o: zbinbin/net/SocketOps.cpp.o
 
 .PHONY : zbinbin/net/SocketOps.o
@@ -555,6 +582,33 @@ zbinbin/net/SocketOps.s: zbinbin/net/SocketOps.cpp.s
 zbinbin/net/SocketOps.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.s
 .PHONY : zbinbin/net/SocketOps.cpp.s
+
+zbinbin/net/TcpServer.o: zbinbin/net/TcpServer.cpp.o
+
+.PHONY : zbinbin/net/TcpServer.o
+
+# target to build an object file
+zbinbin/net/TcpServer.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o
+.PHONY : zbinbin/net/TcpServer.cpp.o
+
+zbinbin/net/TcpServer.i: zbinbin/net/TcpServer.cpp.i
+
+.PHONY : zbinbin/net/TcpServer.i
+
+# target to preprocess a source file
+zbinbin/net/TcpServer.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.i
+.PHONY : zbinbin/net/TcpServer.cpp.i
+
+zbinbin/net/TcpServer.s: zbinbin/net/TcpServer.cpp.s
+
+.PHONY : zbinbin/net/TcpServer.s
+
+# target to generate assembly for a file
+zbinbin/net/TcpServer.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.s
+.PHONY : zbinbin/net/TcpServer.cpp.s
 
 zbinbin/thread/Condition.o: zbinbin/thread/Condition.cpp.o
 
@@ -743,9 +797,15 @@ help:
 	@echo "... zbinbin/net/Poller.o"
 	@echo "... zbinbin/net/Poller.i"
 	@echo "... zbinbin/net/Poller.s"
+	@echo "... zbinbin/net/Socket.o"
+	@echo "... zbinbin/net/Socket.i"
+	@echo "... zbinbin/net/Socket.s"
 	@echo "... zbinbin/net/SocketOps.o"
 	@echo "... zbinbin/net/SocketOps.i"
 	@echo "... zbinbin/net/SocketOps.s"
+	@echo "... zbinbin/net/TcpServer.o"
+	@echo "... zbinbin/net/TcpServer.i"
+	@echo "... zbinbin/net/TcpServer.s"
 	@echo "... zbinbin/thread/Condition.o"
 	@echo "... zbinbin/thread/Condition.i"
 	@echo "... zbinbin/thread/Condition.s"

@@ -1,32 +1,35 @@
 #ifndef __ZBINBIN_ACCEPTOR_H_
 #define __ZBINBIN_ACCEPTOR_H_
 
-#include "zbinbin/utility/copyable.h"
-#include "zbinbin/net/InetAddress.h"
-
+#include "zbinbin/utility/noncopyable.h"
+#include "zbinbin/net/Channel.h"
+#include "zbinbin/net/Socket.h"
 
 #include <string>
 #include <functional>
 
-
-
 namespace zbinbin
 {
-namespace net
-{
-
 class EventLoop;
-class Channel;
+class InetAddress;
 
-
-class Acceptor
+class Acceptor : public noncopyable
 {
 public:
-    typedef std::function<void()> NewConnectionCallback;
+    using NewConnectionCallback = std::function<void(int sockfd, const InetAddress&)> ;
 
-    Acceptor();
+    Acceptor(EventLoop* loop, const InetAddress& listenAdrr, bool resuseport);
     ~Acceptor();
+
+    void setNewConnectionCallback(const NewConnectionCallback& cb) { newConnectCallback_ = cb; }
+
+    void listen();
+
+    bool listening() const { return listening_; }
+
 private:
+
+    void handleRead();
 
     bool listening_;
 
@@ -34,11 +37,10 @@ private:
     Socket acceptSocket_;
     Channel acceptChannel_;
     NewConnectionCallback newConnectCallback_;
-
+    int idleFd_;
 };
 
 
-}   // namespace net
 }   // namespace zbinbin
 
 #endif

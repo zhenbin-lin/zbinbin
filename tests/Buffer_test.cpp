@@ -7,7 +7,6 @@
 
 int main(int argc, char** argv) {
 	using namespace zbinbin;
-	using namespace zbinbin::net;
 	using namespace std;
         // %m -- 消息体
         // %p -- level
