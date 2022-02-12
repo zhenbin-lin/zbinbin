@@ -30,6 +30,10 @@ CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o: zbinbin/utility/Timestamp.h
 CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o: zbinbin/utility/copyable.h
 CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o: zbinbin/utility/noncopyable.h
 
+CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o: zbinbin/net/Acceptor.cpp
+CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o: zbinbin/net/Acceptor.h
+CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o: zbinbin/utility/copyable.h
+
 CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o: zbinbin/net/Buffer.cpp
 CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o: zbinbin/net/Buffer.h
 CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o: zbinbin/net/SocketOps.h
@@ -52,10 +56,16 @@ CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/log/Logging.h
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/net/Channel.h
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/net/EventLoop.h
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/net/Poller.h
+CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/net/SocketOps.h
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/thread/CurrentThread.h
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/utility/Timestamp.h
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/utility/copyable.h
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/utility/noncopyable.h
+
+CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o: zbinbin/net/InetAddress.cpp
+CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o: zbinbin/net/InetAddress.h
+CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o: zbinbin/net/SocketOps.h
+CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o: zbinbin/utility/copyable.h
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o: zbinbin/net/Poller.cpp
 CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o: zbinbin/log/FixedBuffer.h

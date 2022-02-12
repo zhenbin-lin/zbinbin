@@ -21,11 +21,13 @@ set(LIB_SRC
 	zbinbin/thread/Condition.cpp
 	zbinbin/thread/CurrentThread.cpp
     zbinbin/thread/CountDownLatch.cpp
+    zbinbin/net/InetAddress.cpp
     zbinbin/net/SocketOps.cpp
     zbinbin/net/Buffer.cpp
     zbinbin/net/Channel.cpp
     zbinbin/net/Poller.cpp
     zbinbin/net/EventLoop.cpp
+    zbinbin/net/Acceptor.cpp
 	)
 
 # 添加一个lib的share库，生成so文件

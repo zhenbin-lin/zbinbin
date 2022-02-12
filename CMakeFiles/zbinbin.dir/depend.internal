@@ -30,6 +30,10 @@ CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.o
  zbinbin/utility/Timestamp.h
  zbinbin/utility/copyable.h
  zbinbin/utility/noncopyable.h
+CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o
+ /home/binwatson/share/zbinbin/zbinbin/net/Acceptor.cpp
+ zbinbin/net/Acceptor.h
+ zbinbin/utility/copyable.h
 CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o
  /home/binwatson/share/zbinbin/zbinbin/net/Buffer.cpp
  zbinbin/net/Buffer.h
@@ -53,10 +57,16 @@ CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o
  zbinbin/net/Channel.h
  zbinbin/net/EventLoop.h
  zbinbin/net/Poller.h
+ zbinbin/net/SocketOps.h
  zbinbin/thread/CurrentThread.h
  zbinbin/utility/Timestamp.h
  zbinbin/utility/copyable.h
  zbinbin/utility/noncopyable.h
+CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o
+ /home/binwatson/share/zbinbin/zbinbin/net/InetAddress.cpp
+ zbinbin/net/InetAddress.h
+ zbinbin/net/SocketOps.h
+ zbinbin/utility/copyable.h
 CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o
  /home/binwatson/share/zbinbin/zbinbin/net/Poller.cpp
  zbinbin/log/FixedBuffer.h

@@ -367,6 +367,33 @@ zbinbin/log/Logging.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/log/Logging.cpp.s
 .PHONY : zbinbin/log/Logging.cpp.s
 
+zbinbin/net/Acceptor.o: zbinbin/net/Acceptor.cpp.o
+
+.PHONY : zbinbin/net/Acceptor.o
+
+# target to build an object file
+zbinbin/net/Acceptor.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o
+.PHONY : zbinbin/net/Acceptor.cpp.o
+
+zbinbin/net/Acceptor.i: zbinbin/net/Acceptor.cpp.i
+
+.PHONY : zbinbin/net/Acceptor.i
+
+# target to preprocess a source file
+zbinbin/net/Acceptor.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.i
+.PHONY : zbinbin/net/Acceptor.cpp.i
+
+zbinbin/net/Acceptor.s: zbinbin/net/Acceptor.cpp.s
+
+.PHONY : zbinbin/net/Acceptor.s
+
+# target to generate assembly for a file
+zbinbin/net/Acceptor.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.s
+.PHONY : zbinbin/net/Acceptor.cpp.s
+
 zbinbin/net/Buffer.o: zbinbin/net/Buffer.cpp.o
 
 .PHONY : zbinbin/net/Buffer.o
@@ -447,6 +474,33 @@ zbinbin/net/EventLoop.s: zbinbin/net/EventLoop.cpp.s
 zbinbin/net/EventLoop.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.s
 .PHONY : zbinbin/net/EventLoop.cpp.s
+
+zbinbin/net/InetAddress.o: zbinbin/net/InetAddress.cpp.o
+
+.PHONY : zbinbin/net/InetAddress.o
+
+# target to build an object file
+zbinbin/net/InetAddress.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o
+.PHONY : zbinbin/net/InetAddress.cpp.o
+
+zbinbin/net/InetAddress.i: zbinbin/net/InetAddress.cpp.i
+
+.PHONY : zbinbin/net/InetAddress.i
+
+# target to preprocess a source file
+zbinbin/net/InetAddress.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.i
+.PHONY : zbinbin/net/InetAddress.cpp.i
+
+zbinbin/net/InetAddress.s: zbinbin/net/InetAddress.cpp.s
+
+.PHONY : zbinbin/net/InetAddress.s
+
+# target to generate assembly for a file
+zbinbin/net/InetAddress.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.s
+.PHONY : zbinbin/net/InetAddress.cpp.s
 
 zbinbin/net/Poller.o: zbinbin/net/Poller.cpp.o
 
@@ -671,6 +725,9 @@ help:
 	@echo "... zbinbin/log/Logging.o"
 	@echo "... zbinbin/log/Logging.i"
 	@echo "... zbinbin/log/Logging.s"
+	@echo "... zbinbin/net/Acceptor.o"
+	@echo "... zbinbin/net/Acceptor.i"
+	@echo "... zbinbin/net/Acceptor.s"
 	@echo "... zbinbin/net/Buffer.o"
 	@echo "... zbinbin/net/Buffer.i"
 	@echo "... zbinbin/net/Buffer.s"
@@ -680,6 +737,9 @@ help:
 	@echo "... zbinbin/net/EventLoop.o"
 	@echo "... zbinbin/net/EventLoop.i"
 	@echo "... zbinbin/net/EventLoop.s"
+	@echo "... zbinbin/net/InetAddress.o"
+	@echo "... zbinbin/net/InetAddress.i"
+	@echo "... zbinbin/net/InetAddress.s"
 	@echo "... zbinbin/net/Poller.o"
 	@echo "... zbinbin/net/Poller.i"
 	@echo "... zbinbin/net/Poller.s"

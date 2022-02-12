@@ -41,6 +41,8 @@ public:
     void setErrorCallback(const EventCallback& cb) { errorCallback_ = cb; }
     void setCloseCallback(const EventCallback& cb) { closeCallback_ = cb; }
 
+    void remove();
+
     ~Channel();
 
 private:
@@ -51,6 +53,7 @@ private:
 
 
     bool eventHandling_;
+    bool addedToLoop_;
 
     EventLoop* loop_;
     const int fd_;
@@ -64,15 +67,18 @@ private:
     EventCallback closeCallback_;
 };
 
+
 inline void Channel::enableReading() 
 { 
     events_ |= kReadEvent; 
+    addedToLoop_ = true;
     loop_->updateChannel(this);
 }
 
 inline void Channel::enableWriting() 
 { 
     events_ |= kWriteEvent; 
+    addedToLoop_ = true;
     loop_->updateChannel(this);
 }
 

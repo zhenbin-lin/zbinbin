@@ -2,7 +2,10 @@
 #include "zbinbin/log/Logging.h"
 
 #include <sstream>
+
 #include <poll.h>
+#include <assert.h>
+
 
 namespace zbinbin
 {
@@ -14,6 +17,7 @@ const int Channel::kWriteEvent = POLLOUT;
 
 Channel::Channel(EventLoop* loop, int fd)
     : eventHandling_(false)
+    , addedToLoop_(false)
     , loop_(loop)
     , fd_(fd)
     , events_(0)
@@ -50,15 +54,12 @@ void Channel::handleEvent()
     eventHandling_ = false;
 }
 
-
-// void enableWriting();
-
-// void disableReading();
-
-// void disableWriting();
-
-// void disableAll();
-
+void Channel::remove()
+{
+    assert(isNoneEvents());
+    addedToLoop_ = false;
+    loop_->removeChannel(this);
+}
 
 Channel::~Channel()
 {

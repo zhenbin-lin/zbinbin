@@ -38,11 +38,16 @@ private:
     typedef std::vector<Channel*> ChannelList;
 
     void abortNotInLoopThread();
+    void wakeup();
+    void handleRead();
 
     bool looping_;
     bool quit_;
+    bool eventHandling_;
     const pid_t threadId_;
+    const int wakeupFd_;
     std::unique_ptr<Poller> poller_;
+    std::unique_ptr<Channel> wakeupChannel_;    // don't expose Channel to client
     ChannelList activeChannels_;
     
 };
