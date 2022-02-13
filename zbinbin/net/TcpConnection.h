@@ -17,8 +17,8 @@ class Socket;
 class Channel;
 class EventLoop;
 
-class TcpConnection : public noncopyable
-                    , std::enable_shared_from_this<TcpConnection>
+class TcpConnection : noncopyable
+                    , public std::enable_shared_from_this<TcpConnection>
 {
 private:
     enum StateE { kDisconnected, kConnecting, kConnected, kDisconnecting };

@@ -53,7 +53,6 @@ TcpConnection::~TcpConnection()
     {
         LOG_ERROR << "TcpConnetion dtor, but not Destroyed before.";
     }
-    sockets::close(channel_->getFd());
 }
 
 const std::unique_ptr<struct tcp_info> TcpConnection::getTcpInfo() const
@@ -105,7 +104,8 @@ void TcpConnection::connectEstablished()
     channel_->enableWriting();
     if (connectionCallback_)
     {
-        connectionCallback_(shared_from_this()); // 连接建立完成，返回客户
+        auto self = shared_from_this();
+        connectionCallback_(self); // 连接建立完成，返回客户
     }
 }
 // called when TcpServer has removed me from its map
@@ -118,7 +118,8 @@ void TcpConnection::connectDestroyed()
         channel_->disableAll();
         if (connectionCallback_)
         {
-            connectionCallback_(shared_from_this()); // 连接建立完成，返回客户
+            auto self = shared_from_this();
+            connectionCallback_(self); // 连接建立完成，返回客户
         }
     }
     channel_->remove(); // 放在dtor是否更好?

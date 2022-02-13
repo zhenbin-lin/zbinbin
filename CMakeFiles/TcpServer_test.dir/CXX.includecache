@@ -11,6 +11,10 @@ zbinbin/net/TcpServer.h
 /home/binwatson/share/zbinbin/tests/zbinbin/net/TcpServer.h
 zbinbin/net/EventLoop.h
 /home/binwatson/share/zbinbin/tests/zbinbin/net/EventLoop.h
+zbinbin/net/TcpConnection.h
+/home/binwatson/share/zbinbin/tests/zbinbin/net/TcpConnection.h
+iostream
+-
 
 zbinbin/net/Callbacks.h
 functional
@@ -40,6 +44,18 @@ string
 netinet/in.h
 -
 stdint.h
+-
+
+zbinbin/net/TcpConnection.h
+zbinbin/net/Callbacks.h
+zbinbin/net/zbinbin/net/Callbacks.h
+zbinbin/net/InetAddress.h
+zbinbin/net/zbinbin/net/InetAddress.h
+zbinbin/utility/noncopyable.h
+zbinbin/net/zbinbin/utility/noncopyable.h
+memory
+-
+string
 -
 
 zbinbin/net/TcpServer.h

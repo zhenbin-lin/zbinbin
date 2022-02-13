@@ -6,6 +6,7 @@ CMakeFiles/TcpServer_test.dir/tests/TcpServer_test.cpp.o
  zbinbin/net/Callbacks.h
  zbinbin/net/EventLoop.h
  zbinbin/net/InetAddress.h
+ zbinbin/net/TcpConnection.h
  zbinbin/net/TcpServer.h
  zbinbin/thread/CurrentThread.h
  zbinbin/thread/Mutex.h
