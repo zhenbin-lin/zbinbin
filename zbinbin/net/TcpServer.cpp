@@ -65,8 +65,8 @@ void TcpServer::newConnection(int sockfd, const InetAddress& clientAddr)
             loop_, connName, sockfd, connections_.size(), localAddr, clientAddr));
     connections_.push_back(conn);   // must before new conn
     conn->setConnectionCallback(connectionCallback_);
-    // conn->setMessageCallback(messageCallback_);
-    // conn->setWriteCompleteCallback(writeCompleteCallback_);
+    conn->setMessageCallback(messageCallback_);
+    conn->setWriteCompleteCallback(writeCompleteCallback_);
     conn->setCloseCallback(
         std::bind(&TcpServer::removeConnection, this, _1));
     loop_->runInLoop(std::bind(&TcpConnection::connectEstablished, conn.get()));

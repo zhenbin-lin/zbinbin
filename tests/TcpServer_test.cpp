@@ -1,36 +1,86 @@
 #include "zbinbin/net/TcpServer.h"
 #include "zbinbin/net/EventLoop.h"
+#include "zbinbin/net/InetAddress.h"
 #include "zbinbin/net/TcpConnection.h"
-#include <iostream>
+#include "zbinbin/thread/Thread.h"
+#include "zbinbin/log/Logging.h"
+
+#include <utility>
+#include <stdio.h>
+#include <unistd.h>
 
 using namespace zbinbin;
 using namespace std;
 
 
-void onConnection(const TcpConnectionPtr& conn)
+int numThreads = 0;
+
+class EchoServer
 {
-    if (conn->connected())
+ public:
+  EchoServer(EventLoop* loop, const InetAddress& listenAddr)
+    : loop_(loop),
+      server_(loop, listenAddr, "EchoServer")
+  {
+    server_.setConnectionCallback(
+        std::bind(&EchoServer::onConnection, this, _1));
+    server_.setMessageCallback(
+        std::bind(&EchoServer::onMessage, this, _1, _2));
+    // server_.setThreadNum(numThreads);
+  }
+
+  void start()
+  {
+    server_.start();
+  }
+  // void stop();
+
+ private:
+  void onConnection(const TcpConnectionPtr& conn)
+  {
+    LOG_TRACE << conn->getPeerAdrr().getIpPortString() << " -> "
+        << conn->getLocalAdrr().getIpPortString() << " is "
+        << (conn->connected() ? "UP" : "DOWN");
+    LOG_INFO << conn->getTcpInfoString();
+
+    conn->send("hello\n");
+  }
+
+  void onMessage(const TcpConnectionPtr& conn, Buffer* buf)
+  {
+    string msg(buf->retrieveAllAsString());
+    LOG_TRACE << conn->getName() << " recv " << msg.size() << " bytes";
+    if (msg == "exit\n")
     {
-        std::cout << "A new Tcp Connection " << conn->getName() << std::endl;
-    } 
-    else
-    {
-        std::cout << "Tcp Connection " << conn->getName() << " close" << std::endl;
+      conn->send("bye\n");
+      conn->shutdown();
     }
-}
+    if (msg == "quit\n")
+    {
+      loop_->quit();
+    }
+    conn->send(msg);
+  }
 
+  EventLoop* loop_;
+  TcpServer server_;
+};
 
-
-
-int main()
+int main(int argc, char* argv[])
 {
-    EventLoop loop;
-    InetAddress listAddr(40000);
-    TcpServer server(&loop, listAddr, "main server", TcpServer::kReusePort);
-    server.setConnectionCallback(onConnection);
-    server.start();
+  LOG_INFO << "pid = " << getpid() << ", tid = " << CurrentThread::tid();
+  LOG_INFO << "sizeof TcpConnection = " << sizeof(TcpConnection);
+//   if (argc > 1)
+//   {
+//     numThreads = atoi(argv[1]);
+//   }
+//   bool ipv6 = argc > 2;
+  EventLoop loop;
+  InetAddress listenAddr(40000);
+  EchoServer server(&loop, listenAddr);
 
-    loop.loop();
+  server.start();
 
-
+  loop.loop();
 }
+

@@ -9,6 +9,7 @@
 
 namespace zbinbin
 {
+class TcpConnection;
 
 class Buffer
 {
@@ -59,7 +60,7 @@ public:
         append(static_cast<const char*>(data), len);
     }
 
-    std::string retrieveAsString(size_t len)
+    std::string retrieveAsString(size_t len) const
     {
         assert(len <= readableBytes());
         std::string result(peek(), len);
@@ -67,7 +68,7 @@ public:
         return result;
     }
 
-    std::string retrieveAllAsString()
+    std::string retrieveAllAsString() const
     {
         return retrieveAsString(readableBytes());
     }
@@ -87,15 +88,15 @@ public:
     ssize_t readFd(int fd, int* savedErrno);
 
 private:
+    friend class TcpConnection;
+
     char* begin()
-    {
-        return buffer_.data();
-    }
+    { return buffer_.data(); }
 
     const char* begin() const
     { return buffer_.data(); }
 
-    void retrieve(size_t len)
+    void retrieve(size_t len) const
     {
         assert(len <= readableBytes());
         if (len < readableBytes())
@@ -108,7 +109,7 @@ private:
         }
     }
 
-    void retrieveAll()
+    void retrieveAll() const
     {
         readerIndex_ = kCheapPrepend;
         writerIndex_ = kCheapPrepend;
@@ -135,8 +136,8 @@ private:
     }
 
     std::vector<char> buffer_;
-    size_t readerIndex_;
-    size_t writerIndex_;
+    mutable size_t readerIndex_;
+    mutable size_t writerIndex_;
 };
 
 

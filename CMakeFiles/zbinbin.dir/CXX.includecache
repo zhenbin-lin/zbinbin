@@ -397,6 +397,8 @@ endian.h
 -
 
 zbinbin/net/TcpConnection.h
+zbinbin/net/Buffer.h
+zbinbin/net/zbinbin/net/Buffer.h
 zbinbin/net/Callbacks.h
 zbinbin/net/zbinbin/net/Callbacks.h
 zbinbin/net/InetAddress.h
@@ -404,6 +406,8 @@ zbinbin/net/zbinbin/net/InetAddress.h
 zbinbin/utility/noncopyable.h
 zbinbin/net/zbinbin/utility/noncopyable.h
 memory
+-
+atomic
 -
 string
 -

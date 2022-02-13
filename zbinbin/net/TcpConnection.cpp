@@ -25,7 +25,7 @@ TcpConnection::TcpConnection(EventLoop* loop,
     : loop_(loop)
     , name_(name)
     , state_(kConnecting)
-    , reading_(true)
+    , reading_(false)
     , connIdx_(connIdx)  // size_t MAX;
     , socket_(new Socket(sockfd))
     , channel_(new Channel(loop, sockfd))
@@ -34,6 +34,8 @@ TcpConnection::TcpConnection(EventLoop* loop,
 {
     channel_->setReadCallback(
         std::bind(&TcpConnection::handleRead, this));
+    channel_->setReadCallback(
+        std::bind(&TcpConnection::handleWrite, this));
     channel_->setErrorCallback(
         std::bind(&TcpConnection::handleError, this));
     channel_->setCloseCallback(
@@ -89,9 +91,59 @@ const std::string TcpConnection::getStateString() const
     return StateString[state_];
 }
 
+
+void TcpConnection::send(const void* message, size_t len)
+{
+    if (loop_->isInLoopThread())
+    {
+        sendInLoop(message, len);
+    }
+    else
+    {
+        loop_->runInLoop(
+            std::bind(&TcpConnection::sendInLoop, this, message, len));
+    }
+}
+
+void TcpConnection::send(Buffer* message)
+{
+    TcpConnection::send(message->peek(), message->readableBytes());
+}
+
+void TcpConnection::send(const std::string& message)
+{
+    send(message.c_str(), message.size());
+}
+
+
+void TcpConnection::startRead()
+{
+    loop_->runInLoop(
+        std::bind(&TcpConnection::startReadInLoop, this));
+}
+
+void TcpConnection::stopRead()
+{
+    loop_->runInLoop(
+        std::bind(&TcpConnection::stopReadInLoop, this));
+}
+
+
 void TcpConnection::setTcpNoDelay(bool on)
 {
     socket_->setTcpNoDelay(on);
+}
+
+void TcpConnection::shutdown()
+{
+    loop_->runInLoop(
+        std::bind(&TcpConnection::shutdownInLoop, this));
+}   
+
+void TcpConnection::forceClose()
+{
+    loop_->runInLoop(
+        std::bind(&TcpConnection::forceCloseInLoop, this));
 }
 
 // called when TcpServer accepts a new connection
@@ -104,10 +156,10 @@ void TcpConnection::connectEstablished()
     channel_->enableWriting();
     if (connectionCallback_)
     {
-        auto self = shared_from_this();
-        connectionCallback_(self); // 连接建立完成，返回客户
+        connectionCallback_(shared_from_this()); // 连接建立完成，返回客户
     }
 }
+
 // called when TcpServer has removed me from its map
 void TcpConnection::connectDestroyed()
 {
@@ -118,22 +170,120 @@ void TcpConnection::connectDestroyed()
         channel_->disableAll();
         if (connectionCallback_)
         {
-            auto self = shared_from_this();
-            connectionCallback_(self); // 连接建立完成，返回客户
+            connectionCallback_(shared_from_this()); // 连接建立完成，返回客户
         }
     }
     channel_->remove(); // 放在dtor是否更好?
 }
 
+void TcpConnection::startReadInLoop()
+{
+    loop_->assertInLoopThread();
+    if (!reading_ || !channel_->isReading())
+    {
+        channel_->enableReading();
+        reading_ = true;
+    }
+}
+
+void TcpConnection::stopReadInLoop()
+{
+    loop_->assertInLoopThread();
+    if (reading_ || channel_->isReading())
+    {
+        channel_->disableReading();
+        reading_ = false;
+    }
+}
+
+void TcpConnection::shutdownInLoop()
+{
+    loop_->assertInLoopThread();
+    if (state_ == kConnected)
+    {
+        state_ = kDisconnecting;
+        if (!channel_->isWriting())
+        {
+            socket_->shutdownWrite();
+        }
+    }
+}
+
+void TcpConnection::forceCloseInLoop()
+{
+    loop_->assertInLoopThread();
+    if (state_ == kConnected || state_ == kDisconnecting)
+    {
+        handleClose();
+    }
+}
+
+void TcpConnection::sendInLoop(const void* message, size_t len)
+{
+    loop_->assertInLoopThread();
+    ssize_t nwrited = 0;
+    size_t remaining = len;
+    bool faultError = false;
+    if (state_ == kDisconnected)
+    {
+        LOG_WARN << "TcpConnection send data failure! Disconnected, give up writing";
+        return;
+    }
+    // if no thing in output queue, try writing directly
+    if (!channel_->isWriting() && outputBuffer_.readableBytes() == 0)
+    {
+        nwrited = sockets::write(channel_->getFd(), message, len);
+        if (nwrited >= 0)
+        {
+            remaining = len - nwrited;
+            if (0 == remaining && writeCompleteCallback_)
+            {
+                loop_->queueInLoop(
+                    std::bind(writeCompleteCallback_, shared_from_this()));
+            }
+        }
+        else
+        {
+            nwrited = 0;
+            if (errno != EWOULDBLOCK)
+            {
+                LOG_SYSERR << "TcpConnection::sendInLoop " << strerror_tl(errno);
+                if (errno == EPIPE || errno == ECONNRESET) // FIXME: any others?
+                {
+                    faultError = true;
+                }
+            }           
+        }
+    }
+
+    assert(remaining <= len);
+    // 放入outputBuffer中
+    if (!faultError || remaining > 0)
+    {
+        size_t oldLen = outputBuffer_.readableBytes();
+        if (oldLen + remaining >= highWaterMark_
+            && oldLen < highWaterMark_
+            && highWaterMarkCallback_)
+        {
+            loop_->queueInLoop(
+                std::bind(highWaterMarkCallback_, shared_from_this(), oldLen + remaining));
+        }
+        outputBuffer_.append(static_cast<const char*>(message) + nwrited, remaining);
+        if (!channel_->isWriting())
+        {
+            channel_->enableWriting();
+        }
+    }
+}
+
 void TcpConnection::handleRead()
 {
     loop_->assertInLoopThread();
-    char buf[65536] = {'\0'};
-    ssize_t n = sockets::read(channel_->getFd(), buf, sizeof buf);
-    LOG_INFO << "TcpConnection: " << name_ << " recieve \"" << buf << "\"";
+    int saveErrno = 0;
+    ssize_t n = inputBuffer_.readFd(channel_->getFd(), &saveErrno);
     if (n > 0)
     {
-
+        messageCallback_(shared_from_this(), &inputBuffer_);
     }
     else if (n == 0) // close by peer
     {
@@ -143,6 +293,44 @@ void TcpConnection::handleRead()
     {
         LOG_SYSERR << "TcpConnection::handleRead";
         handleError();
+    }
+}
+
+void TcpConnection::handleWrite()
+{
+    loop_->assertInLoopThread();
+    if (channel_->isWriting())
+    {
+        ssize_t n = sockets::write(channel_->getFd(),
+                                   outputBuffer_.peek(),
+                                   outputBuffer_.readableBytes());
+        if (n > 0)
+        {
+            outputBuffer_.retrieve(n);
+            if (outputBuffer_.readableBytes() == 0)
+            {
+                channel_->disableWriting();
+                if (writeCompleteCallback_)
+                {
+                    // 直接调用和放入queueInLoop貌似都可以
+                    loop_->queueInLoop(
+                        std::bind(writeCompleteCallback_, shared_from_this()));
+                }
+                if (state_ == kDisconnecting)
+                {
+                    shutdownInLoop();
+                }
+            }
+        }
+        else
+        {
+            LOG_SYSERR << "TcpConnection::handleWrite";
+        }
+    }
+    else
+    {
+        LOG_TRACE << "Connection fd = " << channel_->getFd()
+                  << " is down, no more writing";
     }
 }
 

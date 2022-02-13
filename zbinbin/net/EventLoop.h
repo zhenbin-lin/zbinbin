@@ -35,13 +35,14 @@ public:
     bool isInLoopThread() { return threadId_ == CurrentThread::tid(); }
 
     void runInLoop(Functor cb);
+    void queueInLoop(Functor cb);
 
     static EventLoop* getEventLoopOfCurrentThread();
 private:
     typedef std::vector<Channel*> ChannelList;
 
     void abortNotInLoopThread();
-    void queueInLoop(Functor cb);
+    
     void doPendingFunctors();
     void wakeup();
     void handleRead();

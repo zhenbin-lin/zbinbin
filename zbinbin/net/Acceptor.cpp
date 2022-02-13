@@ -13,7 +13,8 @@ namespace zbinbin
 {
 
 Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAdrr, bool resuseport)
-    : loop_(loop)
+    : listening_(false)
+    , loop_(loop)
     , acceptSocket_(sockets::createNonblockingOrDie(listenAdrr.family()))
     , acceptChannel_(loop, acceptSocket_.fd())
     , idleFd_(::open("/dev/null", O_RDONLY | O_CLOEXEC))

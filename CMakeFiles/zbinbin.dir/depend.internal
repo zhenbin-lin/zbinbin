@@ -123,6 +123,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o
  zbinbin/log/FixedBuffer.h
  zbinbin/log/LogStream.h
  zbinbin/log/Logging.h
+ zbinbin/net/Buffer.h
  zbinbin/net/Callbacks.h
  zbinbin/net/Channel.h
  zbinbin/net/EventLoop.h
@@ -142,6 +143,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o
  zbinbin/log/LogStream.h
  zbinbin/log/Logging.h
  zbinbin/net/Acceptor.h
+ zbinbin/net/Buffer.h
  zbinbin/net/Callbacks.h
  zbinbin/net/Channel.h
  zbinbin/net/EventLoop.h

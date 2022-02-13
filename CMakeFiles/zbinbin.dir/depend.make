@@ -122,6 +122,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/TcpConnectio
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/log/FixedBuffer.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/log/LogStream.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/log/Logging.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/Buffer.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/Callbacks.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/Channel.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/EventLoop.h
@@ -141,6 +142,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/log/FixedBuffer.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/log/LogStream.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/log/Logging.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/Acceptor.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/Buffer.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/Callbacks.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/Channel.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/EventLoop.h

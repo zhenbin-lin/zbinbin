@@ -27,6 +27,12 @@ public:
     void handleEvent();
 
     bool isNoneEvents() const { return events_ == kNoneEvent; }
+    // return channel is writing
+    bool isWriting() const { return events_ & kWriteEvent; }
+    // return channel is reading
+    bool isReading() const { return events_ & kReadEvent; }
+    // bool isWritable() const { return revents_ & kWriteEvent; }
+    // bool isReadable() const { return revents_ & kWriteEvent; }
 
     int getFd() const { return fd_; }
     int getEvents() const { return events_; }

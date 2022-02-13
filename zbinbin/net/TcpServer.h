@@ -31,7 +31,7 @@ public:
     TcpServer(EventLoop* loop,
               const InetAddress& listenAddr,
               const std::string& nameArg,
-              Option);
+              Option option = kReusePort);
     ~TcpServer();
 
     /// Starts the server if it's not listening.
@@ -48,13 +48,13 @@ public:
 
     /// Set message callback.
     /// Not thread safe.
-    // void setMessageCallback(const MessageCallback& cb)
-    // { messageCallback_ = cb; }
+    void setMessageCallback(const MessageCallback& cb)
+    { messageCallback_ = cb; }
 
     /// Set write complete callback.
     /// Not thread safe.
-    // void setWriteCompleteCallback(const WriteCompleteCallback& cb)
-    // { writeCompleteCallback_ = cb; }
+    void setWriteCompleteCallback(const WriteCompleteCallback& cb)
+    { writeCompleteCallback_ = cb; }
 
 
     const std::string& ipPort() const { return ipPort_; }
@@ -79,8 +79,8 @@ private:
     // use by TcpConnection
     // callback when connection construct complete
     ConnectionCallback connectionCallback_;     
-    // MessageCallback messageCallback_;
-    // WriteCompleteCallback writeCompleteCallback_;
+    MessageCallback messageCallback_;
+    WriteCompleteCallback writeCompleteCallback_;
 
     ConnectionList connections_;
 };
