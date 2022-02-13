@@ -8,6 +8,7 @@ CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/log/Logging.h
 CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/net/Channel.h
 CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/net/EventLoop.h
 CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/thread/CurrentThread.h
+CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/thread/Mutex.h
 CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/thread/Thread.h
 CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/utility/Timestamp.h
 CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o: zbinbin/utility/copyable.h

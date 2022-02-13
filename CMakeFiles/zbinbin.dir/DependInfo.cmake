@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/binwatson/share/zbinbin/zbinbin/net/Poller.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/net/Socket.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/net/SocketOps.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o"
+  "/home/binwatson/share/zbinbin/zbinbin/net/TcpConnection.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/net/TcpServer.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/thread/Condition.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/thread/CountDownLatch.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o"

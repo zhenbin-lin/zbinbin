@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o"
+  "CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o"
   "lib/libzbinbin.pdb"
   "lib/libzbinbin.so"

@@ -196,6 +196,5 @@ Logger::~Logger()
     }
 }
 
-
 } // namespace zbinbin
  

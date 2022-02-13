@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}"
             ],
             "defines": [
                 "_DEBUG",
@@ -11,9 +12,10 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.18362.0",
-            "compilerPath": "D:/VC++/VS2019community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe",
-            "intelliSenseMode": "windows-msvc-x64",
+            "compilerPath": "D:/x86_64 gcc/gcc/mingw64/mingw64/bin/gcc.exe",
+            "intelliSenseMode": "linux-gcc-x64",
             "compileCommands": "${workspaceFolder}/compile_commands.json",
+            "cppStandard": "gnu++14"
         }
     ],
     "version": 4

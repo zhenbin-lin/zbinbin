@@ -53,6 +53,15 @@
         "chrono": "cpp",
         "ctime": "cpp",
         "ratio": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "clocale": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "memory_resource": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp"
     }
 }

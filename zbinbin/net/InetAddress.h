@@ -1,5 +1,6 @@
 #ifndef __ZBINBIN_INETADDRESS_H_
 #define __ZBINBIN_INETADDRESS_H_
+
 #include "zbinbin/utility/copyable.h"
 
 #include <string>

@@ -29,6 +29,11 @@ void close(int sockfd);
 
 void shutdownWrite(int sockfd);
 
+int getSocketError(int sockfd);
+struct sockaddr_in getLocalAddr(int sockfd);
+struct sockaddr_in getPeerAddr(int sockfd);
+
+
 inline uint64_t hostToNetwork64(uint64_t host64) { return htobe64(host64); }
 inline uint32_t hostToNetwork32(uint32_t host32) { return htobe32(host32); }
 inline uint16_t hostToNetwork16(uint16_t host16) { return htobe16(host16); }

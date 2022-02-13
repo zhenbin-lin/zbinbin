@@ -118,6 +118,24 @@ CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o: zbinbin/utility/Timestamp.h
 CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o: zbinbin/utility/copyable.h
 CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o: zbinbin/utility/noncopyable.h
 
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/TcpConnection.cpp
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/log/FixedBuffer.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/log/LogStream.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/log/Logging.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/Callbacks.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/Channel.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/EventLoop.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/InetAddress.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/Socket.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/SocketOps.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/TcpConnection.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/thread/CurrentThread.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/thread/Mutex.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/thread/Thread.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/utility/Timestamp.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/utility/copyable.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/utility/noncopyable.h
+
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/TcpServer.cpp
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/log/FixedBuffer.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/log/LogStream.h
@@ -128,6 +146,8 @@ CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/Channel.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/EventLoop.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/InetAddress.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/Socket.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/SocketOps.h
+CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/TcpConnection.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/TcpServer.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/thread/CurrentThread.h
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/thread/Mutex.h

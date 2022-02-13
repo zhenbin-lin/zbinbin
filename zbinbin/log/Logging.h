@@ -116,6 +116,7 @@ inline Logger::LogLevel Logger::logLevel()
 #define LOG_SYSERR zbinbin::Logger(__FILE__, __LINE__, false).stream()
 #define LOG_SYSFATAL zbinbin::Logger(__FILE__, __LINE__, true).stream()
 
+const char* strerror_tl(int savedErrno);
 
 }   // namespace zbinbin
 #endif	// __ZBINBIN_LOGGING_H_

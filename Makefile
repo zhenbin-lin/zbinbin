@@ -178,6 +178,19 @@ EventLoop_test/fast:
 	$(MAKE) -f CMakeFiles/EventLoop_test.dir/build.make CMakeFiles/EventLoop_test.dir/build
 .PHONY : EventLoop_test/fast
 
+#=============================================================================
+# Target rules for targets named TcpServer_test
+
+# Build rule for target.
+TcpServer_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TcpServer_test
+.PHONY : TcpServer_test
+
+# fast build rule for target.
+TcpServer_test/fast:
+	$(MAKE) -f CMakeFiles/TcpServer_test.dir/build.make CMakeFiles/TcpServer_test.dir/build
+.PHONY : TcpServer_test/fast
+
 tests/AsyncLogging_test.o: tests/AsyncLogging_test.cpp.o
 
 .PHONY : tests/AsyncLogging_test.o
@@ -258,6 +271,33 @@ tests/EventLoop_test.s: tests/EventLoop_test.cpp.s
 tests/EventLoop_test.cpp.s:
 	$(MAKE) -f CMakeFiles/EventLoop_test.dir/build.make CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.s
 .PHONY : tests/EventLoop_test.cpp.s
+
+tests/TcpServer_test.o: tests/TcpServer_test.cpp.o
+
+.PHONY : tests/TcpServer_test.o
+
+# target to build an object file
+tests/TcpServer_test.cpp.o:
+	$(MAKE) -f CMakeFiles/TcpServer_test.dir/build.make CMakeFiles/TcpServer_test.dir/tests/TcpServer_test.cpp.o
+.PHONY : tests/TcpServer_test.cpp.o
+
+tests/TcpServer_test.i: tests/TcpServer_test.cpp.i
+
+.PHONY : tests/TcpServer_test.i
+
+# target to preprocess a source file
+tests/TcpServer_test.cpp.i:
+	$(MAKE) -f CMakeFiles/TcpServer_test.dir/build.make CMakeFiles/TcpServer_test.dir/tests/TcpServer_test.cpp.i
+.PHONY : tests/TcpServer_test.cpp.i
+
+tests/TcpServer_test.s: tests/TcpServer_test.cpp.s
+
+.PHONY : tests/TcpServer_test.s
+
+# target to generate assembly for a file
+tests/TcpServer_test.cpp.s:
+	$(MAKE) -f CMakeFiles/TcpServer_test.dir/build.make CMakeFiles/TcpServer_test.dir/tests/TcpServer_test.cpp.s
+.PHONY : tests/TcpServer_test.cpp.s
 
 tests/log_test.o: tests/log_test.cpp.o
 
@@ -583,6 +623,33 @@ zbinbin/net/SocketOps.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.s
 .PHONY : zbinbin/net/SocketOps.cpp.s
 
+zbinbin/net/TcpConnection.o: zbinbin/net/TcpConnection.cpp.o
+
+.PHONY : zbinbin/net/TcpConnection.o
+
+# target to build an object file
+zbinbin/net/TcpConnection.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o
+.PHONY : zbinbin/net/TcpConnection.cpp.o
+
+zbinbin/net/TcpConnection.i: zbinbin/net/TcpConnection.cpp.i
+
+.PHONY : zbinbin/net/TcpConnection.i
+
+# target to preprocess a source file
+zbinbin/net/TcpConnection.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.i
+.PHONY : zbinbin/net/TcpConnection.cpp.i
+
+zbinbin/net/TcpConnection.s: zbinbin/net/TcpConnection.cpp.s
+
+.PHONY : zbinbin/net/TcpConnection.s
+
+# target to generate assembly for a file
+zbinbin/net/TcpConnection.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.s
+.PHONY : zbinbin/net/TcpConnection.cpp.s
+
 zbinbin/net/TcpServer.o: zbinbin/net/TcpServer.cpp.o
 
 .PHONY : zbinbin/net/TcpServer.o
@@ -758,6 +825,7 @@ help:
 	@echo "... Buffer_test"
 	@echo "... EventLoop_test"
 	@echo "... edit_cache"
+	@echo "... TcpServer_test"
 	@echo "... tests/AsyncLogging_test.o"
 	@echo "... tests/AsyncLogging_test.i"
 	@echo "... tests/AsyncLogging_test.s"
@@ -767,6 +835,9 @@ help:
 	@echo "... tests/EventLoop_test.o"
 	@echo "... tests/EventLoop_test.i"
 	@echo "... tests/EventLoop_test.s"
+	@echo "... tests/TcpServer_test.o"
+	@echo "... tests/TcpServer_test.i"
+	@echo "... tests/TcpServer_test.s"
 	@echo "... tests/log_test.o"
 	@echo "... tests/log_test.i"
 	@echo "... tests/log_test.s"
@@ -803,6 +874,9 @@ help:
 	@echo "... zbinbin/net/SocketOps.o"
 	@echo "... zbinbin/net/SocketOps.i"
 	@echo "... zbinbin/net/SocketOps.s"
+	@echo "... zbinbin/net/TcpConnection.o"
+	@echo "... zbinbin/net/TcpConnection.i"
+	@echo "... zbinbin/net/TcpConnection.s"
 	@echo "... zbinbin/net/TcpServer.o"
 	@echo "... zbinbin/net/TcpServer.i"
 	@echo "... zbinbin/net/TcpServer.s"

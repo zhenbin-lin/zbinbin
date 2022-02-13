@@ -1,7 +1,6 @@
 #ifndef __ZBINBIN_TCPSERVER_H_
 #define __ZBINBIN_TCPSERVER_H_
 
-
 #include "zbinbin/net/Callbacks.h"
 #include "zbinbin/net/InetAddress.h"
 #include "zbinbin/utility/noncopyable.h"
@@ -9,13 +8,14 @@
 #include <string>
 #include <functional>
 #include <atomic>
+#include <vector>
 
 
 namespace zbinbin
 {
 class Acceptor;
 class EventLoop;
-class EventLoopThreadPool;
+// class EventLoopThreadPool;
 
 class TcpServer : noncopyable
 {
@@ -41,6 +41,7 @@ public:
     void start();
 
     /// Set connection callback.
+    /// connection Established and Destroyed will callback
     /// Not thread safe.
     void setConnectionCallback(const ConnectionCallback& cb)
     { connectionCallback_ = cb; }
@@ -60,8 +61,12 @@ public:
     const std::string& name() const { return name_; }
 
 private:
-    
+    using TcpConnectionPtr = std::shared_ptr<TcpConnection>;
+    using ConnectionList = std::vector<TcpConnectionPtr>;
+
     void newConnection(int connfd, const InetAddress& clientAddr);
+    void removeConnection(const TcpConnectionPtr& conn);
+    void removeConnectionInLoop(const TcpConnectionPtr& conn);
 
     EventLoop* loop_;   // the acceptor loop
     const std::string ipPort_;
@@ -70,14 +75,17 @@ private:
 
     std::atomic_flag started_;
     int nextConnId_;    // sure use in loop
-    // use by TcpConnectio
+
+    // use by TcpConnection
     // callback when connection construct complete
-    ConnectionCallback connectionCallback_; 
+    ConnectionCallback connectionCallback_;     
     // MessageCallback messageCallback_;
     // WriteCompleteCallback writeCompleteCallback_;
+
+    ConnectionList connections_;
 };
 
-}
+}   // namespace zbinbin
 
 
 

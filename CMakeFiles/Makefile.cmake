@@ -47,4 +47,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/AsyncLogging_test.dir/DependInfo.cmake"
   "CMakeFiles/Buffer_test.dir/DependInfo.cmake"
   "CMakeFiles/EventLoop_test.dir/DependInfo.cmake"
+  "CMakeFiles/TcpServer_test.dir/DependInfo.cmake"
   )

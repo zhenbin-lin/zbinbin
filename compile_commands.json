@@ -86,6 +86,11 @@
 },
 {
   "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/TcpConnection.cpp",
+  "file": "/home/binwatson/share/zbinbin/zbinbin/net/TcpConnection.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/TcpServer.cpp",
   "file": "/home/binwatson/share/zbinbin/zbinbin/net/TcpServer.cpp"
 },
@@ -103,5 +108,10 @@
   "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++   -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread   -o CMakeFiles/EventLoop_test.dir/tests/EventLoop_test.cpp.o -c /home/binwatson/share/zbinbin/tests/EventLoop_test.cpp",
   "file": "/home/binwatson/share/zbinbin/tests/EventLoop_test.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++   -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread   -o CMakeFiles/TcpServer_test.dir/tests/TcpServer_test.cpp.o -c /home/binwatson/share/zbinbin/tests/TcpServer_test.cpp",
+  "file": "/home/binwatson/share/zbinbin/tests/TcpServer_test.cpp"
 }
 ]

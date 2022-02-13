@@ -5,3 +5,4 @@
 /home/binwatson/share/zbinbin/CMakeFiles/Buffer_test.dir
 /home/binwatson/share/zbinbin/CMakeFiles/EventLoop_test.dir
 /home/binwatson/share/zbinbin/CMakeFiles/edit_cache.dir
+/home/binwatson/share/zbinbin/CMakeFiles/TcpServer_test.dir

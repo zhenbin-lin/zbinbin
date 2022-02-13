@@ -11,7 +11,6 @@
 
 namespace zbinbin
 {
-class Acceptor;
 class Poller;
 class Channel;
 
@@ -70,10 +69,6 @@ inline void EventLoop::assertInLoopThread()
     }
 }
 
-
-
-
-using EventLoopPtr = std::shared_ptr<EventLoop>;
 
 }   // namespace zbinbn
 
