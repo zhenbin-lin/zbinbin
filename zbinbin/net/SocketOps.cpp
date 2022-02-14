@@ -86,7 +86,7 @@ int accept(int sockfd, struct sockaddr_in* addr)
     if (connfd < 0)
     {
         int savedErrno = errno;
-        LOG_SYSERR << "Socket::accept:" << strerror(savedErrno);
+        LOG_SYSERR << "Socket::accept:" << strerror_tl(savedErrno);
         switch (connfd)
         {
             /* The socket is marked nonblocking and no connections are

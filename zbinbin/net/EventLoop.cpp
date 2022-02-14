@@ -103,8 +103,8 @@ void EventLoop::loop()
         {
             chptr->handleEvent();
         }
-        doPendingFunctors();
         eventHandling_ = false;
+        doPendingFunctors();
     }
     LOG_TRACE << "EventLoop " << this << " stop looping";
     looping_ = false;

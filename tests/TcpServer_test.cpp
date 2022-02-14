@@ -40,10 +40,10 @@ class EchoServer
   {
     LOG_TRACE << conn->getPeerAdrr().getIpPortString() << " -> "
         << conn->getLocalAdrr().getIpPortString() << " is "
-        << (conn->connected() ? "UP" : "DOWN");
+        << (conn->connected() ? "UP" : "DOWN"); 
     LOG_INFO << conn->getTcpInfoString();
 
-    conn->send("hello\n");
+    // conn->send("hello\n");
   }
 
   void onMessage(const TcpConnectionPtr& conn, Buffer* buf)

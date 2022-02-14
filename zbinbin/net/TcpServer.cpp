@@ -69,7 +69,8 @@ void TcpServer::newConnection(int sockfd, const InetAddress& clientAddr)
     conn->setWriteCompleteCallback(writeCompleteCallback_);
     conn->setCloseCallback(
         std::bind(&TcpServer::removeConnection, this, _1));
-    loop_->runInLoop(std::bind(&TcpConnection::connectEstablished, conn.get()));
+    loop_->runInLoop(
+        std::bind(&TcpConnection::connectEstablished, conn));
 }
 
 void TcpServer::removeConnection(const TcpConnectionPtr& conn)
@@ -98,7 +99,7 @@ void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn)
     // 从IO线程中注销connection
     EventLoop* ioLoop = conn->getLoop();
     ioLoop->runInLoop(
-        std::bind(&TcpConnection::connectDestroyed, conn.get()));
+        std::bind(&TcpConnection::connectDestroyed, conn));
 }
 
 }

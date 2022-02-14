@@ -34,7 +34,7 @@ TcpConnection::TcpConnection(EventLoop* loop,
 {
     channel_->setReadCallback(
         std::bind(&TcpConnection::handleRead, this));
-    channel_->setReadCallback(
+    channel_->setWriteCallback(
         std::bind(&TcpConnection::handleWrite, this));
     channel_->setErrorCallback(
         std::bind(&TcpConnection::handleError, this));
@@ -115,6 +115,65 @@ void TcpConnection::send(const std::string& message)
     send(message.c_str(), message.size());
 }
 
+void TcpConnection::sendInLoop(const void* message, size_t len)
+{
+    loop_->assertInLoopThread();
+    ssize_t nwrited = 0;
+    size_t remaining = len;
+    bool faultError = false;
+    if (state_ == kDisconnected)
+    {
+        LOG_WARN << "TcpConnection send data failure! Disconnected, give up writing";
+        return;
+    }
+    // if no thing in output queue, try writing directly
+    if (!channel_->isWriting() && outputBuffer_.readableBytes() == 0)
+    {
+        nwrited = sockets::write(channel_->getFd(), message, len);
+        if (nwrited >= 0)
+        {
+            remaining = len - nwrited;
+            if (0 == remaining && writeCompleteCallback_)
+            {
+                loop_->queueInLoop(
+                    std::bind(writeCompleteCallback_, shared_from_this()));
+            }
+        }
+        else
+        {
+            nwrited = 0;
+            if (errno != EWOULDBLOCK)
+            {
+                LOG_SYSERR << "TcpConnection::sendInLoop " << strerror_tl(errno);
+                if (errno == EPIPE || errno == ECONNRESET) // FIXME: any others?
+                {
+                    faultError = true;
+                }
+            }           
+        }
+    }
+
+    assert(remaining <= len);
+    // 放入outputBuffer中
+    if (!faultError && remaining > 0)
+    {
+        size_t oldLen = outputBuffer_.readableBytes();
+        if (oldLen + remaining >= highWaterMark_
+            && oldLen < highWaterMark_
+            && highWaterMarkCallback_)
+        {
+            loop_->queueInLoop(
+                std::bind(highWaterMarkCallback_, shared_from_this(), oldLen + remaining));
+        }
+        outputBuffer_.append(static_cast<const char*>(message) + nwrited, remaining);
+        if (!channel_->isWriting())
+        {
+            channel_->enableWriting();
+        }
+    }
+}
+
+
 
 void TcpConnection::startRead()
 {
@@ -153,7 +212,6 @@ void TcpConnection::connectEstablished()
     assert(state_ == kConnecting);
     state_ = kConnected;
     channel_->enableReading();
-    channel_->enableWriting();
     if (connectionCallback_)
     {
         connectionCallback_(shared_from_this()); // 连接建立完成，返回客户
@@ -218,63 +276,6 @@ void TcpConnection::forceCloseInLoop()
     }
 }
 
-void TcpConnection::sendInLoop(const void* message, size_t len)
-{
-    loop_->assertInLoopThread();
-    ssize_t nwrited = 0;
-    size_t remaining = len;
-    bool faultError = false;
-    if (state_ == kDisconnected)
-    {
-        LOG_WARN << "TcpConnection send data failure! Disconnected, give up writing";
-        return;
-    }
-    // if no thing in output queue, try writing directly
-    if (!channel_->isWriting() && outputBuffer_.readableBytes() == 0)
-    {
-        nwrited = sockets::write(channel_->getFd(), message, len);
-        if (nwrited >= 0)
-        {
-            remaining = len - nwrited;
-            if (0 == remaining && writeCompleteCallback_)
-            {
-                loop_->queueInLoop(
-                    std::bind(writeCompleteCallback_, shared_from_this()));
-            }
-        }
-        else
-        {
-            nwrited = 0;
-            if (errno != EWOULDBLOCK)
-            {
-                LOG_SYSERR << "TcpConnection::sendInLoop " << strerror_tl(errno);
-                if (errno == EPIPE || errno == ECONNRESET) // FIXME: any others?
-                {
-                    faultError = true;
-                }
-            }           
-        }
-    }
-
-    assert(remaining <= len);
-    // 放入outputBuffer中
-    if (!faultError || remaining > 0)
-    {
-        size_t oldLen = outputBuffer_.readableBytes();
-        if (oldLen + remaining >= highWaterMark_
-            && oldLen < highWaterMark_
-            && highWaterMarkCallback_)
-        {
-            loop_->queueInLoop(
-                std::bind(highWaterMarkCallback_, shared_from_this(), oldLen + remaining));
-        }
-        outputBuffer_.append(static_cast<const char*>(message) + nwrited, remaining);
-        if (!channel_->isWriting())
-        {
-            channel_->enableWriting();
-        }
-    }
-}
 
 void TcpConnection::handleRead()
 {

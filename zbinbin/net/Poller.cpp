@@ -20,7 +20,7 @@ Poller::~Poller()
 
 void Poller::poll(ChannelList* activeChannels)
 {
-   int numEvents = ::poll(pollfds_.data(), pollfds_.size(), 50);
+   int numEvents = ::poll(pollfds_.data(), pollfds_.size(), 10000);
    int savedErrno = errno;
 
     if (numEvents > 0)

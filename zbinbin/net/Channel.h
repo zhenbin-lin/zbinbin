@@ -84,22 +84,22 @@ inline void Channel::enableReading()
     
 }
 
-inline void Channel::enableWriting() 
-{ 
-    events_ |= kWriteEvent; 
-    addedToLoop_ = true;
-    update();
-}
-
 inline void Channel::disableReading() 
 { 
-    events_ ^= kReadEvent; 
+    events_ &= ~kReadEvent; 
     update();
 }
 
 inline void Channel::disableWriting() 
 { 
-    events_ ^= kWriteEvent; 
+    events_ &= ~kWriteEvent; 
+    update();
+}
+
+inline void Channel::enableWriting() 
+{ 
+    events_ |= kWriteEvent; 
+    addedToLoop_ = true;
     update();
 }
 
