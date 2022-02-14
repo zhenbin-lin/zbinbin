@@ -102,7 +102,7 @@ private:
     void handleError(); // connection error
     void handleClose(); // peer close
     
-    EventLoop* loop_;   // TcpServer所在的loop
+    EventLoop* loop_;   // IO线程所在的loop
     const std::string name_;
     StateE state_;              // 记录连接的状态
     bool reading_;
