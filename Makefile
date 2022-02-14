@@ -515,6 +515,60 @@ zbinbin/net/EventLoop.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.s
 .PHONY : zbinbin/net/EventLoop.cpp.s
 
+zbinbin/net/EventLoopThread.o: zbinbin/net/EventLoopThread.cpp.o
+
+.PHONY : zbinbin/net/EventLoopThread.o
+
+# target to build an object file
+zbinbin/net/EventLoopThread.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o
+.PHONY : zbinbin/net/EventLoopThread.cpp.o
+
+zbinbin/net/EventLoopThread.i: zbinbin/net/EventLoopThread.cpp.i
+
+.PHONY : zbinbin/net/EventLoopThread.i
+
+# target to preprocess a source file
+zbinbin/net/EventLoopThread.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.i
+.PHONY : zbinbin/net/EventLoopThread.cpp.i
+
+zbinbin/net/EventLoopThread.s: zbinbin/net/EventLoopThread.cpp.s
+
+.PHONY : zbinbin/net/EventLoopThread.s
+
+# target to generate assembly for a file
+zbinbin/net/EventLoopThread.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.s
+.PHONY : zbinbin/net/EventLoopThread.cpp.s
+
+zbinbin/net/EventLoopThreadPool.o: zbinbin/net/EventLoopThreadPool.cpp.o
+
+.PHONY : zbinbin/net/EventLoopThreadPool.o
+
+# target to build an object file
+zbinbin/net/EventLoopThreadPool.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o
+.PHONY : zbinbin/net/EventLoopThreadPool.cpp.o
+
+zbinbin/net/EventLoopThreadPool.i: zbinbin/net/EventLoopThreadPool.cpp.i
+
+.PHONY : zbinbin/net/EventLoopThreadPool.i
+
+# target to preprocess a source file
+zbinbin/net/EventLoopThreadPool.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.i
+.PHONY : zbinbin/net/EventLoopThreadPool.cpp.i
+
+zbinbin/net/EventLoopThreadPool.s: zbinbin/net/EventLoopThreadPool.cpp.s
+
+.PHONY : zbinbin/net/EventLoopThreadPool.s
+
+# target to generate assembly for a file
+zbinbin/net/EventLoopThreadPool.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.s
+.PHONY : zbinbin/net/EventLoopThreadPool.cpp.s
+
 zbinbin/net/InetAddress.o: zbinbin/net/InetAddress.cpp.o
 
 .PHONY : zbinbin/net/InetAddress.o
@@ -862,6 +916,12 @@ help:
 	@echo "... zbinbin/net/EventLoop.o"
 	@echo "... zbinbin/net/EventLoop.i"
 	@echo "... zbinbin/net/EventLoop.s"
+	@echo "... zbinbin/net/EventLoopThread.o"
+	@echo "... zbinbin/net/EventLoopThread.i"
+	@echo "... zbinbin/net/EventLoopThread.s"
+	@echo "... zbinbin/net/EventLoopThreadPool.o"
+	@echo "... zbinbin/net/EventLoopThreadPool.i"
+	@echo "... zbinbin/net/EventLoopThreadPool.s"
 	@echo "... zbinbin/net/InetAddress.o"
 	@echo "... zbinbin/net/InetAddress.i"
 	@echo "... zbinbin/net/InetAddress.s"

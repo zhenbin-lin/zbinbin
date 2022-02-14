@@ -13,7 +13,7 @@ using namespace zbinbin;
 using namespace std;
 
 
-int numThreads = 0;
+int numThreads = 3;
 
 class EchoServer
 {
@@ -26,7 +26,7 @@ class EchoServer
         std::bind(&EchoServer::onConnection, this, _1));
     server_.setMessageCallback(
         std::bind(&EchoServer::onMessage, this, _1, _2));
-    // server_.setThreadNum(numThreads);
+    server_.setThreadNum(numThreads);
   }
 
   void start()

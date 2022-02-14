@@ -5,6 +5,7 @@
 #include "zbinbin/net/SocketOps.h"
 #include "zbinbin/net/InetAddress.h"
 #include "zbinbin/net/TcpConnection.h"
+#include "zbinbin/net/EventLoopThreadPool.h"
 #include "zbinbin/thread/CurrentThread.h"
 
 
@@ -19,8 +20,9 @@ TcpServer::TcpServer(EventLoop* loop,
     , ipPort_(listenAddr.getIpPortString())
     , name_(nameArg)
     , acceptor_(new Acceptor(loop, listenAddr, option == kReusePort))
-    , started_(ATOMIC_FLAG_INIT)    // false
+    , started_(false)    // false
     , nextConnId_(1)
+    , ioEventLoop_(new EventLoopThreadPool(loop, nameArg + " io thread"))
 {   
     acceptor_->setNewConnectionCallback(
         std::bind(&TcpServer::newConnection, this, _1, _2));
@@ -38,15 +40,22 @@ TcpServer::~TcpServer()
 void TcpServer::start()
 {
     // set started_ = true and return old value
-    if (!started_.test_and_set())
+    if (!started_.exchange(true))
     {
         LOG_TRACE << "TcpServer started in " << CurrentThread::tid();
         assert(!acceptor_->listening());
         loop_->runInLoop(
             std::bind(&Acceptor::listen, acceptor_.get()));
+        ioEventLoop_->start(threadInitCallback_);
     }
 }
 
+void TcpServer::setThreadNum(int numThreads)
+{
+    assert(!started_.load());
+    assert(0 <= numThreads);
+    ioEventLoop_->setThreadNum(numThreads);
+}
 
 void TcpServer::newConnection(int sockfd, const InetAddress& clientAddr)
 {
@@ -60,16 +69,17 @@ void TcpServer::newConnection(int sockfd, const InetAddress& clientAddr)
              << "] - new connection [" << connName
              << "] from " << clientAddr.getIpPortString();
     InetAddress localAddr(sockets::getLocalAddr(sockfd));
+    EventLoop* ioLoop = ioEventLoop_->getNextLoop();
     TcpConnectionPtr conn = TcpConnectionPtr(
         new TcpConnection(
-            loop_, connName, sockfd, connections_.size(), localAddr, clientAddr));
+            ioLoop, connName, sockfd, connections_.size(), localAddr, clientAddr));
     connections_.push_back(conn);   // must before new conn
     conn->setConnectionCallback(connectionCallback_);
     conn->setMessageCallback(messageCallback_);
     conn->setWriteCompleteCallback(writeCompleteCallback_);
     conn->setCloseCallback(
         std::bind(&TcpServer::removeConnection, this, _1));
-    loop_->runInLoop(
+    ioLoop->runInLoop(
         std::bind(&TcpConnection::connectEstablished, conn));
 }
 

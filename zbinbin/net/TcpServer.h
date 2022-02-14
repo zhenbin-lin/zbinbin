@@ -15,7 +15,7 @@ namespace zbinbin
 {
 class Acceptor;
 class EventLoop;
-// class EventLoopThreadPool;
+class EventLoopThreadPool;
 
 class TcpServer : noncopyable
 {
@@ -34,11 +34,26 @@ public:
               Option option = kReusePort);
     ~TcpServer();
 
+
     /// Starts the server if it's not listening.
     ///
     /// It's harmless to call it multiple times.
     /// Thread safe.
     void start();
+
+    /// Set the number of threads for handling input.
+    ///
+    /// Always accepts new connection in loop's thread.
+    /// Must be called before @c start
+    /// @param numThreads
+    /// - 0 means all I/O in loop's thread, no thread will created.
+    ///   this is the default value.
+    /// - 1 means all I/O in another thread.
+    /// - N means a thread pool with N threads, new connections
+    ///   are assigned on a round-robin basis.
+    void setThreadNum(int numThreads);
+    void setThreadInitCallback(const ThreadInitCallback& cb)
+    { threadInitCallback_ = cb; }
 
     /// Set connection callback.
     /// connection Established and Destroyed will callback
@@ -73,7 +88,7 @@ private:
     const std::string name_;
     std::unique_ptr<Acceptor> acceptor_;
 
-    std::atomic_flag started_;
+    std::atomic_bool started_;
     int nextConnId_;    // sure use in loop
 
     // use by TcpConnection
@@ -81,7 +96,9 @@ private:
     ConnectionCallback connectionCallback_;     
     MessageCallback messageCallback_;
     WriteCompleteCallback writeCompleteCallback_;
+    ThreadInitCallback threadInitCallback_;
 
+    std::unique_ptr<EventLoopThreadPool> ioEventLoop_;
     ConnectionList connections_;
 };
 

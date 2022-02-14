@@ -7,16 +7,16 @@ namespace zbinbin
 {
 
 EventLoopThreadPool::EventLoopThreadPool(EventLoop* baseLoop,
-                    size_t numThreads, 
                     const std::string& name)
     : started_(false)
     , baseLoop_(baseLoop)
     , name_(name)
-    , numThreads_(numThreads)
+    , numThreads_(0)
     , nextLoop_(0)
-    , threads_(numThreads)
-    , ioLoops_(numThreads, nullptr)
 {
+    // , threads_(0)
+    // , ioLoops_(0, nullptr)
+    // use default ctor
 }
 
 EventLoopThreadPool::~EventLoopThreadPool()
@@ -29,6 +29,8 @@ void EventLoopThreadPool::start(const ThreadInitCallback& cb)
 {
     assert(!started_);
     started_ = true;
+    threads_.resize(numThreads_);
+    ioLoops_.resize(numThreads_);
     for (int i = 0; i < numThreads_; ++i)
     {
         threads_[i].reset(new EventLoopThread(cb, name_ + "-" + std::to_string(i)));
@@ -38,6 +40,13 @@ void EventLoopThreadPool::start(const ThreadInitCallback& cb)
     {
         cb(baseLoop_);
     }
+}
+
+void EventLoopThreadPool::setThreadNum(int numThreads) 
+{ 
+    assert(!started_);
+    assert(0 <= numThreads);
+    numThreads_ = numThreads; 
 }
 
 // void setThreadNum(int numThreads);

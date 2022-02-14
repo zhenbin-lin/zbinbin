@@ -7,11 +7,12 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <functional>
 
 namespace zbinbin
 {
 class EventLoop;
-class EventLoopThread
+class EventLoopThread;
 
 class EventLoopThreadPool : noncopyable
 {
@@ -19,14 +20,16 @@ public:
     typedef std::function<void(EventLoop*)> ThreadInitCallback;
 
     EventLoopThreadPool(EventLoop* baseLoop,
-                        size_t numThreads = 0, 
                         const std::string& name = std::string());
     ~EventLoopThreadPool();
 
     /// start all Threads
     void start(const ThreadInitCallback& cb = ThreadInitCallback());
 
-    // void setThreadNum(int numThreads);
+    /// Set the number of threads for handling input.
+    /// Must be called before @c start
+    void setThreadNum(int numThreads);
+
     // valid after calling start()
     /// round-robin
     EventLoop* getNextLoop();

@@ -30,6 +30,8 @@ set(LIB_SRC
     zbinbin/net/EventLoop.cpp
     zbinbin/net/Acceptor.cpp
     zbinbin/net/TcpConnection.cpp
+    zbinbin/net/EventLoopThread.cpp
+    zbinbin/net/EventLoopThreadPool.cpp
     zbinbin/net/TcpServer.cpp
 	)
 

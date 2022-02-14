@@ -1,4 +1,4 @@
-#include "zbinbin/thread/EventLoopThread"
+#include "zbinbin/net/EventLoopThread.h"
 #include "zbinbin/net/EventLoop.h"
 
 
@@ -20,7 +20,7 @@ EventLoopThread::~EventLoopThread()
 {
     if (loop_ != nullptr)
     {
-        loop_.quit();
+        loop_->quit();
         thread_.join();
     }
 }
@@ -32,12 +32,12 @@ EventLoop* EventLoopThread::startLoop()
 
     EventLoop* loop = nullptr;
     {
-        MutexLockGurad lock(mutex_);
-        while (loop_ != nullptr)
+        MutexLockGuard lock(mutex_);
+        while (loop_ == nullptr)
         {
             cond_.wait();
         }
-        loop = &loop_;
+        loop = loop_;
     }
     return loop;
 }
@@ -47,7 +47,7 @@ void EventLoopThread::threadFunc()
     EventLoop loop;
     if (initCallback_)
     {
-        initCallback_(loop);
+        initCallback_(&loop);
     }
     {
     MutexLockGuard lock(mutex_);
