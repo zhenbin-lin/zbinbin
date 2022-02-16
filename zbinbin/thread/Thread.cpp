@@ -74,7 +74,6 @@ void* newthreadstart(void *obj) {
     return NULL;
 }
 
-
 }   // 隐藏名称空间
 
 
@@ -85,8 +84,8 @@ Thread::Thread(const ThreadFunc& func, const std::string& name)
     , func_(func)
     , name_(name)
 {
-    
 }
+
 Thread::~Thread() 
 {
     if (started_ && !joined_) {

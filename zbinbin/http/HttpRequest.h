@@ -2,27 +2,14 @@
 #define __ZBINBIN_HTTPREQUEST_H_
 
 #include "zbinbin/net/Buffer.h"
+#include "zbinbin/utility/noncopyable.h"
 
 #include <string>
 #include <map>
 
-
-/* "POST /audiolibrary/music?ar=1595301089068&n=1p1 HTTP/1.1\r\n"
-		"Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-silverlight, application/x-shockwave-flash\r\n"
-		"Referer: http://www.google.cn\r\n"
-		"Accept-Language: zh-cn\r\n"
-		"Accept-Encoding: gzip, deflate\r\n"
-		"User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; TheWorld)\r\n"
-		"content-length:28\r\n"
-		"Host: www.google.cn\r\n"
-		"Connection: Keep-Alive\r\n"
-		"Cookie: PREF=ID=80a06da87be9ae3c:U=f7167333e2c3b714:NW=1:TM=1261551909:LM=1261551917:S=ybYcq2wpfefs4V9g; NID=31=ojj8d-IygaEtSxLgaJmqSjVhCspkviJrB6omjamNrSm8lZhKy_yMfO2M4QMRKcH1g0iQv9u\r\n"
-		"\r\n"
-		"hl=zh-CN&source=hp&q=domety"; */
-
 namespace zbinbin
 {
-class HttpRequest
+class HttpRequest : noncopyable
 {
 private:
     enum HttpRequestDecodeState {
@@ -70,8 +57,10 @@ private:
     };
 
 public:
-    HttpRequest(Buffer &rhs);
+    explicit HttpRequest();
     ~HttpRequest();
+
+    bool HttpRequest::parseRequest(Buffer* buffer);
 
     std::string getMethod() const { return method_; }
     std::string getUrl() const { return url_; }
@@ -82,12 +71,15 @@ public:
     ///
     std::string getParams(const std::string& key) const 
     { 
-        if (requestParams_.find(key) != requestParams_.end())
+        std::string result;
+        auto it = requestParams_.find(key);
+        if (it != requestParams_.end())
         {
-            return requestParams_.find(key)->second;
+            result = it->second;
         }
-        return std::string(); 
+        return result; 
     }
+
     std::map<std::string, std::string> getRequestParams() const 
     {
         return requestParams_;
@@ -97,12 +89,25 @@ public:
     std::string getVersion() const { return version_; }
     std::map<std::string, std::string> getHeaders() const { return headers_; }
 
+
+    ///
+    /// @param field header中的参数名字
+    /// @return 如果有则返回value, 否则返回一个空字符串
+    ///
+    std::string getHeader(const std::string& field) const
+    {
+        std::string result;
+        auto it = headers_.find(field);
+        if (it != headers_.end())
+        {
+            result = it->second;
+        }
+        return result;
+    }
+
     std::string getBody() const { return body_; }
 private:
-    void parseInternal();
     const char* toStateString(HttpRequestDecodeState state);
-
-    Buffer buffer_;
 
     std::string method_;
     std::string url_;
@@ -115,7 +120,7 @@ private:
     std::map<std::string, std::string> headers_;
 
     std::string body_;
-    HttpRequestDecodeState state_ = BEFORE_STATE;
+    HttpRequestDecodeState state_;
 
     static char kLF;    // 换行
     static char kCR;    // 回车

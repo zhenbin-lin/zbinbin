@@ -21,6 +21,7 @@ set(LIB_SRC
 	zbinbin/thread/Condition.cpp
 	zbinbin/thread/CurrentThread.cpp
     zbinbin/thread/CountDownLatch.cpp
+    zbinbin/thread/ThreadPool.cpp
     zbinbin/net/InetAddress.cpp
     zbinbin/net/SocketOps.cpp
     zbinbin/net/Socket.cpp

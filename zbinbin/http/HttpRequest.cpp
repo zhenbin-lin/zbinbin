@@ -11,27 +11,24 @@ using namespace zbinbin;
 char HttpRequest::kLF = '\n';
 char HttpRequest::kCR = '\r';
 
-HttpRequest::HttpRequest(Buffer& lhs)
+HttpRequest::HttpRequest()
 {
-    buffer_.swap(lhs);
-    parseInternal();
 }
 
 HttpRequest::~HttpRequest()
 {
-    
 }
 
-
-void HttpRequest::parseInternal()
+bool HttpRequest::parseRequest(Buffer* buffer)
 {
     state_ = BEFORE_STATE;
-    const char* begin = buffer_.peek();
+    const char* begin = buffer->peek();
     const char* cur = begin;
     // HttpRequestDecodeState errorState ;
     std::string key;
     std::string val;
     bool hasMore = true;
+    bool ok = true;
     
     while (hasMore)
     {
@@ -48,7 +45,7 @@ void HttpRequest::parseInternal()
                 if (::isblank(*cur))  // 空格，说明方法解析结束，下一步开始解析URI
                 {
                     state_ = BEFORE_URI;
-                    method_ = buffer_.retrieveAsString(cur - begin);
+                    method_ = buffer->retrieveAsString(cur - begin);
                     begin = cur;
                 }
                 else
@@ -65,7 +62,7 @@ void HttpRequest::parseInternal()
                 }
                 if (*cur == '/')
                 {
-                    buffer_.retrieve(cur - begin);    // 清除掉空格
+                    buffer->retrieve(cur - begin);    // 清除掉空格
                     begin = cur;
                     state_ = IN_URI;
                 }
@@ -95,7 +92,7 @@ void HttpRequest::parseInternal()
                     state_ = INVALID_URI; 
                     break; 
                 }  
-                url_ = buffer_.retrieveAsString(cur - begin);
+                url_ = buffer->retrieveAsString(cur - begin);
                 begin = cur;
                 break;
             }
@@ -107,7 +104,7 @@ void HttpRequest::parseInternal()
                     state_ = INVALID_URI;
                     break;
                 }
-                buffer_.retrieve(1);    // 清除掉'?' 或者 '&'
+                buffer->retrieve(1);    // 清除掉'?' 或者 '&'
                 begin = cur;
                 state_ = URI_PARAM_KEY;
                 break;
@@ -118,7 +115,7 @@ void HttpRequest::parseInternal()
                 {
                     ++cur;
                 }
-                key = buffer_.retrieveAsString(cur - begin);
+                key = buffer->retrieveAsString(cur - begin);
                 state_ = BEFORE_URI_PARAM_VALUE;
                 begin = cur;
                 break;
@@ -132,7 +129,7 @@ void HttpRequest::parseInternal()
                 }
                 else
                 {
-                    buffer_.retrieve(1);    // 清除掉'='
+                    buffer->retrieve(1);    // 清除掉'='
                     begin = cur;
                     state_ = URI_PARAM_VALUE;
                 }
@@ -152,7 +149,7 @@ void HttpRequest::parseInternal()
                 } /* else {
                     state_ = INVALID;
                 } */
-                requestParams_[key] = buffer_.retrieveAsString(cur - begin);
+                requestParams_[key] = buffer->retrieveAsString(cur - begin);
                 key.clear();
                 begin = cur;
                 break;
@@ -169,7 +166,7 @@ void HttpRequest::parseInternal()
                 }
                 else
                 {
-                    buffer_.retrieve(cur - begin);
+                    buffer->retrieve(cur - begin);
                     begin = cur;
                     state_ = PROTOCOL;
                 }
@@ -187,7 +184,7 @@ void HttpRequest::parseInternal()
                 }
                 else
                 {
-                    protocol_ = buffer_.retrieveAsString(cur - begin);
+                    protocol_ = buffer->retrieveAsString(cur - begin);
                     begin = cur;
                     state_ = BEFORE_VERSION;    // 版本号
                 }
@@ -199,7 +196,7 @@ void HttpRequest::parseInternal()
                 if (::isdigit(*cur))
                 {
                     state_ = VERSION;
-                    buffer_.retrieve(1);    // 清除掉'/'
+                    buffer->retrieve(1);    // 清除掉'/'
                     begin = cur;
                 }
                 else
@@ -220,7 +217,7 @@ void HttpRequest::parseInternal()
                 }
                 else
                 {
-                    version_ = buffer_.retrieveAsString(cur - begin);
+                    version_ = buffer->retrieveAsString(cur - begin);
                     begin = cur;
                     state_ = WHEN_CR;
                 }
@@ -232,7 +229,7 @@ void HttpRequest::parseInternal()
                 if (*cur == kLF)
                 {
                     state_ = CR_LF;
-                    buffer_.retrieve(1); // 清除掉 CR
+                    buffer->retrieve(1); // 清除掉 CR
                     begin = cur;
                 }
                 else
@@ -252,7 +249,7 @@ void HttpRequest::parseInternal()
                 {
                     state_ = HEADER_KEY;
                 }
-                buffer_.retrieve(1);    // 清除掉 LF
+                buffer->retrieve(1);    // 清除掉 LF
                 begin = cur;
                 break;
             }
@@ -270,7 +267,7 @@ void HttpRequest::parseInternal()
                 {
                     state_ = BEFORE_HEADER_COLON;
                 }
-                key = buffer_.retrieveAsString(cur - begin);
+                key = buffer->retrieveAsString(cur - begin);
                 begin = cur;
                 break;
             }
@@ -283,7 +280,7 @@ void HttpRequest::parseInternal()
                 if (*cur == ':')
                 {
                     state_ = HEADER_COLON;
-                    buffer_.retrieve(cur - begin);
+                    buffer->retrieve(cur - begin);
                     begin = cur;
                 }
                 else
@@ -299,7 +296,7 @@ void HttpRequest::parseInternal()
                 {
                     ++cur;
                 }
-                buffer_.retrieve(cur - begin);
+                buffer->retrieve(cur - begin);
                 begin = cur;
                 state_ = HEADER_VALUE;
                 break;
@@ -310,7 +307,7 @@ void HttpRequest::parseInternal()
                 {
                     ++cur;
                 }
-                headers_[key] = buffer_.retrieveAsString(cur - begin);
+                headers_[key] = buffer->retrieveAsString(cur - begin);
                 begin = cur;
                 state_ = WHEN_CR;
                 break;
@@ -320,7 +317,7 @@ void HttpRequest::parseInternal()
                 cur++;
                 if (*cur == kLF)
                 {
-                    buffer_.retrieve(1);    // 清除掉 CR
+                    buffer->retrieve(1);    // 清除掉 CR
                     state_ = CR_LF_CR_LF;
                     begin = cur;
                 }
@@ -332,8 +329,8 @@ void HttpRequest::parseInternal()
             }
             case CR_LF_CR_LF:
             {
-                buffer_.retrieve(1);    // 清除掉 LF
-                if (buffer_.readableBytes() > 0) // 还有body
+                buffer->retrieve(1);    // 清除掉 LF
+                if (buffer->readableBytes() > 0) // 还有body
                 {
                     cur++;
                     begin = cur;
@@ -348,7 +345,7 @@ void HttpRequest::parseInternal()
             }
             case BODY:
             {
-                body_ = buffer_.retrieveAllAsString();
+                body_ = buffer->retrieveAllAsString();
               cur = begin = nullptr;
                 hasMore = false;
                 break;
@@ -371,11 +368,12 @@ void HttpRequest::parseInternal()
                           << toStateString(state_) 
                           << " near "
                           << "\"" 
-                          << buffer_.retrieveAsString(
-                              std::min(static_cast<size_t>(30), buffer_.readableBytes())) << "\"";
-                buffer_.retrieveAll();  // 清空buffer
+                          << buffer->retrieveAsString(
+                              std::min(static_cast<size_t>(30), buffer->readableBytes())) << "\"";
+                buffer->retrieveAll();  // 清空buffer
                 cur = begin = nullptr;
                 hasMore = false;
+                ok = false;
                 break;
             }
             default:
@@ -383,10 +381,12 @@ void HttpRequest::parseInternal()
                 LOG_ERROR << "HttpRequest::parseInternal: parse error unkown state! ";
                 cur = begin = nullptr;
                 hasMore = false;
+                ok = false;
                 break;
             }
         }
     }   // while (hasMore)
+    return ok;
 }
 
 const char *HttpRequest::toStateString(HttpRequestDecodeState state)
@@ -432,3 +432,16 @@ const char *HttpRequest::toStateString(HttpRequestDecodeState state)
 
     return stateString[state];
 }
+
+/* "POST /audiolibrary/music?ar=1595301089068&n=1p1 HTTP/1.1\r\n"
+		"Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-silverlight, application/x-shockwave-flash\r\n"
+		"Referer: http://www.google.cn\r\n"
+		"Accept-Language: zh-cn\r\n"
+		"Accept-Encoding: gzip, deflate\r\n"
+		"User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; TheWorld)\r\n"
+		"content-length:28\r\n"
+		"Host: www.google.cn\r\n"
+		"Connection: Keep-Alive\r\n"
+		"Cookie: PREF=ID=80a06da87be9ae3c:U=f7167333e2c3b714:NW=1:TM=1261551909:LM=1261551917:S=ybYcq2wpfefs4V9g; NID=31=ojj8d-IygaEtSxLgaJmqSjVhCspkviJrB6omjamNrSm8lZhKy_yMfO2M4QMRKcH1g0iQv9u\r\n"
+		"\r\n"
+		"hl=zh-CN&source=hp&q=domety"; */
