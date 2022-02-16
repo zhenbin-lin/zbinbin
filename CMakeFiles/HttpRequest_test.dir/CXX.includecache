@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/binwatson/share/zbinbin/zbinbin/http/tests/HttpRequest_test.cpp
+zbinbin/http/HttpRequest.h
+/home/binwatson/share/zbinbin/zbinbin/http/tests/zbinbin/http/HttpRequest.h
+zbinbin/net/Buffer.h
+/home/binwatson/share/zbinbin/zbinbin/http/tests/zbinbin/net/Buffer.h
+iostream
+-
+string.h
+-
+
+zbinbin/http/HttpRequest.h
+zbinbin/net/Buffer.h
+zbinbin/http/zbinbin/net/Buffer.h
+string
+-
+map
+-
+
+zbinbin/net/Buffer.h
+algorithm
+-
+vector
+-
+string
+-
+assert.h
+-
+

@@ -19,6 +19,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o"
+  "CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o"
   "lib/libzbinbin.pdb"
   "lib/libzbinbin.so"
 )

@@ -114,6 +114,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named HttpRequest_test
+
+# Build rule for target.
+HttpRequest_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 HttpRequest_test
+.PHONY : HttpRequest_test
+
+# fast build rule for target.
+HttpRequest_test/fast:
+	$(MAKE) -f CMakeFiles/HttpRequest_test.dir/build.make CMakeFiles/HttpRequest_test.dir/build
+.PHONY : HttpRequest_test/fast
+
+#=============================================================================
 # Target rules for targets named log_test
 
 # Build rule for target.
@@ -325,6 +338,60 @@ tests/log_test.s: tests/log_test.cpp.s
 tests/log_test.cpp.s:
 	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/tests/log_test.cpp.s
 .PHONY : tests/log_test.cpp.s
+
+zbinbin/http/HttpRequest.o: zbinbin/http/HttpRequest.cpp.o
+
+.PHONY : zbinbin/http/HttpRequest.o
+
+# target to build an object file
+zbinbin/http/HttpRequest.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o
+.PHONY : zbinbin/http/HttpRequest.cpp.o
+
+zbinbin/http/HttpRequest.i: zbinbin/http/HttpRequest.cpp.i
+
+.PHONY : zbinbin/http/HttpRequest.i
+
+# target to preprocess a source file
+zbinbin/http/HttpRequest.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.i
+.PHONY : zbinbin/http/HttpRequest.cpp.i
+
+zbinbin/http/HttpRequest.s: zbinbin/http/HttpRequest.cpp.s
+
+.PHONY : zbinbin/http/HttpRequest.s
+
+# target to generate assembly for a file
+zbinbin/http/HttpRequest.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.s
+.PHONY : zbinbin/http/HttpRequest.cpp.s
+
+zbinbin/http/tests/HttpRequest_test.o: zbinbin/http/tests/HttpRequest_test.cpp.o
+
+.PHONY : zbinbin/http/tests/HttpRequest_test.o
+
+# target to build an object file
+zbinbin/http/tests/HttpRequest_test.cpp.o:
+	$(MAKE) -f CMakeFiles/HttpRequest_test.dir/build.make CMakeFiles/HttpRequest_test.dir/zbinbin/http/tests/HttpRequest_test.cpp.o
+.PHONY : zbinbin/http/tests/HttpRequest_test.cpp.o
+
+zbinbin/http/tests/HttpRequest_test.i: zbinbin/http/tests/HttpRequest_test.cpp.i
+
+.PHONY : zbinbin/http/tests/HttpRequest_test.i
+
+# target to preprocess a source file
+zbinbin/http/tests/HttpRequest_test.cpp.i:
+	$(MAKE) -f CMakeFiles/HttpRequest_test.dir/build.make CMakeFiles/HttpRequest_test.dir/zbinbin/http/tests/HttpRequest_test.cpp.i
+.PHONY : zbinbin/http/tests/HttpRequest_test.cpp.i
+
+zbinbin/http/tests/HttpRequest_test.s: zbinbin/http/tests/HttpRequest_test.cpp.s
+
+.PHONY : zbinbin/http/tests/HttpRequest_test.s
+
+# target to generate assembly for a file
+zbinbin/http/tests/HttpRequest_test.cpp.s:
+	$(MAKE) -f CMakeFiles/HttpRequest_test.dir/build.make CMakeFiles/HttpRequest_test.dir/zbinbin/http/tests/HttpRequest_test.cpp.s
+.PHONY : zbinbin/http/tests/HttpRequest_test.cpp.s
 
 zbinbin/log/AsyncLogging.o: zbinbin/log/AsyncLogging.cpp.o
 
@@ -873,6 +940,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... HttpRequest_test"
 	@echo "... log_test"
 	@echo "... zbinbin"
 	@echo "... AsyncLogging_test"
@@ -895,6 +963,12 @@ help:
 	@echo "... tests/log_test.o"
 	@echo "... tests/log_test.i"
 	@echo "... tests/log_test.s"
+	@echo "... zbinbin/http/HttpRequest.o"
+	@echo "... zbinbin/http/HttpRequest.i"
+	@echo "... zbinbin/http/HttpRequest.s"
+	@echo "... zbinbin/http/tests/HttpRequest_test.o"
+	@echo "... zbinbin/http/tests/HttpRequest_test.i"
+	@echo "... zbinbin/http/tests/HttpRequest_test.s"
 	@echo "... zbinbin/log/AsyncLogging.o"
 	@echo "... zbinbin/log/AsyncLogging.i"
 	@echo "... zbinbin/log/AsyncLogging.s"

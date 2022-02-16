@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/binwatson/share/zbinbin/zbinbin/http/HttpRequest.cpp
+zbinbin/http/HttpRequest.h
+/home/binwatson/share/zbinbin/zbinbin/http/zbinbin/http/HttpRequest.h
+zbinbin/log/Logging.h
+/home/binwatson/share/zbinbin/zbinbin/http/zbinbin/log/Logging.h
+algorithm
+-
+string
+-
+ctype.h
+-
+memory
+-
+
 /home/binwatson/share/zbinbin/zbinbin/log/AsyncLogging.cpp
 zbinbin/log/AsyncLogging.h
 /home/binwatson/share/zbinbin/zbinbin/log/zbinbin/log/AsyncLogging.h
@@ -278,6 +292,14 @@ sys/time.h
 stdio.h
 -
 inttypes.h
+-
+
+zbinbin/http/HttpRequest.h
+zbinbin/net/Buffer.h
+zbinbin/http/zbinbin/net/Buffer.h
+string
+-
+map
 -
 
 zbinbin/log/AsyncLogging.h

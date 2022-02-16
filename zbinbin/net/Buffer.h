@@ -10,6 +10,7 @@
 namespace zbinbin
 {
 class TcpConnection;
+class HttpRequest;
 
 class Buffer
 {
@@ -20,7 +21,7 @@ public:
     Buffer(size_t initialSize = kInitialSize)
         : buffer_(kCheapPrepend + initialSize)
         , readerIndex_(kCheapPrepend)
-        , writerIndex_(kInitialSize)
+        , writerIndex_(kCheapPrepend)
     {   
     }
 
@@ -89,6 +90,7 @@ public:
 
 private:
     friend class TcpConnection;
+    friend class HttpRequest;
 
     char* begin()
     { return buffer_.data(); }
