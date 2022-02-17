@@ -60,7 +60,7 @@ public:
     explicit HttpRequest();
     ~HttpRequest();
 
-    bool HttpRequest::parseRequest(Buffer* buffer);
+    bool parseRequest(Buffer* buffer);
 
     std::string getMethod() const { return method_; }
     std::string getUrl() const { return url_; }

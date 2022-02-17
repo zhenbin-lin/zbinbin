@@ -42,6 +42,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/HttpServer_test.dir/DependInfo.cmake"
   "CMakeFiles/HttpRequest_test.dir/DependInfo.cmake"
   "CMakeFiles/log_test.dir/DependInfo.cmake"
   "CMakeFiles/zbinbin.dir/DependInfo.cmake"

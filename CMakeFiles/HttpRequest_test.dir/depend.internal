@@ -5,3 +5,4 @@ CMakeFiles/HttpRequest_test.dir/zbinbin/http/tests/HttpRequest_test.cpp.o
  /home/binwatson/share/zbinbin/zbinbin/http/tests/HttpRequest_test.cpp
  zbinbin/http/HttpRequest.h
  zbinbin/net/Buffer.h
+ zbinbin/utility/noncopyable.h

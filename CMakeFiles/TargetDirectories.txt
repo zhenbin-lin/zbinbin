@@ -1,4 +1,5 @@
 /home/binwatson/share/zbinbin/CMakeFiles/rebuild_cache.dir
+/home/binwatson/share/zbinbin/CMakeFiles/HttpServer_test.dir
 /home/binwatson/share/zbinbin/CMakeFiles/HttpRequest_test.dir
 /home/binwatson/share/zbinbin/CMakeFiles/log_test.dir
 /home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir

@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o"
+  "CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o"
@@ -20,6 +21,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o"
   "CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o"
+  "CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o"
   "lib/libzbinbin.pdb"
   "lib/libzbinbin.so"
 )

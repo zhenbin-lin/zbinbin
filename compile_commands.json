@@ -1,6 +1,11 @@
 [
 {
   "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++   -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread   -o CMakeFiles/HttpServer_test.dir/zbinbin/http/tests/HttpServer_test.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/http/tests/HttpServer_test.cpp",
+  "file": "/home/binwatson/share/zbinbin/zbinbin/http/tests/HttpServer_test.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++   -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread   -o CMakeFiles/HttpRequest_test.dir/zbinbin/http/tests/HttpRequest_test.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/http/tests/HttpRequest_test.cpp",
   "file": "/home/binwatson/share/zbinbin/zbinbin/http/tests/HttpRequest_test.cpp"
 },
@@ -48,6 +53,11 @@
   "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/thread/CountDownLatch.cpp",
   "file": "/home/binwatson/share/zbinbin/zbinbin/thread/CountDownLatch.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/thread/ThreadPool.cpp",
+  "file": "/home/binwatson/share/zbinbin/zbinbin/thread/ThreadPool.cpp"
 },
 {
   "directory": "/home/binwatson/share/zbinbin",
@@ -113,6 +123,11 @@
   "directory": "/home/binwatson/share/zbinbin",
   "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/http/HttpRequest.cpp",
   "file": "/home/binwatson/share/zbinbin/zbinbin/http/HttpRequest.cpp"
+},
+{
+  "directory": "/home/binwatson/share/zbinbin",
+  "command": "/usr/bin/c++  -Dzbinbin_EXPORTS -I/home/binwatson/share/zbinbin/.   -rdynamic -O1 -g -std=c++14 -Wall -Wno-deprecated -Werror -Wno-unused-function -pthread -fPIC   -o CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp",
+  "file": "/home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp"
 },
 {
   "directory": "/home/binwatson/share/zbinbin",

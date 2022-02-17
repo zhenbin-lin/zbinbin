@@ -19,6 +19,8 @@ string.h
 zbinbin/http/HttpRequest.h
 zbinbin/net/Buffer.h
 zbinbin/http/zbinbin/net/Buffer.h
+zbinbin/utility/noncopyable.h
+zbinbin/http/zbinbin/utility/noncopyable.h
 string
 -
 map
@@ -33,4 +35,6 @@ string
 -
 assert.h
 -
+
+zbinbin/utility/noncopyable.h
 

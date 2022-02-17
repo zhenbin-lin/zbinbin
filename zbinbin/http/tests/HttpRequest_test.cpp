@@ -25,7 +25,8 @@ int main(int argc, char *argv[])
     // std::cout << ::strlen(str) << " " << buffer.peek() << std::endl;
 
 
-	zbinbin::HttpRequest req(buffer);
+	zbinbin::HttpRequest req;
+    req.parseRequest(&buffer);
 
 	std::cout << "[method]" << req.getMethod() << std::endl;
 	std::cout << "[url]" << req.getUrl() << std::endl;

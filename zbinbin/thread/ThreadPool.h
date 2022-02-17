@@ -12,6 +12,7 @@
 
 namespace zbinbin
 {
+
 class ThreadPool
 {
 public:
@@ -26,7 +27,7 @@ public:
     void stop();
 
     /// thread safe
-    void run(Task &task);
+    void run(Task task);
 
     size_t taskCount() const;
 
@@ -42,11 +43,11 @@ private:
     std::vector<std::unique_ptr<Thread>> threads_;
 
     std::string name_;
-    Task threadInitCallback_;
     mutable MutexLock mutex_;
     std::queue<Task> tasks_;
     mutable Condition notEmpty_;
     // Condition notFull_;
+    Task threadInitCallback_;
 };
 
 

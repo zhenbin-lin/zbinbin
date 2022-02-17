@@ -8,9 +8,9 @@ using namespace zbinbin;
 ThreadPool::ThreadPool(const std::string& name)
     : running_(false)
     , threadNum_(0)
+    , threads_()
     , name_(name)
     , mutex_()
-    , threads_()
     , tasks_()
     , notEmpty_(mutex_)
 {
@@ -39,11 +39,11 @@ void ThreadPool::start()
     for (int i = 0; i < threadNum_; ++i) 
     {
         threads_.emplace_back(
-            new Thread(std::bind(ThreadPool::ThreadFunc, this), name_ + "-" + std::to_string(i + 1)));
+            new Thread(std::bind(&ThreadPool::ThreadFunc, this), name_ + "-" + std::to_string(i + 1)));
         threads_[i]->start();
     }
+    LOG_TRACE << "ThreadPool::Thread count " << threadNum_ << "started !";
 }
-
 
 void ThreadPool::stop()
 {
@@ -73,7 +73,7 @@ size_t ThreadPool::taskCount() const
     return tasks_.size();
 }
 
-void ThreadPool::run(Task &task)
+void ThreadPool::run(Task task)
 {
     if (threads_.empty())
     {

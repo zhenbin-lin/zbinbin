@@ -72,7 +72,7 @@ public:
     { writeCompleteCallback_ = cb; }
 
 
-    const std::string& ipPort() const { return ipPort_; }
+    const std::string& getIpPortString() const { return ipPort_; }
     const std::string& name() const { return name_; }
 
 private:

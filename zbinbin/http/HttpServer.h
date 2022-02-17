@@ -3,8 +3,10 @@
 
 #include "zbinbin/http/HttpRequest.h"
 #include "zbinbin/http/HttpResponse.h"
+#include "zbinbin/thread/ThreadPool.h"
 #include "zbinbin/net/Callbacks.h"
 #include "zbinbin/net/TcpServer.h"
+#include "zbinbin/net/InetAddress.h"
 
 
 #include <functional>
@@ -14,40 +16,56 @@
 namespace zbinbin
 {
 class EventLoop;
-class ThreadPool;
-class InetAddress;
 
 class HttpServer
 {
 public:
-      typedef std::function<void (const HttpRequest&,
-                              HttpResponse&)> HttpCallback;
+    typedef std::function<void (const HttpRequest&,
+                            HttpResponse&)> HttpCallback;
+    using c = std::function<void (const TcpConnectionPtr&, std::unique_ptr<Buffer>)>;
 
-    ///
-    /// @param iothread IO-Reactor的个数, 默认情况下为零个
-    /// 也就是Acceptor和IO公用一个Thread
-    /// @param northread normal Thread的个数, 计算型线程的个数
-    /// 个数为0时, 表示decode calculate encode等的操作都由Reactor来完成
     HttpServer(EventLoop* loop, InetAddress listAddr);
     ~HttpServer();
 
     void start();
 
+    void stop();
+
     /// Thread safe, but Must call before start().
     void setGetCallback(const HttpCallback& cb) { onGetCallback_ = cb; }
     /// Thread safe, but Must call before start().
     void setPOSTCallback(const HttpCallback& cb) { onPostCallback_ = cb; }
-
+    /// NOT Thread Safe
     /// Must Call before start().
+    /// Set the number of threads for handling decode,encode,compute
+    ///
+    /// dispatch Not-IO task to ThreadPool
+    /// - 0 means all Not-IO task handle by they IO Thread
+    /// - 1 means a Thread handle all Not-IO task
+    /// - N means a thread pool with N threads, new task
+    ///   are assigned on a round-robin basis.
     void setComputeThreadNum(int num);
+
+    /// NOT Thread Safe
     /// Must Call before start().
+    /// Set the number of threads for handling input.
+    ///
+    /// Always accepts new connection in loop's thread.
+    /// Must be called before @c start
+    /// @param numThreads
+    /// - 0 means all I/O in loop's thread, no thread will created.
+    ///   this is the default value.
+    /// - 1 means all I/O in another thread.
+    /// - N means a thread pool with N threads, new connections
+    ///   are assigned on a round-robin basis.
     void setIoThreadNum(int num);
 
+    void print(int);
 
 private:
     void onConnection(const TcpConnectionPtr& conn);
     void onMessage(const TcpConnectionPtr& conn, Buffer* buffer);
-    void decodeMessage(const TcpConnectionPtr& conn, std::unique_ptr<Buffer> buffer);
+    void decodeMessage(const TcpConnectionPtr& conn, std::shared_ptr<Buffer> buffer);
 
     std::atomic<bool> started_; 
     EventLoop* loop_;

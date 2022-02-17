@@ -252,9 +252,33 @@ CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o.provides: CMakeFiles/
 CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o
 
 
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: CMakeFiles/zbinbin.dir/flags.make
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/thread/ThreadPool.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/thread/ThreadPool.cpp
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/binwatson/share/zbinbin/zbinbin/thread/ThreadPool.cpp > CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.i
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/binwatson/share/zbinbin/zbinbin/thread/ThreadPool.cpp -o CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.s
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.requires:
+
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.requires
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.provides: CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.requires
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.provides.build
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.provides
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o
+
+
 CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o: zbinbin/net/InetAddress.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/InetAddress.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.i: cmake_force
@@ -278,7 +302,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o: zbinbin/net/SocketOps.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/SocketOps.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.i: cmake_force
@@ -302,7 +326,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o.provides.build: CMakeFiles/zb
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o: zbinbin/net/Socket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/Socket.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.i: cmake_force
@@ -326,7 +350,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o.provides.build: CMakeFiles/zbinb
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o: zbinbin/net/Buffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/Buffer.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.i: cmake_force
@@ -350,7 +374,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/Buffer.cpp.o.provides.build: CMakeFiles/zbinb
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.o: zbinbin/net/Channel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/Channel.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.i: cmake_force
@@ -374,7 +398,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/Channel.cpp.o.provides.build: CMakeFiles/zbin
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o: zbinbin/net/Poller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/Poller.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.i: cmake_force
@@ -398,7 +422,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/Poller.cpp.o.provides.build: CMakeFiles/zbinb
 
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o: zbinbin/net/EventLoop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/EventLoop.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.i: cmake_force
@@ -422,7 +446,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/EventLoop.cpp.o.provides.build: CMakeFiles/zb
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o: zbinbin/net/Acceptor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/Acceptor.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.i: cmake_force
@@ -446,7 +470,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/Acceptor.cpp.o.provides.build: CMakeFiles/zbi
 
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o: zbinbin/net/TcpConnection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/TcpConnection.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.i: cmake_force
@@ -470,7 +494,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/TcpConnection.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o: zbinbin/net/EventLoopThread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/EventLoopThread.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.i: cmake_force
@@ -494,7 +518,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o: zbinbin/net/EventLoopThreadPool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/EventLoopThreadPool.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.i: cmake_force
@@ -518,7 +542,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o.provides.build: CMa
 
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o: zbinbin/net/TcpServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/net/TcpServer.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.i: cmake_force
@@ -542,7 +566,7 @@ CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o.provides.build: CMakeFiles/zb
 
 CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o: CMakeFiles/zbinbin.dir/flags.make
 CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o: zbinbin/http/HttpRequest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/http/HttpRequest.cpp
 
 CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.i: cmake_force
@@ -564,6 +588,30 @@ CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o.provides: CMakeFiles/zbinb
 CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o
 
 
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: CMakeFiles/zbinbin.dir/flags.make
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/http/HttpServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o -c /home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp
+
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp > CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.i
+
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp -o CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.s
+
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.requires:
+
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.requires
+
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.provides: CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.provides.build
+.PHONY : CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.provides
+
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.provides.build: CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o
+
+
 # Object files for target zbinbin
 zbinbin_OBJECTS = \
 "CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o" \
@@ -574,6 +622,7 @@ zbinbin_OBJECTS = \
 "CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o" \
+"CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o" \
@@ -586,7 +635,8 @@ zbinbin_OBJECTS = \
 "CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o" \
 "CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o" \
-"CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o"
+"CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o" \
+"CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o"
 
 # External object files for target zbinbin
 zbinbin_EXTERNAL_OBJECTS =
@@ -599,6 +649,7 @@ lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o
+lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o
@@ -612,9 +663,10 @@ lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThread.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o
+lib/libzbinbin.so: CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/build.make
 lib/libzbinbin.so: CMakeFiles/zbinbin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX shared library lib/libzbinbin.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/binwatson/share/zbinbin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX shared library lib/libzbinbin.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zbinbin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -630,6 +682,7 @@ CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cp
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/Condition.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/CurrentThread.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/CountDownLatch.cpp.o.requires
+CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/net/InetAddress.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/net/SocketOps.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/net/Socket.cpp.o.requires
@@ -643,6 +696,7 @@ CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThr
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/net/EventLoopThreadPool.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/net/TcpServer.cpp.o.requires
 CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o.requires
+CMakeFiles/zbinbin.dir/requires: CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o.requires
 
 .PHONY : CMakeFiles/zbinbin.dir/requires
 

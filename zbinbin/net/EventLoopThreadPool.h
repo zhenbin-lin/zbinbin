@@ -23,14 +23,17 @@ public:
                         const std::string& name = std::string());
     ~EventLoopThreadPool();
 
+    /// Not thread safe
     /// start all Threads
     void start(const ThreadInitCallback& cb = ThreadInitCallback());
 
+    /// Not thread safe
     /// Set the number of threads for handling input.
     /// Must be called before @c start
     void setThreadNum(int numThreads);
 
-    // valid after calling start()
+    /// Not thread safe
+    /// valid after calling start()
     /// round-robin
     EventLoop* getNextLoop();
 

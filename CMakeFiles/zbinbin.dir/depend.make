@@ -11,6 +11,28 @@ CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o: zbinbin/utility/Timestamp
 CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o: zbinbin/utility/copyable.h
 CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o: zbinbin/utility/noncopyable.h
 
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/http/HttpServer.cpp
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/http/HttpRequest.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/http/HttpResponse.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/http/HttpServer.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/log/FixedBuffer.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/log/LogStream.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/log/Logging.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/net/Buffer.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/net/Callbacks.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/net/EventLoop.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/net/InetAddress.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/net/TcpConnection.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/net/TcpServer.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/thread/Condition.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/thread/CurrentThread.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/thread/Mutex.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/thread/Thread.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/thread/ThreadPool.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/utility/Timestamp.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/utility/copyable.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o: zbinbin/utility/noncopyable.h
+
 CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.o: zbinbin/log/AsyncLogging.cpp
 CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.o: zbinbin/log/AsyncLogging.h
 CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.o: zbinbin/log/FixedBuffer.h
@@ -210,6 +232,19 @@ CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o: zbinbin/thread/Thread.cpp
 CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o: zbinbin/thread/CurrentThread.h
 CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o: zbinbin/thread/Thread.h
 CMakeFiles/zbinbin.dir/zbinbin/thread/Thread.cpp.o: zbinbin/utility/noncopyable.h
+
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/thread/ThreadPool.cpp
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/log/FixedBuffer.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/log/LogStream.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/log/Logging.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/thread/Condition.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/thread/CurrentThread.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/thread/Mutex.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/thread/Thread.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/thread/ThreadPool.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/utility/Timestamp.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/utility/copyable.h
+CMakeFiles/zbinbin.dir/zbinbin/thread/ThreadPool.cpp.o: zbinbin/utility/noncopyable.h
 
 CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o: zbinbin/utility/Timestamp.cpp
 CMakeFiles/zbinbin.dir/zbinbin/utility/Timestamp.cpp.o: zbinbin/utility/Timestamp.h

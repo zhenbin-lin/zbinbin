@@ -11,7 +11,7 @@ InetAddress::InetAddress(uint16_t port, bool loopbackOnly)
 {
     ::memset(&addr_, 0, sizeof addr_);
     addr_.sin_family = AF_INET;
-    in_addr_t ip = loopbackOnly ? sockets::kInaddrAny : sockets::kInaddrLoopback;
+    in_addr_t ip = loopbackOnly ? sockets::kInaddrLoopback : sockets::kInaddrAny;
     addr_.sin_addr.s_addr = sockets::hostToNetwork32(ip);
     addr_.sin_port = sockets::hostToNetwork16(port);
 }
