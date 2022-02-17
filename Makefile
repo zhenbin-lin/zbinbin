@@ -379,6 +379,33 @@ zbinbin/http/HttpRequest.cpp.s:
 	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.s
 .PHONY : zbinbin/http/HttpRequest.cpp.s
 
+zbinbin/http/HttpResponse.o: zbinbin/http/HttpResponse.cpp.o
+
+.PHONY : zbinbin/http/HttpResponse.o
+
+# target to build an object file
+zbinbin/http/HttpResponse.cpp.o:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpResponse.cpp.o
+.PHONY : zbinbin/http/HttpResponse.cpp.o
+
+zbinbin/http/HttpResponse.i: zbinbin/http/HttpResponse.cpp.i
+
+.PHONY : zbinbin/http/HttpResponse.i
+
+# target to preprocess a source file
+zbinbin/http/HttpResponse.cpp.i:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpResponse.cpp.i
+.PHONY : zbinbin/http/HttpResponse.cpp.i
+
+zbinbin/http/HttpResponse.s: zbinbin/http/HttpResponse.cpp.s
+
+.PHONY : zbinbin/http/HttpResponse.s
+
+# target to generate assembly for a file
+zbinbin/http/HttpResponse.cpp.s:
+	$(MAKE) -f CMakeFiles/zbinbin.dir/build.make CMakeFiles/zbinbin.dir/zbinbin/http/HttpResponse.cpp.s
+.PHONY : zbinbin/http/HttpResponse.cpp.s
+
 zbinbin/http/HttpServer.o: zbinbin/http/HttpServer.cpp.o
 
 .PHONY : zbinbin/http/HttpServer.o
@@ -1061,6 +1088,9 @@ help:
 	@echo "... zbinbin/http/HttpRequest.o"
 	@echo "... zbinbin/http/HttpRequest.i"
 	@echo "... zbinbin/http/HttpRequest.s"
+	@echo "... zbinbin/http/HttpResponse.o"
+	@echo "... zbinbin/http/HttpResponse.i"
+	@echo "... zbinbin/http/HttpResponse.s"
 	@echo "... zbinbin/http/HttpServer.o"
 	@echo "... zbinbin/http/HttpServer.i"
 	@echo "... zbinbin/http/HttpServer.s"

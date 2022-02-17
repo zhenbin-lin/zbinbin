@@ -35,6 +35,7 @@ set(LIB_SRC
     zbinbin/net/EventLoopThreadPool.cpp
     zbinbin/net/TcpServer.cpp
     zbinbin/http/HttpRequest.cpp
+    zbinbin/http/HttpResponse.cpp
     zbinbin/http/HttpServer.cpp
 	)
 

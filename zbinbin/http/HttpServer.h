@@ -60,8 +60,6 @@ public:
     ///   are assigned on a round-robin basis.
     void setIoThreadNum(int num);
 
-    void print(int);
-
 private:
     void onConnection(const TcpConnectionPtr& conn);
     void onMessage(const TcpConnectionPtr& conn, Buffer* buffer);

@@ -11,6 +11,10 @@ CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o
  zbinbin/utility/Timestamp.h
  zbinbin/utility/copyable.h
  zbinbin/utility/noncopyable.h
+CMakeFiles/zbinbin.dir/zbinbin/http/HttpResponse.cpp.o
+ /home/binwatson/share/zbinbin/zbinbin/http/HttpResponse.cpp
+ zbinbin/http/HttpResponse.h
+ zbinbin/net/Buffer.h
 CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o
  /home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp
  zbinbin/http/HttpRequest.h

@@ -11,6 +11,7 @@ namespace zbinbin
 {
 class TcpConnection;
 class HttpRequest;
+class File;
 
 class Buffer
 {
@@ -48,6 +49,7 @@ public:
     {
         return readerIndex_;
     }
+
 
     void append(const char* data, size_t len)
     {
@@ -91,6 +93,7 @@ public:
 private:
     friend class TcpConnection;
     friend class HttpRequest;
+    friend class File;
 
     char* begin()
     { return buffer_.data(); }

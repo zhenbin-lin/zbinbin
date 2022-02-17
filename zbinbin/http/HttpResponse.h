@@ -20,7 +20,7 @@ public:
         // 未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。
         k304NotModified = 304,      
         // 临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI
-        k302Found = 302, 
+        k302Found = 302,
         // 客户端请求的语法错误，服务器无法理解
         k400BadRequest = 400,       
         // 服务器无法根据客户端的请求找到资源（网页）。
@@ -28,14 +28,17 @@ public:
         k404NotFound = 404,
         // 客户端请求的范围无效
         k416RequestedRangeNotSatisfiable = 416,
+        k501NotImplemented = 501,
         // 服务器不支持请求的HTTP协议的版本，无法完成处理
         k505HTTPVersionNotSupported = 505,
     };
 
 
-    explicit HttpResponse(bool close)
+    explicit HttpResponse(bool close = false)
         : statusCode_(kUnknown)
         , closeConnection_(close)
+        , body_(nullptr)
+        , bodyLen_(0)
     {
     }
 
@@ -50,22 +53,36 @@ public:
     void setCloseConnection(bool on)
     { closeConnection_ = on; }
 
+    void setBody(const char* body, size_t len)
+    {
+        body_ = body;
+        bodyLen_ = len;
+    }
+
     void addHeader(const std::string& key, const std::string& value) 
     {
         headers_[key] = value;
     }
-    void setBody(const std::string& body)
+
+    const std::map<std::string, std::string>& getHeaders() const
     {
-        body_ = body;
+        return headers_;
     }
+
+    void appendToBuffer(Buffer*) const;
+
+    bool closeConnection() const { return closeConnection_; }
 
 private:
     std::map<std::string, std::string> headers_;
     HttpStatusCode statusCode_;
     std::string statusMessage_;
+    int keepAliveTime_;
+    int maxAliveTime_;
     bool closeConnection_;
 
-    std::string body_;
+    const char* body_;
+    size_t bodyLen_;
 };
 } // namespace zbinbin
 #endif  // __ZBINBIN_HTTPRESPONSE_H_

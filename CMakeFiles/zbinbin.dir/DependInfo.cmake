@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/binwatson/share/zbinbin/zbinbin/http/HttpRequest.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/http/HttpRequest.cpp.o"
+  "/home/binwatson/share/zbinbin/zbinbin/http/HttpResponse.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/http/HttpResponse.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/http/HttpServer.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/log/AsyncLogging.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/log/AsyncLogging.cpp.o"
   "/home/binwatson/share/zbinbin/zbinbin/log/LogStream.cpp" "/home/binwatson/share/zbinbin/CMakeFiles/zbinbin.dir/zbinbin/log/LogStream.cpp.o"

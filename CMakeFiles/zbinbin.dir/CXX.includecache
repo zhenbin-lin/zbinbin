@@ -20,6 +20,10 @@ ctype.h
 memory
 -
 
+/home/binwatson/share/zbinbin/zbinbin/http/HttpResponse.cpp
+zbinbin/http/HttpResponse.h
+/home/binwatson/share/zbinbin/zbinbin/http/zbinbin/http/HttpResponse.h
+
 /home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp
 zbinbin/http/HttpServer.h
 /home/binwatson/share/zbinbin/zbinbin/http/zbinbin/http/HttpServer.h
@@ -33,6 +37,12 @@ zbinbin/log/Logging.h
 /home/binwatson/share/zbinbin/zbinbin/http/zbinbin/log/Logging.h
 zbinbin/net/TcpConnection.h
 /home/binwatson/share/zbinbin/zbinbin/http/zbinbin/net/TcpConnection.h
+map
+-
+string
+-
+fstream
+-
 
 /home/binwatson/share/zbinbin/zbinbin/log/AsyncLogging.cpp
 zbinbin/log/AsyncLogging.h

@@ -6,12 +6,17 @@
 #include "zbinbin/net/TcpConnection.h"
 
 
+#include <map>
+#include <string>
+#include <fstream>
+
 
 using namespace zbinbin;
 
 
 HttpServer::HttpServer(EventLoop* loop, InetAddress listAddr)
-    : loop_(loop)
+    : started_(false)
+    , loop_(loop)
     , server_(loop, listAddr, "Tcp")
     , threadPool_("Http-ThreadPool")
 {
@@ -72,51 +77,148 @@ void HttpServer::onMessage(const TcpConnectionPtr& conn, Buffer* buffer)
         std::bind(&HttpServer::decodeMessage, this, conn, buf));
 }
 
-void HttpServer::print(int)
+namespace zbinbin
 {
+namespace detail
+{
+class FileType
+{
+public:
+    template<int N>
+    FileType(const char (&arr)[N]) : data_(arr), size_(N - 1)
+    {
+        const char* slash = strrchr(data_, '.');
+        if (slash) {
+            data_ = slash + 1;
+            size_ -= static_cast<int>(data_ - arr);
+        }
+    }
+    explicit FileType(const char* filename)
+    : data_(filename)
+    {
+        const char* slash = strrchr(filename, '.');
+        if (slash)
+        {
+            data_ = slash + 1;
+        }
+        size_ = static_cast<int>(strlen(data_));
+    }
+    const char* data_;
+    int size_;
 
-}
+    std::string getContextType()
+    {
+        static std::map<std::string, std::string> ContextType = {
+            {"html", "text/html"},
+            {"css", "text/html"},
+            {"jsp", "text/html"},
+            {"js", "application/x-javascript"},
+            {"xml", "application/xml"},
+            {"xhtml", "application/xhtml+xml"},
+            {"json", "application/json"},
+            {"gif", "image/gif"},
+            {"jpeg", "image/jpeg"},
+            {"png", "image/png"},
+            {"jpg", "image/jpg"}
+        };
+        std::string result;
+        auto it = ContextType.find(std::string(data_, size_));
+        if (it != ContextType.end())
+        {
+            result = it->second;
+        }
+        return result;
+    }
+};
+ 
+}   //namespace detail
+}   // namespace zbinbin
+
 
 void HttpServer::decodeMessage(const TcpConnectionPtr& conn, std::shared_ptr<Buffer> buffer)
 {
+    using namespace detail;
+    // using std::string;
     HttpRequest request;
     HttpResponse response(false);
-    bool success = true;
     if (request.parseRequest(buffer.get()))
-    {
-        LOG_INFO << request.getMethod() << " " << (request.getMethod() == "GET");
-        if (request.getMethod() == "GET")
+    {        
+        // Context-Type
+        std::string url = request.getUrl();
+        LOG_INFO << url;
+        if (url != "/")
         {
-            if (onGetCallback_)
+            // LOG_TRACE << request.getUrl();
+            FileType fileType(url.c_str());
+            if (fileType.getContextType().empty())
             {
-                onGetCallback_(request, response);
+                conn->send("HTTP/1.1 417 Unkown File Type\r\n\r\n");
+                conn->shutdown();
+                return;
+            }
+            else
+            {
+                response.addHeader("Context-Type", fileType.getContextType());
             }
         }
-        else if (request.getMethod() == "POST")
+        else // 主页
         {
-            if (onPostCallback_)
-            {
-                onPostCallback_(request, response);
-            }
-        }   
-        else // 服务器不支持请求的功能，无法完成请求
-        {
-            conn->send("HTTP/1.1 501 Not Implemented Method\r\n\r\n");
-            success = false;
+            url = "/index.html";
+            response.addHeader("Context-Type", "text/html");
         }
+        
+        // Method
+        const std::string& method = request.getMethod();
+        if (method == "GET" && onGetCallback_)
+        {
+            onGetCallback_(request, response);
+        }
+        if (method == "PUT" && onPostCallback_)
+        {
+            onPostCallback_(request, response);
+        }
+
+        //打开文件。
+        url = "www" + url;
+        FILE *fp = ::fopen(url.c_str(), "rb");   
+        if (fp)
+        {
+            ::fseek(fp, 0, SEEK_END);     //定位文件指针到文件尾。
+            size_t size = ::ftell (fp);   //获取文件指针偏移量，即文件大小。
+            ::fseek(fp, 0, SEEK_SET);     //定位文件指针到文件尾。
+            char *binaryBuffer = (char*)malloc(sizeof(char)*size);
+            size_t nread = 0;
+            size_t total = 0;
+            size_t tmp = size;
+            while((nread = ::fread(binaryBuffer + total, 1, tmp, fp)) > 0)
+            {
+                total += nread;
+                tmp -= total;
+            }
+            if (total == size)
+                response.setBody(binaryBuffer, total);
+        }
+        else
+        {
+            response.setStatusCode(HttpResponse::k404NotFound);
+            response.setStatusMessage("Not Found");
+            response.setCloseConnection(true);
+        }
+
     }
     else  // 客户端请求的语法错误，服务器无法理解
     {
-        conn->send("HTTP/1.1 400 Bad Request\r\n\r\n");
-        success = false;
+        response.setStatusCode(HttpResponse::k400BadRequest);
+        response.setStatusMessage("Bad Request");
+        response.setCloseConnection(true);
     }
 
-    if (success)
-    {
 
-    }
-    else
+    Buffer buf;
+    response.appendToBuffer(&buf);
+    conn->send(&buf);
+    if (response.closeConnection())
     {
         conn->shutdown();
-    }   
+    }
 }

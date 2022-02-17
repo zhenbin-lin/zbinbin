@@ -6,11 +6,16 @@
 #include "zbinbin/log/Logging.h"
 
 
+
+
 using namespace zbinbin;
 
 void getCallback(const HttpRequest& request, HttpResponse& response)
 {
-    respone.setStateCode(200);
+    if (request.getUrl() == "/")
+    {
+
+    }
 }
 
 
@@ -19,10 +24,13 @@ int main()
     EventLoop loop;
     HttpServer server(&loop, InetAddress(80));
 
-    server.setComputeThreadNum(2);
-    server.setIoThreadNum(1);
+    // server.setComputeThreadNum(2);
+    // server.setIoThreadNum(1);
     server.setGetCallback(getCallback);
     server.start();
+
+
+
     loop.loop();
 
     return 0;
