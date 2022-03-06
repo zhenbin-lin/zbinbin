@@ -5,6 +5,7 @@
 
 #include <string>
 #include <map>
+#include <memory>
 
 namespace zbinbin
 {
@@ -37,12 +38,15 @@ public:
     explicit HttpResponse(bool close = false)
         : statusCode_(kUnknown)
         , closeConnection_(close)
-        , body_(nullptr)
-        , bodyLen_(0)
+        , fileName_()
+        // , body_(nullptr)
+        // , bodyLen_(0)
     {
     }
 
-    ~HttpResponse() = default;
+    ~HttpResponse()
+    {
+    }
 
     void setStatusCode(HttpStatusCode code) 
     { statusCode_ = code; }
@@ -53,10 +57,15 @@ public:
     void setCloseConnection(bool on)
     { closeConnection_ = on; }
 
-    void setBody(const char* body, size_t len)
+    // void setBody(char* body, long len)
+    // {
+    //     body_ = body;
+    //     bodyLen_ = len;
+    // }
+
+    void setFileName(const std::string& fileName)
     {
-        body_ = body;
-        bodyLen_ = len;
+        fileName_ = fileName;
     }
 
     void addHeader(const std::string& key, const std::string& value) 
@@ -69,7 +78,7 @@ public:
         return headers_;
     }
 
-    void appendToBuffer(Buffer*) const;
+    void appendToBuffer(std::shared_ptr<Buffer>&);
 
     bool closeConnection() const { return closeConnection_; }
 
@@ -80,9 +89,10 @@ private:
     int keepAliveTime_;
     int maxAliveTime_;
     bool closeConnection_;
+    std::string fileName_;
 
-    const char* body_;
-    size_t bodyLen_;
+    // char* body_;
+    // long bodyLen_;
 };
 } // namespace zbinbin
 #endif  // __ZBINBIN_HTTPRESPONSE_H_

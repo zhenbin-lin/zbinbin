@@ -37,6 +37,8 @@ string
 -
 map
 -
+memory
+-
 
 zbinbin/http/HttpServer.h
 zbinbin/http/HttpRequest.h

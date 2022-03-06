@@ -3,6 +3,7 @@
 
 #include <errno.h>
 #include <sys/uio.h>
+#include <sys/stat.h>
 
 
 namespace zbinbin
@@ -31,6 +32,30 @@ ssize_t Buffer::readFd(int fd, int* savedErrno)
     {
         writerIndex_ = buffer_.size();
         append(extraBuf, n - writable);       
+    }
+    return n;
+}
+
+ssize_t Buffer::readFile(const char* fileName, int* savedErrno)
+{
+    // static const size_t bufferSize = 1024 * 256;
+    size_t n = 0;
+    FILE *fp = ::fopen(fileName, "rb");
+    struct stat fileStat;  
+    stat(fileName, &fileStat);
+    size_t size = static_cast<size_t>(fileStat.st_size);
+    if (fp) 
+    {
+        size_t nread = 0;
+        ensureWritableBytes(size);
+        while((nread = ::fread(begin() + writerIndex_, 1, size, fp)) > 0)
+        {
+            writerIndex_ += nread;
+            n += nread;
+            size -= nread;
+        }
+    } else {
+        *savedErrno = errno;
     }
     return n;
 }

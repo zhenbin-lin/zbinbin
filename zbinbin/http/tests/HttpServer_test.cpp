@@ -24,8 +24,8 @@ int main()
     EventLoop loop;
     HttpServer server(&loop, InetAddress(80));
 
-    // server.setComputeThreadNum(2);
-    // server.setIoThreadNum(1);
+    server.setComputeThreadNum(8);
+	server.setIoThreadNum(4);
     server.setGetCallback(getCallback);
     server.start();
 

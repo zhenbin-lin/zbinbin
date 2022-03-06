@@ -101,18 +101,31 @@ void TcpConnection::send(const void* message, size_t len)
     else
     {
         loop_->runInLoop(
-            std::bind(&TcpConnection::sendInLoop, this, message, len));
+            std::bind(static_cast<void(TcpConnection::*)(const void*, size_t)>(&TcpConnection::sendInLoop), this, message, len));
     }
-}
-
-void TcpConnection::send(Buffer* message)
-{
-    TcpConnection::send(message->peek(), message->readableBytes());
 }
 
 void TcpConnection::send(const std::string& message)
 {
     send(message.c_str(), message.size());
+}
+
+void TcpConnection::send(std::shared_ptr<Buffer> ptr)
+{
+    if (loop_->isInLoopThread())
+    {
+        sendInLoop(ptr);
+    }
+    else
+    {
+        loop_->runInLoop(
+            std::bind(static_cast<void(TcpConnection::*)(std::shared_ptr<Buffer>)>(&TcpConnection::sendInLoop), this, ptr));
+    }
+}
+
+void TcpConnection::sendInLoop(std::shared_ptr<Buffer> ptr)
+{
+    sendInLoop(ptr.get()->peek(), ptr->readableBytes());
 }
 
 void TcpConnection::sendInLoop(const void* message, size_t len)

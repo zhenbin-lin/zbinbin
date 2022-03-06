@@ -90,6 +90,8 @@ public:
 
     ssize_t readFd(int fd, int* savedErrno);
 
+    ssize_t readFile(const char* fileName, int* savedErrno);
+
 private:
     friend class TcpConnection;
     friend class HttpRequest;

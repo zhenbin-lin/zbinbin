@@ -23,6 +23,10 @@ memory
 /home/binwatson/share/zbinbin/zbinbin/http/HttpResponse.cpp
 zbinbin/http/HttpResponse.h
 /home/binwatson/share/zbinbin/zbinbin/http/zbinbin/http/HttpResponse.h
+zbinbin/log/Logging.h
+/home/binwatson/share/zbinbin/zbinbin/http/zbinbin/log/Logging.h
+sys/stat.h
+-
 
 /home/binwatson/share/zbinbin/zbinbin/http/HttpServer.cpp
 zbinbin/http/HttpServer.h
@@ -112,6 +116,8 @@ zbinbin/net/SocketOps.h
 errno.h
 -
 sys/uio.h
+-
+sys/stat.h
 -
 
 /home/binwatson/share/zbinbin/zbinbin/net/Channel.cpp
@@ -342,6 +348,8 @@ zbinbin/http/zbinbin/net/Buffer.h
 string
 -
 map
+-
+memory
 -
 
 zbinbin/http/HttpServer.h

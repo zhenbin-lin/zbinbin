@@ -52,7 +52,7 @@ public:
     const std::string getStateString() const;
 
     void send(const void* message, size_t len);
-    void send(Buffer* message);
+    void send(std::shared_ptr<Buffer> message);
     void send(const std::string& message);
 
     void startRead();
@@ -96,6 +96,7 @@ private:
     void shutdownInLoop();
     void forceCloseInLoop();
     void sendInLoop(const void* message, size_t len);
+    void sendInLoop(std::shared_ptr<Buffer> message);
 
     void handleRead();  // message arrived
     void handleWrite(); // writable

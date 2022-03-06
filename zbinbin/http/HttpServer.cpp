@@ -119,7 +119,10 @@ public:
             {"gif", "image/gif"},
             {"jpeg", "image/jpeg"},
             {"png", "image/png"},
-            {"jpg", "image/jpg"}
+            {"jpg", "image/jpg"},
+            {"woff", "application/font-woff"},
+            {"woff2", "application/font-woff"},
+            {"ttf", "application/font-ttf"}
         };
         std::string result;
         auto it = ContextType.find(std::string(data_, size_));
@@ -145,7 +148,6 @@ void HttpServer::decodeMessage(const TcpConnectionPtr& conn, std::shared_ptr<Buf
     {        
         // Context-Type
         std::string url = request.getUrl();
-        LOG_INFO << url;
         if (url != "/")
         {
             // LOG_TRACE << request.getUrl();
@@ -177,34 +179,11 @@ void HttpServer::decodeMessage(const TcpConnectionPtr& conn, std::shared_ptr<Buf
         {
             onPostCallback_(request, response);
         }
-
-        //打开文件。
-        url = "www" + url;
-        FILE *fp = ::fopen(url.c_str(), "rb");   
-        if (fp)
-        {
-            ::fseek(fp, 0, SEEK_END);     //定位文件指针到文件尾。
-            size_t size = ::ftell (fp);   //获取文件指针偏移量，即文件大小。
-            ::fseek(fp, 0, SEEK_SET);     //定位文件指针到文件尾。
-            char *binaryBuffer = (char*)malloc(sizeof(char)*size);
-            size_t nread = 0;
-            size_t total = 0;
-            size_t tmp = size;
-            while((nread = ::fread(binaryBuffer + total, 1, tmp, fp)) > 0)
-            {
-                total += nread;
-                tmp -= total;
-            }
-            if (total == size)
-                response.setBody(binaryBuffer, total);
-        }
-        else
-        {
-            response.setStatusCode(HttpResponse::k404NotFound);
-            response.setStatusMessage("Not Found");
-            response.setCloseConnection(true);
-        }
-
+        
+        response.setFileName("www" + url);
+        response.setStatusCode(HttpResponse::k200Ok);
+        response.setStatusMessage("OK");
+        response.setCloseConnection(false);
     }
     else  // 客户端请求的语法错误，服务器无法理解
     {
@@ -213,10 +192,10 @@ void HttpServer::decodeMessage(const TcpConnectionPtr& conn, std::shared_ptr<Buf
         response.setCloseConnection(true);
     }
 
-
-    Buffer buf;
-    response.appendToBuffer(&buf);
-    conn->send(&buf);
+    std::shared_ptr<Buffer> buf(new Buffer);
+    response.appendToBuffer(buf);
+    
+    conn->send(buf);
     if (response.closeConnection())
     {
         conn->shutdown();
